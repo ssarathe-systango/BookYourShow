@@ -117,7 +117,6 @@ body {
 
 .nav {
     user-select: none;
-
     padding-bottom: 15px;
     padding-top: 15px;
 }
@@ -127,12 +126,34 @@ body {
     object-fit: contain;
     margin-left: 0%;
     user-select: none;
-
 }
 
 
 .nav_black {
     background-color: #111;
+}
+
+.maintext {
+    font-family: cursive;
+    font-weight: 900;
+    font-size: 45px;
+    color: white;
+    /* background: black; */
+    opacity: 65%;
+    margin-left: 50px;
+    user-select: none;
+}
+
+.text {
+    font-family: cursive;
+    font-weight: 900;
+    font-size: 35px;
+    margin-top: 50px;
+    color: white;
+    /* background: black; */
+    opacity: 65%;
+    margin-left: 50px;
+    user-select: none;
 }
 
 .dropdown {
