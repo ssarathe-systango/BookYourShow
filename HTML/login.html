@@ -70,14 +70,13 @@
 
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="form3Example1cg">User Name</label>
-                                        <input type="text" id="form3Example1cg" class="form-control form-control-lg" />
+                                        <input type="text" id="uname" class="form-control form-control-lg" />
 
                                     </div>
 
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="form3Example4cg">Password</label>
-                                        <input type="password" id="form3Example4cg"
-                                            class="form-control form-control-lg" />
+                                        <input type="password" id="pass" class="form-control form-control-lg" />
                                     </div>
 
                                     <div class="form-check d-flex justify-content-center mb-5">
@@ -91,11 +90,12 @@
                                     </div>
 
                                     <div class="d-flex justify-content-center">
-                                        <button type="button"
-                                            class="btn-block btn-lg gradient-custom-4 text-body registerbtn">Login</button>
+                                        <button type="button" id="click"
+                                            class="btn-block btn-lg gradient-custom-4 text-body registerbtn"
+                                            onclick="Authentication()">Login</button>
                                     </div>
 
-                                    <p class="text-center text-muted mt-5 mb-0 form-label">Not a member <a
+                                    <p class="text-center text-muted mt-5 mb-0 form-label">Not a member ? <a
                                             href="/HTML/registration.html" class="fw-bold text-body"><u
                                                 class="form-label">Register First</u></a>
                                     </p>
@@ -109,6 +109,62 @@
             </div>
         </div>
     </section>
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"> </script>
+
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyCixKBXmM2r8M4k2peUH7roMm40Ohx5A8Y",
+            authDomain: "bookyourshow-9c1f5.firebaseapp.com",
+            databaseURL: "https://bookyourshow-9c1f5-default-rtdb.firebaseio.com",
+            projectId: "bookyourshow-9c1f5",
+            storageBucket: "bookyourshow-9c1f5.appspot.com",
+            messagingSenderId: "430499662430",
+            appId: "1:430499662430:web:d1b813748385cf013a42cf",
+            measurementId: "G-V0WMX170VY"
+        };
+        const app = firebase.initializeApp(firebaseConfig);
+
+        const db = firebase.database();
+
+
+        function Authentication() {
+            let Username = document.getElementById('uname').value.trim();
+            let Password = document.getElementById('pass').value;
+
+            db.ref('Registered Users').once('value')
+                .then(function (snapshot) {
+
+                    var flag = false;
+
+                    snapshot.forEach((item) => {
+
+                        uname = item.val().uname;
+                        pass = item.val().pass;
+
+                        if (uname === Username && pass === Password) {
+                            flag = true;
+                            localStorage.setItem("user_name", uname);
+
+                            window.location = "index.html";
+                        }
+
+                    });
+
+                    if (flag === false) {
+                        alert("Invalid Username Or Password!");
+                    }
+                })
+                .catch((error) => {
+                    console.log(error);
+                    return false;
+                });
+
+        }
+        function login(user) {
+            window.location = "index.html";
+        }
+    </script>
 </body>
 
 </html>
