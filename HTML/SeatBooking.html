@@ -45,10 +45,10 @@
     </ul>
 
     <div class="container">
-        <div class="screen">Welcome to BookYourShow</div>
+        <div class="screen" id="display">BookYourShow</div>
 
         <div class="row">
-            <div id="seat1" class="seat" onclick="ChangeColor('seat1')">A1</div>
+            <div id="seat1" class="seat" data-price="50" onclick="ChangeColor('seat1')">A1</div>
             <div id="seat2" class="seat" onclick="ChangeColor('seat2')">A2</div>
             <div id="seat3" class="seat" onclick="ChangeColor('seat3')">A3</div>
             <div id="seat4" class="seat" onclick="ChangeColor('seat4')">A4</div>
@@ -132,9 +132,11 @@
 
 
     <script> //changing seat color
+        let count = 0;
+
         window.ChangeColor = function (id) {
             let element = document.getElementById(id);
-            var count = 0
+
             if (element.style.backgroundColor === 'yellow') {
                 element.style.backgroundColor = '#5c5c5c';
 
@@ -148,33 +150,25 @@
                 count++;
             }
             else {
-                count = 0;
+                count--;
             }
-            // console.log(count);
+            let price = document.getElementById("seat1").dataset.price;
+
+            total = count * parseInt(price);
+            // console.log(total);
+
+            let seatvalue = document.getElementById(id).innerText;
+            // console.log(seatvalue);
+
+            // console.log(display);
         }
+        let show = localStorage.getItem("ShowTime");
+        let theater = localStorage.getItem("TheaterName");
+        // console.log(show);
+        // console.log(theater);
 
+        document.getElementById("display").innerText += " for " + show + " " + theater;
 
-
-        // var count = 0;
-        // var seats = document.getElementsByClassName("seat");
-
-        // for (var i = 0; i < seats.length; i++) {
-        //     var item = seats[i];
-
-        //     item.addEventListener("click", (event) => {
-        //         var price = document.getElementById("movie").value;
-
-        //         if (!event.target.classList.contains('occupied') && !event.target.classList.contains('selected')) {
-        //             count++;
-
-        //             var total = count * price;
-        //             event.target.classList.add("selected");
-        //             document.getElementById("count").innerText = count;
-        //             document.getElementById("total").innerText = total;
-
-        //         }
-        //     })
-        // }
     </script>
 </body>
 

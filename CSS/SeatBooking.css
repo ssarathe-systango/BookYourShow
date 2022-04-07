@@ -12,8 +12,8 @@
 }
 
 body {
-    background-image: url("/Images/thor8.png");
-    /* background-color: black; */
+    /* background-image: url("/Images/thor8.png"); */
+    background-color: black;
     color: #fff;
     display: flex;
     background-size: cover;
@@ -44,18 +44,18 @@ body {
 .container {
     perspective: 1000px;
     margin-bottom: 30px;
+    margin-right: 200px;
 }
 
 .seat {
     background-color: #5c5c5c;
     height: 35px;
-    width: 50px;
+    width: 80px;
     margin: 3px;
-    border-top-left-radius: 50px;
+    /* border-top-left-radius: 50px;
     border-top-right-radius: 50px;
-    border-bottom-right-radius: 50px;
     border-bottom-left-radius: 50px;
-
+    border-bottom-right-radius: 50px; */
     user-select: none;
 }
 
@@ -109,6 +109,7 @@ body {
 
 .row {
     display: flex;
+    margin-left: 200px;
 }
 
 .screen {
@@ -120,8 +121,9 @@ body {
     font-size: xx-large;
     padding-top: 20px;
     height: 100px;
-    width: 100%;
-    margin: 20px 0;
+    width: 130%;
+    margin: 20px;
+    margin-left: -50px;
     transform: rotateX(-45deg);
     box-shadow: 0 3px 10px rgba(255, 255, 255, 5.0);
 }

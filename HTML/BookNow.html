@@ -28,6 +28,7 @@
         .container {
             font-size: 20px;
             user-select: none;
+            padding-top: 40px;
             font-style: italic;
             font-family: cursive;
             font-weight: bold;
@@ -115,82 +116,66 @@
     <div class="container">
         <div class="row1">
             <div class="row">
-                <div class="col">INOX: Sapna Sangeeta Mall
+                <div class="col" id="c21" data-theater-name="INOX: C21 Mall Bhopal">INOX: C21 Mall Bhopal
                     <div>
-                        <div class="timeslot" id="timeid">9:00am</div>
-                        <script>
-                            document.getElementById("timeid").onclick = function () {
-                                location.href = "/HTML/SeatBooking.html"
-                            }
-
-                        </script>
-                        <div class="timeslot" id="timeid">12:00am</div>
-                        <div class="timeslot" id="timeid">3:00am</div>
-                        <div class="timeslot" id="timeid">6:00am</div>
+                        <div class="timeslot" id="c21_9am" onclick="ShowTiming('c21_9am')">9:00am</div>
+                        <div class="timeslot" id="c21_12am" onclick="ShowTiming('c21_12am')">12:00am</div>
+                        <div class="timeslot" id="c21_3am" onclick="ShowTiming('c21_3am')">3:00am</div>
+                        <div class="timeslot" id="c21_6am" onclick="ShowTiming('c21_6am')">6:00am</div>
                     </div>
                 </div>
             </div>
 
 
             <div class="row">
-                <div class="col">INOX: Sapna Sangeeta Mall
+                <div class="col" id="db" data-theater-name="CINEPOLIS: DB City Mall Bhopal">CINEPOLIS: DB City Mall
+                    Bhopal
                     <div>
-                        <div class="timeslot" id="timeid">9:00am</div>
-                        <div class="timeslot" id="timeid">12:00am</div>
-                        <div class="timeslot" id="timeid">3:00am</div>
-                        <div class="timeslot" id="timeid">6:00am</div>
+                        <div class="timeslot" id="db_9am" onclick="ShowTiming('db_9am')">9:00am</div>
+                        <div class="timeslot" id="db_12am" onclick="ShowTiming('db_12am')">12:00am</div>
+                        <div class="timeslot" id="db_3am" onclick="ShowTiming('db_3am')">3:00am</div>
+                        <div class="timeslot" id="db_6am" onclick="ShowTiming('db_6am')">6:00am</div>
                     </div>
                 </div>
             </div>
 
             <div class="row">
-                <div class="col">INOX: Sapna Sangeeta Mall
+                <div class="col" id="pvr" data-theater-name="PVR: Aura Mall Bhopal">PVR: Aura Mall Bhopal
                     <div>
-                        <div class="timeslot" id="timeid">9:00am</div>
-                        <div class="timeslot" id="timeid">12:00am</div>
-                        <div class="timeslot" id="timeid">3:00am</div>
-                        <div class="timeslot" id="timeid">6:00am</div>
+                        <div class="timeslot" id="pvr_9am" onclick="ShowTiming('pvr_9am')">9:00am</div>
+                        <div class="timeslot" id="pvr_12am" onclick="ShowTiming('pvr_12am')">12:00am</div>
+                        <div class="timeslot" id="pvr_3am" onclick="ShowTiming('pvr_3am')">3:00am</div>
+                        <div class="timeslot" id="pvr_6am" onclick="ShowTiming('pvr_6am')">6:00am</div>
                     </div>
                 </div>
             </div>
-
-
-            <!-- <div class="row">
-                <div class="col">INOX: Sapna Sangeeta Mall
-                    <div>
-                        <div class="timeslot">9:00am</div>
-                        <div class="timeslot">12:00am</div>
-                        <div class="timeslot">3:00am</div>
-                        <div class="timeslot">6:00am</div>
-                    </div>
-                </div>
-            </div> -->
-
-
-            <!-- <div class="row">
-                <div class="col">INOX: Sapna Sangeeta Mall
-                    <div>
-                        <div class="timeslot">9:00am</div>
-                        <div class="timeslot">12:00am</div>
-                        <div class="timeslot">3:00am</div>
-                        <div class="timeslot">6:00am</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col">INOX: Sapna Sangeeta Mall
-                    <div>
-                        <div class="timeslot">9:00am</div>
-                        <div class="timeslot">12:00am</div>
-                        <div class="timeslot">3:00am</div>
-                        <div class="timeslot">6:00am</div>
-                    </div>
-                </div>
-            </div> -->
         </div>
     </div>
     </div>
+    <script>
+
+        // document.getElementById("timeid").onclick = function () {
+        //     location.href = "/HTML/SeatBooking.html"
+        // }
+
+        window.ShowTiming = function (id) {
+            let element = document.getElementById(id);
+            location.href = "/HTML/SeatBooking.html"
+
+            let theaterID = id.split("_");
+            // console.log(theaterID);
+
+            let ShowTime = document.getElementById(id).innerText;
+            let TheaterName = document.getElementById(theaterID[0]).dataset.theaterName;
+            // console.log(ShowTime);
+            // console.log(TheaterName);
+
+            localStorage.setItem("ShowTime", ShowTime);
+            localStorage.setItem("TheaterName", TheaterName);
+        }
+
+
+    </script>
 </body>
 
 </html>
