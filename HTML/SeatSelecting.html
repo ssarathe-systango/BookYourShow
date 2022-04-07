@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=dd1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Modal</title>
+    <link href="/CSS/SeatSelecting.css" rel="stylesheet">
+    <script defer src="/JS/SeatSelecting.js"></script>
+</head>
+
+<body>
+    <button data-modal-target="#modal">Click Here</button>
+    <div class="modal" id="modal">
+        <div class="modal-header">
+            <div class="title">How Many Seats</div>
+            <button data-close-button class="close-button">&times;</button>
+        </div>
+        <div class="modal-body">
+           
+
+                 <button class="list-buttons" onclick="selected_seats('seat_1')" id="seat_1" style='margin-right:18px'>1</button> 
+                 <button class="list-buttons" onclick="selected_seats('seat_2')" id="seat_2" style='margin-right:18px'>2</button> 
+                 <button class="list-buttons" onclick="selected_seats('seat_3')" id="seat_3" style='margin-right:18px'>3</button> 
+                 <button class="list-buttons" onclick="selected_seats('seat_4')" id="seat_4" style='margin-right:18px'>4</button> 
+                 <button class="list-buttons" onclick="selected_seats('seat_5')" id="seat_5" style='margin-right:18px'>5</button> 
+                 <button class="list-buttons" onclick="selected_seats('seat_6')" id="seat_6" style='margin-right:18px'>6</button> 
+                 <button class="list-buttons" onclick="selected_seats('seat_7')" id="seat_7" style='margin-right:18px'>7</button> 
+                 <button class="list-buttons" onclick="selected_seats('seat_8')" id="seat_8" style='margin-right:18px'>8</button> 
+                 <button class="list-buttons" onclick="selected_seats('seat_9')" id="seat_9" style='margin-right:18px'>9</button> 
+                 <button class="list-buttons" onclick="selected_seats('seat_10')" id="seat_10" style='margin-right:18px'>10</button> 
+          
+
+        </div>
+      
+     
+            <button class="select-seats" onclick="submit_seats()">Select Seats</button>
+
+    
+    </div>
+    <div id="overlay"></div>
+</body>
+
+</html>
