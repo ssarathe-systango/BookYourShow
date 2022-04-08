@@ -5,7 +5,6 @@ Theater --->
             Theater Name
             Seat Booked
             Total Price
-            Location
 -------------------------------------------------------------------------------------------------------------------------*/
 
 
@@ -36,14 +35,14 @@ function BookingInfo() {
     let theater = localStorage.getItem("TheaterName");
     let totalprice = localStorage.getItem("totalPrice");
     let seatselected = localStorage.getItem("seatSelected");
-
-    console.log(show);
-    console.log(theater);
-    console.log(totalprice);
-    console.log(seatselected);
-
+    let username = localStorage.getItem("user_name");
+    // console.log(show);
+    // console.log(theater);
+    // console.log(totalprice);
+    // console.log(seatselected);
+    console.log(username);
     let UniqueId = show;
-    set(ref(db, "Booking Info/" + UniqueId), {
+    set(ref(db, "Booking Info/" + UniqueId + " " + username), {
         Time: show,
         Theater: theater,
         Price: totalprice,

@@ -114,8 +114,6 @@
         </div>
     </section>
     <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"> </script>
-
-
     <script>
         const firebaseConfig = {
             apiKey: "AIzaSyCixKBXmM2r8M4k2peUH7roMm40Ohx5A8Y",
@@ -130,45 +128,8 @@
         const app = firebase.initializeApp(firebaseConfig);
 
         const db = firebase.database();
-
-
-        function Authentication() {
-            let Username = document.getElementById('uname').value.trim();
-            let Password = document.getElementById('pass').value;
-
-            db.ref('Registered Users').once('value')
-                .then(function (snapshot) {
-
-                    var flag = false;
-
-                    snapshot.forEach((item) => {
-
-                        uname = item.val().uname;
-                        pass = item.val().pass;
-
-                        if (uname === Username && pass === Password) {
-                            flag = true;
-                            localStorage.setItem("user_name", uname);
-
-                            window.location = "index.html";
-                        }
-
-                    });
-
-                    if (flag === false) {
-                        alert("Invalid Username Or Password!");
-                    }
-                })
-                .catch((error) => {
-                    console.log(error);
-                    return false;
-                });
-
-        }
-        function login(user) {
-            window.location = "index.html";
-        }
     </script>
+    <script src="/JS/login.JS"></script>
 </body>
 
 </html>
