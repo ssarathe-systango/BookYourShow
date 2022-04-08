@@ -8,9 +8,6 @@
     <title>Movie Seat Booking</title>
     <link rel="stylesheet" href="/CSS/SeatBooking.css">
 
-    <style>
-
-    </style>
 </head>
 
 <body>
@@ -139,49 +136,6 @@
             </button>
         </div>
     </div>
-
-
-    <script>
-        let count = 0;
-        //changing seat color
-        window.ChangeColor = function (id) {
-            let element = document.getElementById(id);
-
-            if (element.style.backgroundColor === 'mediumvioletred') {
-                element.style.backgroundColor = '#5c5c5c';
-
-            }
-            else {
-                element.style.backgroundColor = 'mediumvioletred';
-
-            }
-
-            if (element.style.backgroundColor === 'mediumvioletred') {
-                count++;
-            }
-            else {
-                count--;
-            }
-
-            let price = document.getElementById("seat1").dataset.price;
-            total = count * parseInt(price);
-            // console.log(total);
-
-            let seatvalue = document.getElementById(id).innerText;
-            // console.log(seatvalue);
-            // console.log(display);
-
-
-            let totalPrice = localStorage.setItem("totalPrice", total);
-            let seatSelected = localStorage.setItem("seatSelected", seatvalue);
-        }
-        let show = localStorage.getItem("ShowTime");
-        let theater = localStorage.getItem("TheaterName");
-        // console.log(show);
-        // console.log(theater);
-
-        document.getElementById("display").innerText += " for " + show + " " + theater;
-    </script>
     <script type="module" src="/JS/seatBooking.JS"></script>
 </body>
 

@@ -19,7 +19,7 @@ body {
 }
 
 .row_poster:hover {
-    transform: scale(1.08);
+    transform: scale(1.20);
 }
 
 .row_posterLarge {
@@ -27,7 +27,7 @@ body {
 }
 
 .row_posterLarge:hover {
-    transform: scale(1.09);
+    transform: scale(1.20);
 }
 
 
@@ -52,6 +52,7 @@ body {
 
 .banner {
     background-image: url("/Images/ipl1.webp");
+    transition: all 0.5s cubic-bezier(0.4, 1.3, 0.65, 1);
     background-size: cover;
     background-position: center center;
     color: white;
@@ -59,7 +60,7 @@ body {
     height: 400px;
     margin-top: 8px;
     user-select: none;
-
+    border: 10px solid transparent;
 }
 
 .banner_contents {
@@ -91,12 +92,12 @@ body {
     font-weight: 700;
     border-radius: 0.2vw;
     padding-left: 2rem;
-    padding-right: 1rem;
+    padding-right: 2rem;
     margin-right: 1rem;
     margin-top: 0.5rem;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
-    background-color: rgba(51, 51, 51, 0.5);
+    background-color: rgba(86, 82, 82, 0.5);
     user-select: none;
 
 }
@@ -110,7 +111,7 @@ body {
 .banner--fadeBottom {
     margin-top: 145px;
     height: 7.4rem;
-    background-image: linear-gradient(180deg, transparent, rgba(37, 37, 37, 0.61), #111);
+    /* background-image: linear-gradient(180deg, transparent, rgba(37, 37, 37, 0.61), #111); */
     user-select: none;
 
 }

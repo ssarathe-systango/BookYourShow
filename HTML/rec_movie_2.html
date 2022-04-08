@@ -11,13 +11,16 @@
     <style>
         .container-fluid {
             /* background-color: rgba(5, 1, 1, 0.484); */
-            background-image: url("/Images/img3.jpg");
+            background-image: url("/Images/img15.jpg");
             opacity: 100%;
             height: 580px;
             width: 90%;
             margin-left: 5%;
             margin-top: 65px;
             user-select: none;
+            /* background-repeat: no-repeat; */
+            /* background-size: cover; */
+
         }
 
         .innerdiv1 {
@@ -74,16 +77,24 @@
 
     <div class="container-fluid">
         <div class="innerdiv1">
-            <img src="/Images/img2.jpg" alt="" class="row_poster row_posterLarge displayimg">
+            <img src="/Images/img9.jpg" alt="" class="row_poster row_posterLarge displayimg">
         </div>
 
         <div class="innerdiv2">
             <!-- <img src="/Images/img2.jpg" alt="" class="row_poster row_posterLarge displayimg"> -->
-            <div>Avengers</div>
+            <div id="movieName">The Karathe Kid</div>
             <a href="/HTML/BookNow.html"><button type="button" class="btn btn-danger me-md-2 booknow">
                     Book Now</button></a>
         </div>
     </div>
+    <script>
+        //picking movie name for printing in screen
+
+        let moviename = document.getElementById("movieName").innerText;
+        console.log(moviename);
+        localStorage.setItem("MovieName", moviename);
+    </script>
+    <script src="/js/SeatBooking.JS"></script>
 </body>
 
 </html>

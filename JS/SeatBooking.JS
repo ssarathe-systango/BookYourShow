@@ -53,3 +53,52 @@ function BookingInfo() {
 }
 var register = document.getElementById('paynow');
 register.addEventListener('click', BookingInfo);
+//-------------------------------------------------------------------------------------------------------------------------//
+
+let count = 0;
+//changing seat color
+window.ChangeColor = function (id) {
+    let element = document.getElementById(id);
+
+    if (element.style.backgroundColor === 'mediumvioletred') {
+        element.style.backgroundColor = '#5c5c5c';
+
+    }
+    else {
+        element.style.backgroundColor = 'mediumvioletred';
+
+    }
+
+    if (element.style.backgroundColor === 'mediumvioletred') {
+        count++;
+    }
+    else {
+        count--;
+    }
+
+    let price = document.getElementById("seat1").dataset.price;
+    total = count * parseInt(price);
+    // console.log(total);
+
+    let seatvalue = document.getElementById(id).innerText;
+    // console.log(seatvalue);
+    // console.log(display);
+
+
+    let totalPrice = localStorage.setItem("totalPrice", total);
+    let seatSelected = localStorage.setItem("seatSelected", seatvalue);
+
+    // console.log(totalPrice);
+    // console.log(seatSelected);
+}
+let show = localStorage.getItem("ShowTime");
+let theater = localStorage.getItem("TheaterName");
+let rec_movie_1 = localStorage.getItem("MovieName");
+
+// console.log(show);
+// console.log(theater);
+// console.log(moviename);
+
+document.getElementById("display").innerText += " for " + show + " " + theater + "\n" + "Movie: " + rec_movie_1;
+
+
