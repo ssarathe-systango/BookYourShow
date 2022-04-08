@@ -124,16 +124,33 @@
         You have selected <span id="count">0</span> seats for a price of $<span id="total">0</span>
     </p> -->
 
-    <a href="/HTML/Index.html">
-        <button class="btn-home">
-            Home
-        </button>
-    </a>
+    <div class="row">
+        <div class="col-sm d-flex justify-content-center">
+            <a href="/HTML/Index.html">
+                <button class="btn-home">
+                    Home
+                </button>
+            </a>
+        </div>
+
+        <div class="col-sm d-flex justify-content-center">
+            <a href="/HTML/Paynow.html">
+                <button class="btn-paynow">
+                    Paynow
+                </button>
+            </a>
+        </div>
+    </div>
 
 
-    <script> //changing seat color
+    <script>
+
+
+        //----------------------------------------------------------------------------------------------------------//
+
+        //----------------------------------------------------------------------------------------------------------//
         let count = 0;
-
+        //changing seat color
         window.ChangeColor = function (id) {
             let element = document.getElementById(id);
 
@@ -152,22 +169,24 @@
             else {
                 count--;
             }
-            let price = document.getElementById("seat1").dataset.price;
 
+            let price = document.getElementById("seat1").dataset.price;
             total = count * parseInt(price);
-            // console.log(total);
+            console.log(total);
 
             let seatvalue = document.getElementById(id).innerText;
-            // console.log(seatvalue);
+            console.log(seatvalue);
 
             // console.log(display);
         }
         let show = localStorage.getItem("ShowTime");
         let theater = localStorage.getItem("TheaterName");
-        // console.log(show);
-        // console.log(theater);
+        console.log(show);
+        console.log(theater);
 
         document.getElementById("display").innerText += " for " + show + " " + theater;
+
+
 
     </script>
 </body>
