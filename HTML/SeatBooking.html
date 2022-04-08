@@ -134,36 +134,29 @@
         </div>
 
         <div class="col-sm d-flex justify-content-center">
-            <a href="/HTML/Paynow.html">
-                <button class="btn-paynow">
-                    Paynow
-                </button>
-            </a>
+            <button class="btn-paynow" id="paynow">
+                Paynow
+            </button>
         </div>
     </div>
 
 
     <script>
-
-
-        //----------------------------------------------------------------------------------------------------------//
-
-        //----------------------------------------------------------------------------------------------------------//
         let count = 0;
         //changing seat color
         window.ChangeColor = function (id) {
             let element = document.getElementById(id);
 
-            if (element.style.backgroundColor === 'yellow') {
+            if (element.style.backgroundColor === 'mediumvioletred') {
                 element.style.backgroundColor = '#5c5c5c';
 
             }
             else {
-                element.style.backgroundColor = 'yellow';
+                element.style.backgroundColor = 'mediumvioletred';
 
             }
 
-            if (element.style.backgroundColor === 'yellow') {
+            if (element.style.backgroundColor === 'mediumvioletred') {
                 count++;
             }
             else {
@@ -172,23 +165,24 @@
 
             let price = document.getElementById("seat1").dataset.price;
             total = count * parseInt(price);
-            console.log(total);
+            // console.log(total);
 
             let seatvalue = document.getElementById(id).innerText;
-            console.log(seatvalue);
-
+            // console.log(seatvalue);
             // console.log(display);
+
+
+            let totalPrice = localStorage.setItem("totalPrice", total);
+            let seatSelected = localStorage.setItem("seatSelected", seatvalue);
         }
         let show = localStorage.getItem("ShowTime");
         let theater = localStorage.getItem("TheaterName");
-        console.log(show);
-        console.log(theater);
+        // console.log(show);
+        // console.log(theater);
 
         document.getElementById("display").innerText += " for " + show + " " + theater;
-
-
-
     </script>
+    <script type="module" src="/JS/SeatBooking.JS"></script>
 </body>
 
 </html>
