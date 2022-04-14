@@ -1,57 +1,70 @@
-const createPool = require('mysql');
-// import createPool from 'mysql'
-const pool = createPool.createConnection({
-    host: "localhost",
-    port: "3307",
-    user: "root",
-    password: "",
-    database: "BookYourShow"
+//**************************************************** Registration ****************************************************/
+//*********************************************************************************************************************//
+
+var con = require('./connection') // Importing connection
+
+var express = require('express'); // Importing Express
+var app = express()
+var bodyParser = require('body-parser'); // Importing Bodyparser
+
+
+app.use(bodyParser.json())
+
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.get('/', function (req, res) {
+    res.sendFile(__dirname + '/registration.html');
 })
 
-pool.connect((err, result) => {
-    if (err) {
-        console.warn(err);
-    }
-    else {
-        console.warn(result);
-    }
-});
+app.post('/', function (req, res) {
+    // var name = req.body.name;
+    // var email = req.body.email;
+    // var pass = req.body.pass;
+    var jsondata = req.body;
+    // console.log(jsondata);
 
-pool.query("SELECT ID, USERNAME, EMAIL, PASSWORD FROM Registered_Users",(err, result) => {
-    if (err) {
-        console.warn(err);
-    }
-    else {
-        console.log(result);
-    }
+    var values = [];
+    // console.log(req.body);
+    for (var i = 0; i < jsondata.length; i++)
+        values.push([jsondata[i].ID, jsondata[i].name, jsondata[i].email, jsondata[i].pass]);
+
+    var sql = "INSERT INTO Registered_Users(ID, USERNAME, EMAIL, PASSWORD) VALUES ('"+jsondata.ID+"', '" + jsondata.name + "', '" + jsondata.email + "', '" + jsondata.pass + "')";
+    con.query(sql, function (error, result) {
+        if (error) {
+            console.warn(error);
+        }
+        else {
+            res.send('Student Register Successfully' + result.insertId);
+            // res.redirect('/index.html');
+        }
+    })
+
 })
+app.listen(3000);
 
 
 
-    // pool.query(`"INSERT INTO Registered_Users VALUES ('101', ${Username}, ${Email}, ${Password})"`, (err, result) => {
-    //     if (err) {
-    //         console.warn(err);
+
+
+// Old Code
+
+
+    // con.connect(function (error) {
+    //     if (error) {
+    //         console.warn(error);
     //     }
     //     else {
-    //         console.log(result);
+    //         console.warn("successfull");
     //     }
-    // })
 
 
-
-//     function writeUserData() {
-
-//         let Username = document.getElementById('uname').value.trim();
-//         let Password = document.getElementById('pass').value;
-//         let Email = document.getElementById('email').value;
-    
-//         // localStorage.setItem("user_name", Username);
-//         // localStorage.setItem("Email", Email);
-//         // localStorage.setItem("Password", Password);
-    
-    
-//         // for fetching data 
-// }
-//     // User Registration
-//     var register = document.getElementById('RegisterBtn');
-//     register.addEventListener('click', writeUserData);
+        //without Json Format
+        // var sql = "INSERT INTO Registered_Users(ID, USERNAME, EMAIL, PASSWORD) VALUES ('110', '"+name+"', '"+email+"', '"+pass+"')";
+        // con.query(sql, function(error, result){
+        //     if (error) {
+        //         console.warn(error);
+        //     }
+        //     else {
+        //         res.send('Student Register Successfully' +result.insertId);
+        //     }
+        // })
