@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    </link>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>  
+    <link rel="stylesheet" href="../CSS/adminPage.css">
+    <title>Admin Page</title>
+</head>
+
+<body>
+
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a >
+                <img src="/Images/logo.png" alt="" width="100" height="40" class="d-inline-block align-text-top">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                 
+                    <li class="nav-item homePage">
+                        <a class="nav-link active" aria-current="page" href="../HTML/adminPage.html">Home</a>
+                    </li>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" style="color: white;" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown">
+                            Theater
+                        </a>
+                        <ul class="dropdown-menu active" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">Add Theater</a></li>
+                            <li><a class="dropdown-item" href="#">Update Theater</a></li>
+                            <li><a class="dropdown-item" href="#">Remove Theater</a></li>
+                            <li><a class="dropdown-item" href="#">Show Theater</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" style="color: white;" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown">
+                            Movies
+                        </a>
+                        <ul class="dropdown-menu active" aria-labelledby="navbarDropdownMenuLink">
+                            <li><button class="dropdown-item" onclick="addMovie('Add Movie','Hello');" href="#">Add Movies</button></li>
+                            <li><button class="dropdown-item" onclick="addMovie('Remove Movie','hii');" href="#">Remove Movies</button></li>
+                         
+
+                        </ul>
+                    </li>
+                    
+                </ul>
+            </div>
+            <div class="signin">
+                <li class="nav-item">
+                    <a class="nav-link" style="color: white;" href="../HTML/login.html">Sign In</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="color: white;" href="../HTML/registration.html">Sign Up</a>
+                </li>
+            </div>
+        </div>
+    </nav>
+<script src="../JS/AdminpageModel.js"></script>    
+</body>
+</html>

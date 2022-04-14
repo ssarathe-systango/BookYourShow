@@ -1,0 +1,21 @@
+body {
+
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+}
+.main-text{
+    font-family: cursive;
+    font-weight: 900;
+    font-size: 45px;
+    color: white;
+    /* background: black; */
+    opacity: 65%;
+    margin-left: 50px;
+    user-select: none;
+    
+}
+.signin{
+    display: flex;
+    float: right;
+    margin-right: 1rem;
+}
