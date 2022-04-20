@@ -1,0 +1,70 @@
+body {
+
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+}
+
+.main-text {
+    font-family: cursive;
+    font-weight: 900;
+    font-size: 45px;
+    color: white;
+
+    opacity: 65%;
+    margin-left: 50px;
+    user-select: none;
+
+}
+
+.signin {
+    display: flex;
+    float: right;
+    margin-right: 1rem;
+}
+
+
+.modal-content {
+
+
+
+    max-height: 900px;
+
+
+}
+
+.modal-header {
+
+
+    background-color: black;
+    padding: 16px 16px;
+
+
+
+}
+
+.modal-body {
+    padding: 30px 16px
+}
+
+.modal-footer {
+    padding: 5px 10px;
+}
+
+
+#imagePreview {
+    height: 200px;
+    width: 40%;
+}
+#addTheaterContainer{
+    margin-left: 20px;
+    padding-top: 10px;
+}
+.modal-title{
+    color: aliceblue;
+}
+#movieModal{
+    padding-top: 90px;
+}
+#closebtn{
+    background-color: red;
+}
