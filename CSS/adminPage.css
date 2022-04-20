@@ -3,18 +3,20 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: white;
 }
-.main-text{
+
+.main-text {
     font-family: cursive;
     font-weight: 900;
     font-size: 45px;
     color: white;
-    /* background: black; */
+
     opacity: 65%;
     margin-left: 50px;
     user-select: none;
-    
+
 }
-.signin{
+
+.signin {
     display: flex;
     float: right;
     margin-right: 1rem;
@@ -22,39 +24,47 @@ body {
 
 
 .modal-content {
- 
-    /* 80% of window height */
+
+
 
     max-height: 900px;
- 
- 
-}     
- 
+
+
+}
+
 .modal-header {
- 
 
- 
-    padding:16px 16px;
- 
-    
- 
- }
- .modal-body{
-    padding:30px 16px
- }
- .modal-footer{
-    padding:5px 10px;
- }
 
-#imageInputModal{
-   
+    background-color: black;
+    padding: 16px 16px;
+
+
+
 }
-#imagePreview{
+
+.modal-body {
+    padding: 30px 16px
+}
+
+.modal-footer {
+    padding: 5px 10px;
+}
+
+
+#imagePreview {
     height: 200px;
-  width: 40%;
+    width: 40%;
 }
-/* .modal-cancel-btn{
-    margin: 0;
-    position: absolute;
-    top: 90%;
-} */
+#addTheaterContainer{
+    margin-left: 20px;
+    padding-top: 10px;
+}
+.modal-title{
+    color: aliceblue;
+}
+#movieModal{
+    padding-top: 90px;
+}
+#closebtn{
+    background-color: red;
+}

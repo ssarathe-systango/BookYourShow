@@ -20,29 +20,31 @@ const showModal = (title, description,
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           
           </div>
-        
+        <form action = "" method=="POST">
         <div class="modal-body" id="imageModal">
         <input type="file" id="imageInputModal" name="image" onchange="preview()">
         <div class="container">
           <!-- Uploaded Image -->
           <img id="imagePreview" src="" alt="Picture">
         </div>
+        
         <div>
-        <input class="form_field mb-3" type="text" id="movieName" placeholder="Name of the Movie" autofocus="true"/>
-        <input class="form_field mb-3" type="text" id="animation" placeholder="Animation" autofocus="true"/>
-        <input class="form_field mb-3" type="text" id="movieLanguage" placeholder="Language" autofocus="true"/>
-        <input class="form_field mb-3" type="text" id="movieDuration" placeholder="Movie Duration" autofocus="true"/>
-        <input class="form_field mb-3" type="text" id="movieCertification" placeholder="Certification" autofocus="true"/>
-        <input class="form_field mb-3" type="text" id="releasedate" placeholder="Release Date" autofocus="true"/>
-        <input class="form_field mb-3" type="text" id="aboutMovie" placeholder="About Movie" autofocus="true"/>
-        <input class="form_field mb-3" type="text" id="movieCast" placeholder="Cast" autofocus="true"/>
-        <input class="form_field mb-3" type="text" id="movieCrew" placeholder="Crew" autofocus="true"/>
+        <input class="form_field mb-3" type="text" name="movie" id="movieName" placeholder="Name of the Movie" autofocus="true"/>
+        <input class="form_field mb-3" type="text" name="animation" id="animation" placeholder="Animation" autofocus="true"/>
+        <input class="form_field mb-3" type="text" name="language" id="movieLanguage" placeholder="Language" autofocus="true"/>
+        <input class="form_field mb-3" type="text" name="duration" id="movieDuration" placeholder="Movie Duration" autofocus="true"/>
+        <input class="form_field mb-3" type="text" name="certification" id="movieCertification" placeholder="Certification" autofocus="true"/>
+        <input class="form_field mb-3" type="text" name="date" id="releasedate" placeholder="Release Date" autofocus="true"/>
+        <input class="form_field mb-3" type="text" name="about" id="aboutMovie" placeholder="About Movie" autofocus="true"/>
+        <input class="form_field mb-3" type="text" name="cast" id="movieCast" placeholder="Cast" autofocus="true"/>
+        <input class="form_field mb-3" type="text" name="crew" id="movieCrew" placeholder="Crew" autofocus="true"/>
        
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary modal-cancel-btn" data-bs-dismiss="modal">${cancelbtn}</button>
           <button type="button" id="saveData" onclick="saveChanges()" class="btn btn-primary modal-saveChanges-btn">${saveChangesbtn}</button>
         </div>
+        </from>
       </div>
     </div>
   </div>`;
