@@ -40,13 +40,13 @@ function closeModal(modal) {
 function selected_seats(id) {
 
     let seat = document.getElementById(id).innerText;
-    window.localStorage.setItem('display1', seat);
+    localStorage.setItem('TotalSeatCount', seat);
     
 }
 
 function submit_seats(){
     
-    let value = window.localStorage.getItem('display1');
-    
+    let value = localStorage.getItem('TotalSeatCount');
+    location.href = "/SeatBooking"
     console.log(value);
 }

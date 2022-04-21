@@ -1,0 +1,48 @@
+.Register {
+    box-shadow: -3px -3px 9px #a8a8a8a2,
+        3px 3px 7px rgba(117, 117, 117, 0.671);
+}
+
+.text {
+    font-family: cursive;
+    color: white;
+    font-weight: bold;
+}
+
+.card {
+    background-color: transparent;
+}
+
+.form-label {
+    font-family: cursive;
+    color: lightgray;
+    font-size: 20px;
+    font-weight: bolder;
+
+}
+
+.registerbtn {
+    background-color: rgb(255, 255, 255);
+    padding: 1% 7%;
+
+}
+
+.registerbtn:hover {
+    background-color: rgb(205, 85, 199);
+    transition: transform 450ms;
+    transform: scale(1.20);
+}
+
+.card::-webkit-scrollbar {
+    display: none;
+}
+
+.bg-image {
+    /* background-repeat: no-repeat; */
+    /* background-size: cover; */
+    background-image: url("../../../Backend/static/Images/thor1.jpg");
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 0;
+}

@@ -84,9 +84,9 @@
             <!-- <a class="navbar-brand">BookYourShow</a> -->
 
             <img src="{{ url_for('static', filename='/Images/logo.png') }}" alt="" class="nav_logo">
-            <div class="maintext">BookYourShow</div>
+            <!-- <div class="maintext">BookYourShow</div> -->
 
-            <div class="dropdown">
+             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
                     data-bs-toggle="dropdown" aria-expanded="false">
                     Select Cities
@@ -95,16 +95,16 @@
                     <li><a class="dropdown-item active" href="#">Bhopal</a></li>
                     <li><a class="dropdown-item" href="#">Indore</a></li>
                     <li><a class="dropdown-item" href="#">Mumbai</a></li>
-                    <!-- <li>
+                     <li>
                         <hr class="dropdown-divider">
-                    </li> -->
+                    </li> 
                     <li><a class="dropdown-item" href="#">Bangalore</a></li>
-                    <li><a class="dropdown-item" href="#">Pune</a></li>
+                    <li><a class="dropdown-item" href="#">Pune</a></li> 
 
                 </ul>
             </div>
 
-            <form class="d-flex">
+             <form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
@@ -113,6 +113,7 @@
 
         </div>
     </nav>
+    
     <div class="container">
         <div class="row1">
             <div class="row">
@@ -124,7 +125,7 @@
                         <div class="timeslot" id="c21_6am" onclick="ShowTiming('c21_6am')">6:00am</div>
                     </div>
                 </div>
-            </div>
+            </div> 
 
 
             <div class="row">
@@ -137,9 +138,9 @@
                         <div class="timeslot" id="db_6am" onclick="ShowTiming('db_6am')">6:00am</div>
                     </div>
                 </div>
-            </div>
+            </div> 
 
-            <div class="row">
+             <div class="row">
                 <div class="col" id="pvr" data-theater-name="PVR: Aura Mall Bhopal">PVR: Aura Mall Bhopal
                     <div>
                         <div class="timeslot" id="pvr_9am" onclick="ShowTiming('pvr_9am')">9:00am</div>
@@ -151,7 +152,7 @@
             </div>
         </div>
     </div>
-    </div>
+    </div> 
     <script>
 
         // document.getElementById("timeid").onclick = function () {
@@ -159,26 +160,31 @@
         // }
 
 
-        window.ShowTiming = function (id) {
+        
 
-            let element = document.getElementById(id);
-            location.href = "/SeatBooking"
+        // window.ShowTiming = function (id) {
 
-            let theaterID = id.split("_");
-            // console.log(theaterID);
+        //     let element = document.getElementById(id);
+        //     location.href = "/SeatSelecting"
 
-            let ShowTime = document.getElementById(id).innerText;
-            let TheaterName = document.getElementById(theaterID[0]).dataset.theaterName;
-            // console.log(ShowTime);
-            // console.log(TheaterName);
+        //     let theaterID = id.split("_");
+        //     // console.log(theaterID);
 
-            localStorage.setItem("ShowTime", ShowTime);
-            localStorage.setItem("TheaterName", TheaterName);
+        //     let ShowTime = document.getElementById(id).innerText;
+        //     let TheaterName = document.getElementById(theaterID[0]).dataset.theaterName;
+        //     // console.log(ShowTime);
+        //     // console.log(TheaterName);
 
-        }
+        //     localStorage.setItem("ShowTime", ShowTime);
+        //     localStorage.setItem("TheaterName", TheaterName);
+
+        // }
 
 
     </script>
+    <!-- <p style="color: white;">Theater Info : {{rows}} </p> -->
+
+
 </body>
 
 </html>

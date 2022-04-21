@@ -59,11 +59,11 @@ function saveAddTheater(){
   const showTime = document.getElementById("showTime").value;
   const saveTheaterData = document.getElementById("saveTheaterData").value;
   
-  console.log(theaterName);
-  console.log(theaterId);
-  console.log(location);
-  console.log(cityName);
-  console.log(showTime);
+  // console.log(theaterName);
+  // console.log(theaterId);
+  // console.log(location);
+  // console.log(cityName);
+  // console.log(showTime);
   
 
 }

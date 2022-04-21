@@ -1,0 +1,32 @@
+body{
+    background-color: black;
+}
+#heading{
+    margin-left: 650px;
+    margin-top: 20px;
+    color: aliceblue;
+}
+#signIn{
+    color: aliceblue;
+    font-size:larger;
+}
+.adminbtn{
+    width: 500px;
+    transform: scale(1.20);
+    color: white;
+
+}
+
+.adminbtn :hover{
+    color: white;
+    background-color: white;
+    transition: all 0.2s;
+}
+
+.userbtn{
+    width: 500px;
+    transform: scale(1.20);
+    color: white;
+
+
+}
