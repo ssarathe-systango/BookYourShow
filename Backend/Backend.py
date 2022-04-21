@@ -127,7 +127,7 @@ def login():
 
     print("login m aaya")
     if (request.method == 'POST'):
-        print("post m aaya if m aaya")
+        # print("post m aaya if m aaya")
 
         username = request.form.get('uname')
         password = request.form.get('pass')
@@ -201,7 +201,7 @@ def login():
     con.close()
 
 
-###################################################                 #############################################################
+###################################################                #############################################################
 
 
 
