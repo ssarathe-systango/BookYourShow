@@ -2,6 +2,11 @@ body {
 
     font-family: Arial, Helvetica, sans-serif;
     background-color: white;
+    /* background-image: url("../static/Images/ipl1.webp"); */
+    background-size: cover;
+    background-attachment: fixed;
+    /* font-family: arial; */
+    background-color: black;
 }
 
 .main-text {
@@ -55,16 +60,74 @@ body {
     height: 200px;
     width: 40%;
 }
-#addTheaterContainer{
+
+#addTheaterContainer {
     margin-left: 20px;
     padding-top: 10px;
 }
-.modal-title{
+
+.modal-title {
     color: aliceblue;
 }
-#movieModal{
+
+#movieModal {
     padding-top: 90px;
 }
-#closebtn{
+
+#closebtn {
     background-color: red;
+}
+
+
+
+.center {
+    position: absolute;
+    top: 95%;
+    left: 55%;
+    /*margin: 100px;*/
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
+}
+
+.pad {
+    margin: 30px;
+    margin-top: 150px;
+}
+
+
+.heading {
+    /* color: lightcoral; */
+    font-family: cursive;
+    background-color: black;
+    font-style: italic;
+    animation-name: sample;
+    animation-duration: 2s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+
+@keyframes sample {
+    0% {
+        color: lightcoral;
+    }
+
+    25% {
+        color: teal;
+    }
+
+    50% {
+        color: olivedrab;
+    }
+
+    100% {
+        color: crimson;
+    }
+}
+
+.Dashboard {
+    text-align: center;
+    margin-left: 350px;
 }

@@ -1,7 +1,8 @@
 # from crypt import methods
 # from crypt import methods
 # from crypt import methods
-from flask import Flask, render_template, flash, request, session
+from flask import Flask, render_template, request, session
+from flask import flash
 import pymysql
 import os
 import shutil
@@ -14,14 +15,10 @@ app = Flask(__name__)
 app.secret_key = "super-secret-key"
 
 
-
-
 @app.route("/", methods=['GET', 'POST'])
 def homepage():
     return render_template('index.html')
     # session.pop('user')
-
-
 
 
 @app.route("/rec_movie_1", methods=['GET'])
@@ -29,13 +26,9 @@ def rec_movie_1():
     return render_template('rec_movie_1.html')
 
 
-
-
 @app.route("/rec_movie_2", methods=['GET'])
 def rec_movie_2():
     return render_template('rec_movie_2.html')
-
-
 
 
 @app.route("/rec_movie_3", methods=['GET'])
@@ -43,13 +36,9 @@ def rec_movie_3():
     return render_template('rec_movie_3.html')
 
 
-
-
 @app.route("/rec_movie_4", methods=['GET'])
 def rec_movie_4():
     return render_template('rec_movie_4.html')
-
-
 
 
 @app.route("/rec_movie_5", methods=['GET'])
@@ -57,14 +46,9 @@ def rec_movie_5():
     return render_template('rec_movie_5.html')
 
 
-
-
-
 @app.route("/rec_movie_6", methods=['GET'])
 def rec_movie_6():
     return render_template('rec_movie_6.html')
-
-
 
 
 @app.route("/rec_movie_7", methods=['GET'])
@@ -72,14 +56,9 @@ def rec_movie_7():
     return render_template('rec_movie_7.html')
 
 
-
-
-
 @app.route("/SeatBooking", methods=["GET"])
 def SeatBooking():
     return render_template("SeatBooking.html")
-
-
 
 
 # @app.route("/BookNow", methods=["GET"])
@@ -94,18 +73,16 @@ def SeatBooking():
 #     return render_template("BookNow.html", rows = rows)
 
 
-
 @app.route("/BookNowNew", methods=["GET"])
 def BookNowNew():
     con = pymysql.connect(
-    host='localhost', user='root', password='', database='bookyourshow')
+        host='localhost', user='root', password='', database='bookyourshow')
     cur = con.cursor()
     cur.execute('select * from theaterinfo')
     rows = cur.fetchall()
 
     # print(rows)
-    return render_template("BookNowNew.html", rows = rows)
-
+    return render_template("BookNowNew.html", rows=rows)
 
 
 @app.route("/SeatSelecting", methods=["GET"])
@@ -114,7 +91,6 @@ def SeatSelecting():
 
 
 ################################################# User Registration ###########################################
-
 
 
 @app.route("/registration", methods=['GET', 'POST'])
@@ -354,7 +330,6 @@ def owner_upload():
     # rows = cur.fetchall()
 
     # print(rows)
-    
 
     if(request.method == 'POST'):
         theatername = request.form.get("theater")
@@ -397,17 +372,66 @@ def owner_upload():
             con.close()
 
             flash('Success..... Record has been submitted')
-            return render_template("adminPage.html", rows = rows)
+            return render_template("adminPage.html", rows=rows)
         # session.pop('email')
 
     else:
         return render_template("adminPage.html")
 
 
-###############################################################################################################
+############################################## ADD MOVIES #####################################################
+@app.route("/add_movies", methods=['GET', 'POST'])
+def add_movies():
+    if(request.method == 'POST'):
 
+        movieid = request.form.get("movieid")
+        moviename = request.form.get("movie")
+        movieanimation = request.form.get("animation")
+        language = request.form.get("language")
+        movieduration = request.form.get("duration")
+        releasedate = request.form.get("date")
+        aboutmovie = request.form.get("about")
 
+        if movieid == "" or moviename == "" or movieanimation == "" or language == "" or movieduration == "" or releasedate == "" or aboutmovie == "":
+            flash('Required all fields and correct field')
+            return render_template("adminPage.html")
 
+        # elif len(password) < 8:
+        #     flash('password must be atleast 8 characters')
+        #     return render_template("registration.html")
+
+        else:
+            con = pymysql.connect(
+                host='localhost', user='root', password='', database='bookyourshow')
+            cur = con.cursor()
+            cur.execute('select * from movieinfo')
+            rows = cur.fetchall()
+            flag = 0
+
+        # check unique
+            for row in rows:
+                if row[0] == movieid:
+                    flag = 1
+
+        if flag == 1:
+            flash('movie id already exist')
+            return render_template("adminPage.html")
+            con.close()
+        else:
+            cur.execute('insert into movieinfo values(%s,%s,%s,%s,%s,%s,%s)',
+                        (movieid, moviename, movieanimation, language, movieduration, releasedate, aboutmovie))
+
+            con.commit()
+
+            con.close()
+
+            flash('Success..... Record has been submitted')
+            return render_template("adminPage.html")
+        # session.pop('email')
+
+    else:
+        # print("data not inserted!!!")
+        return render_template("adminPage.html")
 
 
 ###############################################################################################################

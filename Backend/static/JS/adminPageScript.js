@@ -5,11 +5,12 @@ document.getElementById('addMovie').onclick= ()=>showModal('Add Movie','',
     console.log('Changes saved');
 });
 
-document.getElementById('removeMovie').onclick= ()=>showModal('Remove Movie',
-'Hello','Cancel','Save Changes',()=>
-{
-    console.log('Changes saved');
-});
+// document.getElementById('removeMovie').onclick= ()=>showModal('Remove Movie',
+// 'Hello','Cancel','Save Changes',()=>
+// {
+//     console.log('Changes saved');
+// });
+
 document.getElementById('addTheater').onclick= ()=>addTheaterShowModal('Add Theater',
 'Hello','Cancel','Save Changes',()=>
 {
@@ -45,8 +46,8 @@ function saveChanges(){
     const movieCast = document.getElementById("movieCast");
     const movieCrew = document.getElementById("movieCrew");
     const saveData = document.getElementById("saveData");
-    console.log(imagePreview);
-    console.log(movieName);
+    // console.log(imagePreview);
+    // console.log(movieName);
 
 
 }

@@ -2,6 +2,14 @@
 <html lang="en">
 
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,13 +22,13 @@
         crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <base href="/">
-    <link rel="stylesheet" href="../static/CSS/adminPage.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/CSS/adminPage.css') }}">
+
     <title>Admin Page</title>
+
 </head>
 
 <body>
-
-
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a>
@@ -31,44 +39,59 @@
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-
-                    <li class="nav-item homePage">
-                        <a class="nav-link active" aria-current="page" href=" # ">Home</a>
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" style="color: white;" href="#" id="navbarDropdownMenuLink"
-                            role="button" data-bs-toggle="dropdown">
-                            Theater
-                        </a>
-                        <ul class="dropdown-menu active" aria-labelledby="navbarDropdownMenuLink">
-                            <li><button class="dropdown-item" id="addTheater" href="#">Add Theater</button></li>
-                            <li><button class="dropdown-item" id="updateTheater" href="#">Update Theater</button></li>
-                            <li><button class="dropdown-item" id="removeTheater" href="#">Remove Theater</button></li>
-                            <li><button class="dropdown-item" id="showTheater" href="#">Show Theater</button></li>
-
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" style="color: white;" href="#" id="navbarDropdownMenuLink"
-                            role="button" data-bs-toggle="dropdown">
-                            Movies
-                        </a>
-                        <ul class="dropdown-menu active" aria-labelledby="navbarDropdownMenuLink">
-                            <li><button id="addMovie" class="dropdown-item" href="#">Add Movies</button></li>
-                            <li><button id="removeMovie" class="dropdown-item" href="#">Remove Movies</button></li>
-
-
-                        </ul>
-                    </li>
-
-                </ul>
-            </div>
+            <h1 style="color: white; font-family: serif; margin-right: 700px;" class="Dashboard">Admin</h1>
 
         </div>
     </nav>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+    <div class='heading'>
+        <marquee behavior="alternate" direction="left" scrollamount="15">
+            <h1>Book Your Show</h1>
+        </marquee>
+    </div>
+
+    <br>
+
+
+    <ul class="nav justify-content-center">
+        <li class="nav-item">
+            <a href="/"><button type="button" class="btn btn-success text-center pad"
+                    style="width: 300px; height: 200px; font-size: 30px;">Home</button></a>
+        </li>
+
+
+        <li class="nav-item">
+            <button type="button" id="addTheater" class="btn btn-success text-center pad"
+                style="width: 300px; height: 200px;  font-size: 30px;">Add Theater</button>
+        </li>
+
+
+        <li class="nav-item">
+            <button type="button" id="addMovie" class="btn btn-success text-center pad"
+                style="width: 300px; height: 200px;  font-size: 30px;">Add Movies</button>
+        </li>
+
+
+        <li class="nav-item">
+            <a href="/BookNowNew"><button type="button" class="btn btn-success text-center pad"
+                    style="width: 300px; height: 200px;  font-size: 30px;">Show</button></a>
+        </li>
+
+
+
+    </ul>
+
+
+
+
     <script>
         var addMovieModalWrap = null;
         var addTheaterModalWrap = null;
@@ -93,7 +116,7 @@
           <button type="button" id="closebtn" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           
           </div>
-        <form action = "" method=="POST">
+        <form action = "/add_movies" method = "POST">
         <div class="modal-body" id="imageModal">
         <input type="file" id="imageInputModal" name="image" onchange="preview()">
         <div class="container">
@@ -102,20 +125,23 @@
         </div>
         
         <div>
+        <input class="form_field mb-3" type="text" name="movieid" id="movieID" placeholder="Id of the Movie" autofocus="true"/>
         <input class="form_field mb-3" type="text" name="movie" id="movieName" placeholder="Name of the Movie" autofocus="true"/>
         <input class="form_field mb-3" type="text" name="animation" id="animation" placeholder="Animation" autofocus="true"/>
         <input class="form_field mb-3" type="text" name="language" id="movieLanguage" placeholder="Language" autofocus="true"/>
         <input class="form_field mb-3" type="text" name="duration" id="movieDuration" placeholder="Movie Duration" autofocus="true"/>
-        <input class="form_field mb-3" type="text" name="certification" id="movieCertification" placeholder="Certification" autofocus="true"/>
         <input class="form_field mb-3" type="text" name="date" id="releasedate" placeholder="Release Date" autofocus="true"/>
         <input class="form_field mb-3" type="text" name="about" id="aboutMovie" placeholder="About Movie" autofocus="true"/>
-        <input class="form_field mb-3" type="text" name="cast" id="movieCast" placeholder="Cast" autofocus="true"/>
+
+
+        <!--<input class="form_field mb-3" type="text" name="cast" id="movieCast" placeholder="Cast" autofocus="true"/>
         <input class="form_field mb-3" type="text" name="crew" id="movieCrew" placeholder="Crew" autofocus="true"/>
+        <input class="form_field mb-3" type="text" name="certification" id="movieCertification" placeholder="Certification" autofocus="true"/>-->
        
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary modal-cancel-btn" data-bs-dismiss="modal">${cancelbtn}</button>
-          <button type="button" id="saveData" onclick="saveChanges()" class="btn btn-primary modal-saveChanges-btn">${saveChangesbtn}</button>
+          <button type="submit" id="saveData" onclick="saveChanges()" class="btn btn-primary modal-saveChanges-btn">${saveChangesbtn}</button>
         </div>
         </form>
       </div>
