@@ -89,9 +89,6 @@
 
     </ul>
 
-
-
-
     <script>
         var addMovieModalWrap = null;
         var addTheaterModalWrap = null;
@@ -116,14 +113,16 @@
           <button type="button" id="closebtn" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           
           </div>
-        <form action = "/add_movies" method = "POST">
+        <form action = "/add_movies" method = "POST" enctype="multipart/form-data">
         <div class="modal-body" id="imageModal">
-        <input type="file" id="imageInputModal" name="image" onchange="preview()">
+        <input type="file" id="imageInputModal" name="image1" onchange="preview() required">
+
         <div class="container">
-          <!-- Uploaded Image -->
-          <img id="imagePreview" src="" alt="Picture">
+
+            <!-- Uploaded Image -->
+        <img id="imagePreview" src="" alt="Picture">
         </div>
-        
+
         <div>
         <input class="form_field mb-3" type="text" name="movieid" id="movieID" placeholder="Id of the Movie" autofocus="true"/>
         <input class="form_field mb-3" type="text" name="movie" id="movieName" placeholder="Name of the Movie" autofocus="true"/>

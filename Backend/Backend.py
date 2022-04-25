@@ -1,6 +1,14 @@
 # from crypt import methods
 # from crypt import methods
 # from crypt import methods
+# import imp
+# import mimetypes
+# from werkzeug.utils import secure_filename
+# from models import Img
+# from db import db_init, db
+from asyncore import write
+from distutils.fancy_getopt import wrap_text
+from pickle import TRUE
 from flask import Flask, render_template, request, session
 from flask import flash
 import pymysql
@@ -61,6 +69,7 @@ def SeatBooking():
     return render_template("SeatBooking.html")
 
 
+
 # @app.route("/BookNow", methods=["GET"])
 # def BookNow():
 #     con = pymysql.connect(
@@ -89,10 +98,117 @@ def BookNowNew():
 def SeatSelecting():
     return render_template("SeatSelecting.html")
 
+###############################################################################################################
+################################################# Upload Image ################################################
 
+# define a function for
+# compressing an image
+
+
+def compressMe(file, verbose=False):
+
+    # Get the path of the file
+    filepath = os.path.join('static/upload/',
+                            file)
+
+    # open the image
+    picture = Image.open(filepath).convert('RGB')
+
+    # Save the picture with desired quality
+    # To change the quality of image,
+    # set the quality variable at
+    # your desired level, The more
+    # the value of quality variable
+    # and lesser the compression
+    picture.save('static/upload/'+file,
+                 "JPEG",
+                 optimize=True,
+                 quality=10)
+    return
+
+
+def mainfun():
+
+    verbose = False
+
+    # checks for verbose flag
+    if (len(sys.argv) > 1):
+
+        if (sys.argv[1].lower() == "-v"):
+            verbose = True
+
+    # finds current working dir
+    cwd = 'static/upload'
+
+    formats = ('.jpg', '.jpeg')
+
+    # looping through all the files
+    # in a current directory
+    for file in os.listdir(cwd):
+
+        # If the file format is JPG or JPEG
+        if os.path.splitext(file)[1].lower() in formats:
+            print('compressing', file)
+            compressMe(file, verbose)
+
+    print("Done")
+
+
+def convertToBinaryData(filename):
+    # Convert digital data to binary format
+    with open(filename, 'rb') as file:
+        binaryData = file.read()
+    return binaryData
+
+
+@app.route("/img_upload", methods=['GET', 'POST'])
+def img_upload(image1):
+    if True:
+        print("Img upload me aaya ************************** ")
+        path = 'static/upload/'
+        if os.path.exists(path):
+
+            # image1=request.files['image1']
+
+            image1.save(path+image1.filename)
+
+            mainfun()
+            path1 = path+image1.filename
+            img1 = convertToBinaryData(path1)
+
+            con = pymysql.connect(
+                host='localhost', user='root', password='', database='bookyourshow')
+            cur = con.cursor()
+            cur.execute('insert into owner_info values(%s, %s, %s, %s, %s)',
+                        (img1, '1111', 'sanil1', 'sanil1@gmail.com', '1010'))
+            con.commit()
+            con.close()
+            flash('Success..... Record has been submitted')
+            # return render_template('adminPage.html')
+
+        else:
+            os.makedirs(path)
+            # image1=request.files['image1']
+
+            image1.save(path+image1.filename)
+
+
+            mainfun()
+            path1 = path+image1.filename
+            img1 = convertToBinaryData(path1)
+
+            con = pymysql.connect(host='localhost',user='root',password='',database='bookyourshow')
+            cur = con.cursor()
+            cur.execute('insert into owner_info values(%s, %s, %s, %s, %s)', (img1, '1111','sanil1','sanil1@gmail.com','1010'))
+
+            con.commit()
+            con.close()
+            flash('Success..... Record has been submitted')
+            # return render_template('adminPage.html')
+
+
+###############################################################################################################
 ################################################# User Registration ###########################################
-
-
 @app.route("/registration", methods=['GET', 'POST'])
 def registration():
     if request.method == 'POST':
@@ -204,6 +320,13 @@ def adminregistration():
 
 
 ################################################ USER LOGIN ################################################
+def write_file(data, filename):
+	# Convert binary data to proper format and write it on Hard Disk
+	with open(filename, 'wb') as file:
+		file.write(data)
+
+
+
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     username = ""
@@ -244,13 +367,33 @@ def login():
         con = pymysql.connect(host='localhost', user='root',
                               password='', database='bookyourshow')
         cur = con.cursor()
-        cur.execute('select * from registered_users')
+        cur.execute('select * from owner_info')
         result = cur.fetchall()
+        i=random.randint(50000,1000000)
+        j=i
+        path='static/uploading/'
 
-        return render_template('home.html', result=result, enumerate=enumerate)
+        if os.path.exists(path):
+            shutil.rmtree(path)
+
+
+        for row in result:
+            if os.path.exists(path):
+                path1 = f'{path}/{i}.jpg'
+                image = row[0]
+                write_file(image,path1)
+                i+=1
+            else:
+                os.makedirs(path)
+                path1=f'{path}/{i}.jpg'
+                image = row[0]
+                write_file(image, path1)
+                i+=1
+
+        return render_template('home.html', result=result, enumerate=enumerate, num=j)
 
     elif flag == 2:
-        print("flag one chala")
+        # print("flag one chala")
 
         flash('Incorrect password')
         return render_template("login.html")
@@ -258,7 +401,7 @@ def login():
         flash('Email doesn\'t exist')
         return render_template("login.html")
 
-    con.close()
+    # con.close()
 
 
 ################################################ ADMIN LOGIN ################################################
@@ -401,6 +544,8 @@ def add_movies():
         #     return render_template("registration.html")
 
         else:
+            # Img upload function call
+            img_upload(request.files['image1'])
             con = pymysql.connect(
                 host='localhost', user='root', password='', database='bookyourshow')
             cur = con.cursor()
@@ -424,6 +569,8 @@ def add_movies():
             con.commit()
 
             con.close()
+
+            # img_upload( request.files['image1'])
 
             flash('Success..... Record has been submitted')
             return render_template("adminPage.html")

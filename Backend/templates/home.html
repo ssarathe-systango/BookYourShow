@@ -44,7 +44,7 @@
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
 
-            <!-- <a href="/login"><button type="button" class="btn btn-light  signin">Log In</button></a> -->
+            <a href="/"><button type="button" class="btn btn-light  signin">Log Out</button></a>
         </div>
     </nav>
 
@@ -68,33 +68,35 @@
         <h2 class="text">RECOMMENDED MOVIES</h2>
         <div class="row_posters">
             <!--rec_movie_1-->
+            {%for j,i in enumerate(result)%}
+
             <img onclick="window.location.href= '/rec_movie_1' " alt="" class="row_poster row_posterLarge"
-                src="{{ url_for('static', filename='/Images/img8.jpg') }}">
+                src="static/uploading/{{j+num}}.jpg">
             <!-- <button class="btn btn-light  Book_Now_Button">Book Now</button> -->
 
-            <!--rec_movie_2-->
+            <!-- rec_movie_2
             <img onclick="window.location.href='/rec_movie_2' " alt="" class="row_poster row_posterLarge"
-                src="{{ url_for('static', filename='/Images/img9.jpg') }}">
+                src="">
 
-            <!--rec_movie_3-->
+            <!--rec_movie_3
             <img onclick="window.location.href='/rec_movie_3' " alt="" class="row_poster row_posterLarge"
-                src="{{ url_for('static', filename='/Images/img10.jpg') }}">
+                src="">
 
-            <!--rec_movie_4-->
+            <!--rec_movie_4
             <img onclick="window.location.href='/rec_movie_4' " alt="" class="row_poster row_posterLarge"
-                src="{{ url_for('static', filename='/Images/img11.jpg') }}">
+                src="">
 
-            <!--rec_movie_5-->
+            <!--rec_movie_5
             <img onclick="window.location.href='/rec_movie_5' " alt="" class="row_poster row_posterLarge"
-                src="{{ url_for('static', filename='/Images/img2.jpg') }}">
+                src="">
 
-            <!--rec_movie_6-->
+            <!--rec_movie_6
             <img onclick="window.location.href='/rec_movie_6' " alt="" class="row_poster row_posterLarge"
-                src="{{ url_for('static', filename='/Images/img4.jpg') }}">
+                src="">
 
-            <!--rec_movie_7-->
+            <!--rec_movie_7
             <img onclick="window.location.href='/rec_movie_7' " alt="" class="row_poster row_posterLarge"
-                src="{{ url_for('static', filename='/Images/img1.jpg') }}">
+                src=""> -->
 
             <!-- <img src="/Images/img1.jpg" alt="" class="row_poster row_posterLarge">
             <img src="/Images/img2.jpg" alt="" class="row_poster row_posterLarge">
@@ -105,6 +107,7 @@
             <img src="/Images/img7.jpg" alt="" class="row_poster row_posterLarge"> -->
         </div>
     </div>
+    {%endfor%} 
 
     <!--Trending Now-->
     <div class="row">

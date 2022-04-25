@@ -57,6 +57,6 @@ window.ChangeColor = function (id) {
 }
 
 
-console.log(show);
-console.log(theater);
-document.getElementById("display").innerText += " for " + show + " " + theater + "\n" + "Movie: " + rec_movie_1;
+// console.log(show);
+// console.log(theater);
+// document.getElementById("display").innerText += " for " + show + " " + theater + "\n" + "Movie: " + rec_movie_1;
