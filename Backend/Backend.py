@@ -82,9 +82,15 @@ def test(movieID):
     cur=con.cursor()
     cur.execute("select * from movieinfo where movieid=%s",movieID)
     row=cur.fetchone()
+    fn = random.randint(210000,240000)
+    filename = "static/upload/" + str(fn) + ".jpg"
+    write_file(row[0], filename)
+    print("************************* done *****************")
+    print(filename)
+    
     # moviename = row[2]
     # print(row)
-    return render_template("genericpage.html") # row = row, image5 = base64.b64decode(row[0])
+    return render_template("genericpage.html", row = row, filename = fn, enumerate = enumerate) 
 
 
 # @app.route("/BookNow", methods=["GET"])
@@ -345,6 +351,7 @@ def adminregistration():
 
 
 ################################################ USER LOGIN ################################################
+
 def write_file(data, filename):
 	# Convert binary data to proper format and write it on Hard Disk
 	with open(filename, 'wb') as file:
@@ -569,7 +576,7 @@ def add_movies():
         path = 'static/upload/'
         if os.path.exists(path):
 
-            image1.save(path+image1.filename)
+            image1.save(path+image1.filename) 
 
             mainfun()
             path1 = path+image1.filename
@@ -589,8 +596,6 @@ def add_movies():
             # img1 = base64.b64encode(image1)
 
             
-
-
 
 
 

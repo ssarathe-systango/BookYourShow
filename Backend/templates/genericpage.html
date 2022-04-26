@@ -19,19 +19,20 @@
 
     <div class="container-fluid">
         <div class="innerdiv1">
-            <img src="{{}}" alt=""
-                class="row_poster row_posterLarge displayimg">
+        {%for j,i in enumerate(row)%}
+        
+        
+        {%endfor%} 
+        <img src='/static/upload/{{filename}}.jpg' alt="" class = "container-fluid displayimg booknow">
+
         </div>
 
         <div class="innerdiv2">
-           
-            <!-- <img src="/Images/img2.jpg" alt="" class="row_poster row_posterLarge displayimg"> -->
             <div id="movieName">{{row[2]}}</div>
             <a href="/BookNowNew"><button type="button" class="btn btn-danger me-md-2 booknow">
                     Book Now</button></a>
-       
-
         </div>
+        
     </div>
     <script>
         //picking movie name for printing in screen
