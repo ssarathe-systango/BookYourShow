@@ -7,8 +7,11 @@
 # from models import Img
 # from db import db_init, db
 from asyncore import write
+# from crypt import methods
 from distutils.fancy_getopt import wrap_text
+from email.mime import image
 from pickle import TRUE
+from platform import release
 from flask import Flask, render_template, request, session
 from flask import flash
 import pymysql
@@ -17,6 +20,7 @@ import shutil
 from PIL import Image
 import random
 import time
+import base64
 import sys
 
 app = Flask(__name__)
@@ -68,6 +72,19 @@ def rec_movie_7():
 def SeatBooking():
     return render_template("SeatBooking.html")
 
+
+@app.route("/test/<string:movieID>" , methods=["GET", "POST"])
+def test(movieID):
+    print("************************************************")
+    print(movieID)
+
+    con=pymysql.connect(host='localhost',user='root',password='',database='bookyourshow')
+    cur=con.cursor()
+    cur.execute("select * from movieinfo where movieid=%s",movieID)
+    row=cur.fetchone()
+    # moviename = row[2]
+    # print(row)
+    return render_template("genericpage.html") # row = row, image5 = base64.b64decode(row[0])
 
 
 # @app.route("/BookNow", methods=["GET"])
@@ -161,10 +178,17 @@ def convertToBinaryData(filename):
     return binaryData
 
 
-@app.route("/img_upload", methods=['GET', 'POST'])
+# @app.route("/img_upload", methods=['GET', 'POST'])
 def img_upload(image1):
+    movieid = ''
+    moviename = ''
+    movieanimation = ''
+    language = ''
+    movieduration = ''
+    releasedate = ''
+    aboutmovie = ''
     if True:
-        print("Img upload me aaya ************************** ")
+        print("Img upload me aaya **************************")
         path = 'static/upload/'
         if os.path.exists(path):
 
@@ -174,13 +198,13 @@ def img_upload(image1):
 
             mainfun()
             path1 = path+image1.filename
-            img1 = convertToBinaryData(path1)
+            # img1 = convertToBinaryData(path1)
 
             con = pymysql.connect(
                 host='localhost', user='root', password='', database='bookyourshow')
             cur = con.cursor()
-            cur.execute('insert into owner_info values(%s, %s, %s, %s, %s)',
-                        (img1, '1111', 'sanil1', 'sanil1@gmail.com', '1010'))
+            cur.execute('insert into movieinfo values(%s, %s, %s, %s, %s, %s, %s, %s)',
+                        (img1, movieid, moviename, movieanimation, language, movieduration, releasedate, aboutmovie))
             con.commit()
             con.close()
             flash('Success..... Record has been submitted')
@@ -199,7 +223,8 @@ def img_upload(image1):
 
             con = pymysql.connect(host='localhost',user='root',password='',database='bookyourshow')
             cur = con.cursor()
-            cur.execute('insert into owner_info values(%s, %s, %s, %s, %s)', (img1, '1111','sanil1','sanil1@gmail.com','1010'))
+            cur.execute('insert into movieinfo values(%s, %s, %s, %s, %s, %s, %s, %s)',
+                        (img1, movieid, moviename, movieanimation, language, movieduration, releasedate, aboutmovie))
 
             con.commit()
             con.close()
@@ -367,7 +392,7 @@ def login():
         con = pymysql.connect(host='localhost', user='root',
                               password='', database='bookyourshow')
         cur = con.cursor()
-        cur.execute('select * from owner_info')
+        cur.execute('select * from movieinfo')
         result = cur.fetchall()
         i=random.randint(50000,1000000)
         j=i
@@ -525,6 +550,7 @@ def owner_upload():
 ############################################## ADD MOVIES #####################################################
 @app.route("/add_movies", methods=['GET', 'POST'])
 def add_movies():
+       
     if(request.method == 'POST'):
 
         movieid = request.form.get("movieid")
@@ -534,6 +560,39 @@ def add_movies():
         movieduration = request.form.get("duration")
         releasedate = request.form.get("date")
         aboutmovie = request.form.get("about")
+
+
+        image1 = request.files['image1']
+        img1 = None
+
+        print("Img upload me aaya **************************")
+        path = 'static/upload/'
+        if os.path.exists(path):
+
+            image1.save(path+image1.filename)
+
+            mainfun()
+            path1 = path+image1.filename
+            img1 = convertToBinaryData(path1)
+            # img1 = base64.b64encode(image1)
+
+
+
+        else:
+            os.makedirs(path)
+
+            image1.save(path+image1.filename)
+
+            mainfun()
+            path1 = path+image1.filename
+            img1 = convertToBinaryData(path1)
+            # img1 = base64.b64encode(image1)
+
+            
+
+
+
+
 
         if movieid == "" or moviename == "" or movieanimation == "" or language == "" or movieduration == "" or releasedate == "" or aboutmovie == "":
             flash('Required all fields and correct field')
@@ -545,7 +604,7 @@ def add_movies():
 
         else:
             # Img upload function call
-            img_upload(request.files['image1'])
+            # img_upload()
             con = pymysql.connect(
                 host='localhost', user='root', password='', database='bookyourshow')
             cur = con.cursor()
@@ -563,8 +622,8 @@ def add_movies():
             return render_template("adminPage.html")
             con.close()
         else:
-            cur.execute('insert into movieinfo values(%s,%s,%s,%s,%s,%s,%s)',
-                        (movieid, moviename, movieanimation, language, movieduration, releasedate, aboutmovie))
+            cur.execute('insert into movieinfo values(%s,%s,%s,%s,%s,%s,%s,%s)',
+                        (img1, movieid, moviename, movieanimation, language, movieduration, releasedate, aboutmovie))
 
             con.commit()
 

@@ -7,9 +7,18 @@ body {
     background-color: #111;
 }
 
+.row {
+
+    color: white;
+    margin-left: 20px;
+    user-select: none;
+
+}
+
 .row_poster {
 
     width: 100%;
+    /* display: flex; */
     object-fit: contain;
     max-height: 180px;
     margin-right: 10px;
@@ -43,12 +52,7 @@ body {
     display: none;
 }
 
-.row {
-    color: white;
-    margin-left: 20px;
-    user-select: none;
 
-}
 
 .banner {
     background-image: url("../../static/Images/ipl1.webp");
