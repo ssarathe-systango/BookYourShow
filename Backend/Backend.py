@@ -611,7 +611,48 @@ def add_movies():
         # print("data not inserted!!!")
         return render_template("adminPage.html")
 
+################################################## deleteMovie ################################################
+###############################################################################################################
+@app.route("/deleteMovie", methods=['GET', 'POST'])
+def deleteMovie():
+    if(request.method == 'POST'):
+        movieid1 = request.form.get("movieid")
+        if movieid1 == "":
+            flash('Movie Id Is Mandatory!!!')
+
+        else:
+            con = pymysql.connect(
+                host='localhost', user='root', password='', database='bookyourshow')
+            cur = con.cursor()
+            cur.execute('DELETE from movieinfo where movieid = movieid1')
+            rows = cur.fetchall()
+            flag = 0
+
+            con.commit()
+
+            con.close()
+
+            # img_upload( request.files['image1'])
+
+            print('Success..... Record has been deleted')
+            return render_template("adminPage.html")
+        # session.pop('email')
+
+    else:
+        # print("data not inserted!!!")
+        return render_template("adminPage.html")
+
+
+
+
+        
+
+
+
+
+
 
 ###############################################################################################################
+
 if __name__ == '__main__':
     app.run(debug=True)
