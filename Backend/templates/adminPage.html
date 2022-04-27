@@ -92,6 +92,11 @@
                 style="width: 300px; height: 200px;  font-size: 30px;">Delete Movies</button>
         </li>
 
+        <li class="nav-item">
+            <button id="deleteTheater" type="button" class="btn btn-success text-center pad"
+                style="width: 300px; height: 200px;  font-size: 30px;">Delete Theater</button>
+        </li>
+
 
 
     </ul>
@@ -213,7 +218,7 @@
 
         //------------------------------------------------------------------DELETE MODAL--------------------------------------------------------------
 
-        const deleteTheaterModal = (title, description,
+        const deleteMovieModal = (title, description,
             cancelbtn = 'Close',
             deleteChangesbtn = 'Delete',
             callback
@@ -240,6 +245,54 @@
         <div id="addTheaterContainer">
         
         <input class="form_field mb-3" type="text" name="moviename" id="movieID" placeholder="Id of Movie" autofocus="true"/> </br>
+        
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary modal-cancel-btn" data-bs-dismiss="modal">${cancelbtn}</button>
+          <button type="submit" id="saveTheaterData" onclick="saveAddTheater()" class="btn btn-primary modal-saveChanges-btn">${deleteChangesbtn}</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>`;
+
+            // modalWrap.querySelector('.modal-saveChanges-btn').onclick = callback;
+            document.body.append(addTheaterModalWrap);
+
+            var modal = new bootstrap.Modal(addTheaterModalWrap.querySelector('.modal'));
+            modal.show();
+        }
+
+        //********************************************************************************************************************//
+
+        const deleteTheaterModal = (title, description,
+            cancelbtn = 'Close',
+            deleteChangesbtn = 'Delete',
+            callback
+        ) => {
+            // if (addTheaterModalWrap !== null) {
+            //     addTheaterModalWrapp.remove();
+
+            // }
+
+            addTheaterModalWrap = document.createElement('div');
+            addTheaterModalWrap.innerHTML = `
+  
+    <div class="modal fade" id="movieModal" tabindex="-1" aria-labelledby="movieModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="movoieModalLabel">${title}</h5>
+          <button type="button" id="closebtn" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          
+          </div>
+        <form action = "/deleteTheater" method = "POST">
+        
+        
+        <div id="addTheaterContainer">
+        
+        <input class="form_field mb-3" type="text" name="theatername" id="movieID" placeholder="Id of Theater" autofocus="true"/> </br>
         
 
         </div>

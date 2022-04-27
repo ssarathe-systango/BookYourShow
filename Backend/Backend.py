@@ -1,11 +1,6 @@
-# from crypt import methods
-# from crypt import methods
-# from crypt import methods
-# import imp
-# import mimetypes
-# from werkzeug.utils import secure_filename
-# from models import Img
-# from db import db_init, db
+#################################################   BOOK YOUR SHOW   #######################################################
+############################################################################################################################
+
 from asyncore import write
 # from crypt import methods
 from distutils.fancy_getopt import wrap_text
@@ -207,8 +202,9 @@ def img_upload(image1):
             # return render_template('adminPage.html')
 
 
-###############################################################################################################
-################################################# User Registration ###########################################
+####################################################################################################################
+################################################# USER REGISTRATION ################################################
+
 @app.route("/registration", methods=['GET', 'POST'])
 def registration():
     if request.method == 'POST':
@@ -260,9 +256,8 @@ def registration():
     else:
         return render_template("registration.html")
 
+
 ################################################################################################################
-
-
 ################################################# Admin Registration ###########################################
 
 @app.route("/adminregistration", methods=['GET', 'POST'])
@@ -316,9 +311,8 @@ def adminregistration():
     else:
         return render_template("/adminregistration.html")
 
+
 ############################################################################################################
-
-
 ################################################ USER LOGIN ################################################
 
 def write_file(data, filename):
@@ -404,8 +398,7 @@ def login():
 
 
 ################################################ ADMIN LOGIN ################################################
-############################################################################################################
-
+#############################################################################################################
 
 @app.route("/Adminlogin", methods=['GET', 'POST'])
 def Adminlogin():
@@ -463,19 +456,12 @@ def Adminlogin():
 
     con.close()
 
-############################################# THEATER INFO ####################################################
-############################################################################################################
 
+############################################# ADD THEATER #####################################################
+###############################################################################################################
 
 @app.route("/owner_upload", methods=['GET', 'POST'])
 def owner_upload():
-    # con = pymysql.connect(
-    # host='localhost', user='root', password='', database='bookyourshow')
-    # cur = con.cursor()
-    # cur.execute('select * from theaterinfo')
-    # rows = cur.fetchall()
-
-    # print(rows)
 
     if(request.method == 'POST'):
         theatername = request.form.get("theater")
@@ -525,9 +511,43 @@ def owner_upload():
         return render_template("adminPage.html")
 
 
-############################################## ADD MOVIES #####################################################
-############################################################################################################
+############################################# DELETE THEATER #####################################################
+##################################################################################################################
+@app.route("/deleteTheater", methods=['GET', 'POST'])
+def deleteTheater():
+    if(request.method == 'POST'):
+        theaterid = request.form.get("theatername")
 
+        print("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
+        print(theaterid)
+
+        if theaterid == "":
+            flash('Movie Id Is Mandatory!!!')
+
+        else:
+            con = pymysql.connect(
+                host='localhost', user='root', password='', database='bookyourshow')
+            cur = con.cursor()
+            cur.execute(
+                "DELETE from theaterinfo where theaterid = '%s'" % (theaterid))
+
+            con.commit()
+
+            con.close()
+
+            # img_upload( request.files['image1'])
+
+            print('Success..... Record has been deleted')
+            return render_template("adminPage.html")
+        session.pop('email')
+
+    else:
+        # print("data not inserted!!!")
+        return render_template("adminPage.html")
+
+
+############################################## ADD MOVIES #####################################################
+###############################################################################################################
 
 @app.route("/add_movies", methods=['GET', 'POST'])
 def add_movies():
@@ -611,9 +631,9 @@ def add_movies():
         # print("data not inserted!!!")
         return render_template("adminPage.html")
 
+
 ################################################## deleteMovie ################################################
 ###############################################################################################################
-
 
 @app.route("/deleteMovie", methods=['GET', 'POST'])
 def deleteMovie():
@@ -630,7 +650,8 @@ def deleteMovie():
             con = pymysql.connect(
                 host='localhost', user='root', password='', database='bookyourshow')
             cur = con.cursor()
-            cur.execute("DELETE from movieinfo where movieid = '%s'" % (movieid1))
+            cur.execute("DELETE from movieinfo where movieid = '%s'" %
+                        (movieid1))
 
             con.commit()
 
@@ -647,6 +668,8 @@ def deleteMovie():
         return render_template("adminPage.html")
 
 
-###############################################################################################################
+##############################------------------ END -------------------###########################################
+##############################------------------------------------------###########################################
+
 if __name__ == '__main__':
     app.run(debug=True)
