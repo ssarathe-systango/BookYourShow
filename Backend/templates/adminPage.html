@@ -85,6 +85,10 @@
                     style="width: 300px; height: 200px;  font-size: 30px;">Show</button></a>
         </li>
 
+        <li class="nav-item">
+            <button id="deleteMovie" type="button" class="btn btn-success text-center pad"
+                    style="width: 300px; height: 200px;  font-size: 30px;">Delete</button>
+        </li>
 
 
     </ul>
@@ -202,6 +206,58 @@
             var modal = new bootstrap.Modal(addTheaterModalWrap.querySelector('.modal'));
             modal.show();
         }
+
+
+        //------------------------------------------------------------------DELETE MODAL--------------------------------------------------------------
+
+        const deleteTheaterModal = (title, description,
+            cancelbtn = 'Close',
+            deleteChangesbtn = 'Delete',
+            callback
+        ) => {
+            // if (addTheaterModalWrap !== null) {
+            //     addTheaterModalWrapp.remove();
+
+            // }
+
+            addTheaterModalWrap = document.createElement('div');
+            addTheaterModalWrap.innerHTML = `
+  
+    <div class="modal fade" id="movieModal" tabindex="-1" aria-labelledby="movieModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="movoieModalLabel">${title}</h5>
+          <button type="button" id="closebtn" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          
+          </div>
+        <form action = "/owner_upload" method = "POST">
+        
+        
+        <div id="addTheaterContainer">
+        
+        <input class="form_field mb-3" type="text" name="theaterId" id="theaterId" placeholder="Id of Theater" autofocus="true"/> </br>
+        
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary modal-cancel-btn" data-bs-dismiss="modal">${cancelbtn}</button>
+          <button type="submit" id="saveTheaterData" onclick="saveAddTheater()" class="btn btn-primary modal-saveChanges-btn">${deleteChangesbtn}</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>`;
+
+            // modalWrap.querySelector('.modal-saveChanges-btn').onclick = callback;
+            document.body.append(addTheaterModalWrap);
+
+            var modal = new bootstrap.Modal(addTheaterModalWrap.querySelector('.modal'));
+            modal.show();
+        }
+
+
+
     </script>
 
     <script src="{{ url_for('static', filename='/JS/adminPageScript.js') }}"></script>

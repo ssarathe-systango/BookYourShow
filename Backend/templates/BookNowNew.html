@@ -12,20 +12,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='/CSS/adminPage.css') }}">
 
     <style>
-        /* .col {
-            /* background-color: rgb(131, 131, 131); 
-            border: 1px solid black;
-        }
-
-        .row {
-            height: 100px;
-            margin-top: 12px;
-        }
-
-        .row:hover {
-            transform: scale(1.08);
-            transition: transform 300ms;
-        } */
+     
 
         .container {
             font-size: 20px;
@@ -36,44 +23,8 @@
             font-weight: bold;
         }
 
-        /* .days {
-            width: 1000px;
-        } */
-
-        .day {
-            width: 120px;
-            height: 100px;
-            /* background-color: #efeff6; */
-            padding: 10px;
-            float: left;
-            margin-right: 15px;
-            margin-top: 20px;
-        }
-
-        .datelabel {
-            margin-bottom: 15px;
-        }
-
-        .timeslot {
-            background-color: #00c09d;
-            width: 1550px;
-            height: 80px;
-            color: white;
-            padding: 5px;
-            margin-top: 20px;
-            margin-left: -155px;
-            font-size: 18px;
-            border-radius: 7px;
-            /* vertical-align: center; */
-            display: table-cell;
-            display: inline-block;
-            box-shadow: inset 0 0 0 1px;
-        }
-
-        .timeslot:hover {
-            background-color: #2CA893;
-            cursor: pointer;
-        }
+        
+       
 
         .body {
             background-color: rgb(94, 94, 94);
@@ -83,13 +34,10 @@
             color: lavenderblush;
         }
 
-        .div1 {
-            width: 150px;
-            color: #00c09d;
-        }
-
+        
         .btnsubmit {
             margin-left: 2%;
+            margin-left: 40%;
         }
     </style>
 </head>
@@ -106,7 +54,7 @@
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <h1 style="color: white; font-family: serif; margin-right: 700px;" class="Dashboard">Admin</h1>
+            <h1 style="color: white; font-family: serif; margin-right: 700px;" class="Dashboard">Book Theater</h1>
 
         </div>
     </nav>
@@ -124,54 +72,64 @@
             <h1>Book Your Show</h1>
         </marquee>
     </div>
+    <br>
     <!------------------------------------------------------------------------------------------------------------>
 
-    <div class="container">
-        <div class="row1">
-            <div class="row">
-                <div class="col">
-                    <div>
-                        <div>
-                            <div>
-                                <div>
-                                    <div class="timeslot" style="font-size: 33px; position: absolute;">
-                                        Theater Name
-                                        <!-- {{ "&nbsp;"|safe*1 }} -->
-                                        Theater Id
-                                        <!-- {{ "&nbsp;"|safe*1 }} -->
-                                        Theater Location
-                                        <!-- {{ "&nbsp;"|safe*1 }} -->
-                                        TheaterCityName
-                                        <!-- {{ "&nbsp;"|safe*1 }} -->
-                                        TheaterShowTime
-                                        <!-- {{ "&nbsp;"|safe*1 }} -->
-                                        BookShow
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        {% for k in rows%}
-                        <div class="timeslot" style="font-size: 33px;">
-
-                            <span class="label label-success">{{ "&nbsp;"|safe*3 }} {{k[0]}} {{ "&nbsp;"|safe*13 }}
-                                {{k[1]}} {{
-                                "&nbsp;"|safe*7 }}
-                                {{k[2]}} {{ "&nbsp;"|safe*7 }} {{k[3]}} {{ "&nbsp;"|safe*7 }} {{k[4]}}
-
-
-                                <a href="/SeatBooking"><button type="submit"
-                                        class="btn btn-primary  btnsubmit">BookNow</button><br></a>
-                            </span><br><br>
-                        </div>
-                        {% endfor %}
-                    </div>
-
-                </div>
-            </div>
-        </div>
+    <div class="container" >
+        <div class="row">
+            {% for k in rows%}
+          <div class="col">
+    <ul class="list-inline mx-auto justify-content-center" >
+        <li >
+            <a href="/"><button type="button" class="btn btn-success text-start"
+                    style="width: 400px; height: 400px; font-size: 20px;">
+                    <br>
+                    Theater Name:
+                    {{k[0]}}
+                    <br><br>
+                    Theater Id:
+                    {{ "&nbsp;"|safe*1 }} {{k[1]}}
+                    <br><br>
+                    Theater Location:
+                    {{ "&nbsp;"|safe*1 }} {{k[2]}}
+                    <br><br>
+                    TheaterCityName:
+                    {{ "&nbsp;"|safe*1 }} {{k[3]}} 
+                    <br><br>
+                    TheaterShowTime:
+                    {{k[4]}}
+                    <br><br>
+                    BookShow:
+                    <br><br>
+                  
+        </li>
+        <li>
+            <a href="/SeatBooking"><button type="submit" class="btn btn-primary  btnsubmit">BookNow
+            </button></a>
+        </li>
+            
+        
+        </button></a>
+    
+    </ul>
     </div>
+    {% endfor %}
+    </div>
+</div>
+  <script>
+      function random_bg_color() {
+    var x = Math.floor(Math.random() * 256);
+    var y = Math.floor(Math.random() * 256);
+    var z = Math.floor(Math.random() * 256);
+    var bgColor = "rgb(" + x + "," + y + "," + z + ")";
+ console.log(bgColor);
+  
+    document.getElementById('tileBox').style.background = bgColor;
+    }
+
+random_bg_color();
+  </script> 
+
     <!------------------------------------------------------------------------------------------------------------>
 
     <!-- 
@@ -281,3 +239,50 @@
 </body>
 
 </html>
+
+<!-- <div class="container">
+    <div class="row1">
+        <div class="row">
+            <div class="col">
+                <div>
+                    <div>
+                        <div>
+                            <div>
+                                <div class="timeslot" style="font-size: 33px; position: absolute;">
+                                    Theater Name
+                                    <!-- {{ "&nbsp;"|safe*1 }} -->
+<!-- Theater Id
+                                    <!-- {{ "&nbsp;"|safe*1 }} -->
+<!-- Theater Location -->
+<!-- {{ "&nbsp;"|safe*1 }} -->
+<!-- TheaterCityName -->
+<!-- {{ "&nbsp;"|safe*1 }} -->
+<!-- TheaterShowTime -->
+<!-- {{ "&nbsp;"|safe*1 }} -->
+<!-- BookShow -->
+<!-- </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    {% for k in rows%}
+                    <div class="timeslot" style="font-size: 33px;">
+
+                        <span class="label label-success">{{ "&nbsp;"|safe*3 }} {{k[0]}} {{ "&nbsp;"|safe*13 }}
+                            {{k[1]}} {{
+                            "&nbsp;"|safe*7 }}
+                            {{k[2]}} {{ "&nbsp;"|safe*7 }} {{k[3]}} {{ "&nbsp;"|safe*7 }} {{k[4]}}
+
+
+                            <a href="/SeatBooking"><button type="submit"
+                                    class="btn btn-primary  btnsubmit">BookNow</button><br></a>
+                        </span><br><br>
+                    </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>  --> -->
