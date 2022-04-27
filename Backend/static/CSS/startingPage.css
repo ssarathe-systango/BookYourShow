@@ -1,32 +1,50 @@
-body{
+body {
     background-color: black;
 }
-#heading{
+
+#heading {
     margin-left: 650px;
     margin-top: 20px;
     color: aliceblue;
 }
-#signIn{
+
+#signIn {
     color: aliceblue;
-    font-size:larger;
+    font-size: larger;
 }
-.adminbtn{
+
+.adminbtn {
     width: 500px;
     transform: scale(1.20);
     color: white;
+    
 
 }
 
-.adminbtn :hover{
-    color: white;
-    background-color: white;
-    transition: all 0.2s;
+.adminbtn:hover {
+    background-color: green;
+    transform: scale(1.20);
 }
 
-.userbtn{
+.userbtn {
     width: 500px;
     transform: scale(1.20);
     color: white;
+}
 
+.userbtn:hover {
+    background-color: green;
+    transform: scale(1.20);
+}
+
+.registerbtn {
+    width: 500px;
+    transform: scale(1.20);
+    color: white;
+}
+
+.registerbtn:hover {
+    background-color: green;
+    transform: scale(1.20);
 
 }

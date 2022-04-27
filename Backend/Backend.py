@@ -33,64 +33,33 @@ def homepage():
     # session.pop('user')
 
 
-@app.route("/rec_movie_1", methods=['GET'])
-def rec_movie_1():
-    return render_template('rec_movie_1.html')
-
-
-@app.route("/rec_movie_2", methods=['GET'])
-def rec_movie_2():
-    return render_template('rec_movie_2.html')
-
-
-@app.route("/rec_movie_3", methods=['GET'])
-def rec_movie_3():
-    return render_template('rec_movie_3.html')
-
-
-@app.route("/rec_movie_4", methods=['GET'])
-def rec_movie_4():
-    return render_template('rec_movie_4.html')
-
-
-@app.route("/rec_movie_5", methods=['GET'])
-def rec_movie_5():
-    return render_template('rec_movie_5.html')
-
-
-@app.route("/rec_movie_6", methods=['GET'])
-def rec_movie_6():
-    return render_template('rec_movie_6.html')
-
-
-@app.route("/rec_movie_7", methods=['GET'])
-def rec_movie_7():
-    return render_template('rec_movie_7.html')
-
-
 @app.route("/SeatBooking", methods=["GET"])
 def SeatBooking():
     return render_template("SeatBooking.html")
 
 
-@app.route("/test/<string:movieID>" , methods=["GET", "POST"])
-def test(movieID):
+########################################### Generic Page ###################################################
+############################################################################################################
+
+@app.route("/test/<string:movieID>", methods=["GET", "POST"])
+def genericpage(movieID):
     print("************************************************")
     print(movieID)
 
-    con=pymysql.connect(host='localhost',user='root',password='',database='bookyourshow')
-    cur=con.cursor()
-    cur.execute("select * from movieinfo where movieid=%s",movieID)
-    row=cur.fetchone()
-    fn = random.randint(210000,240000)
+    con = pymysql.connect(host='localhost', user='root',
+                          password='', database='bookyourshow')
+    cur = con.cursor()
+    cur.execute("select * from movieinfo where movieid=%s", movieID)
+    row = cur.fetchone()
+    fn = random.randint(210000, 240000)
     filename = "static/upload/" + str(fn) + ".jpg"
     write_file(row[0], filename)
-    print("************************* done *****************")
-    print(filename)
-    
+    # print("************************* done ************************")
+    # print(filename)
+
     # moviename = row[2]
     # print(row)
-    return render_template("genericpage.html", row = row, filename = fn, enumerate = enumerate) 
+    return render_template("genericpage.html", row=row, filename=fn, enumerate=enumerate)
 
 
 # @app.route("/BookNow", methods=["GET"])
@@ -146,7 +115,7 @@ def compressMe(file, verbose=False):
     picture.save('static/upload/'+file,
                  "JPEG",
                  optimize=True,
-                 quality=10)
+                 quality=40)
     return
 
 
@@ -194,7 +163,7 @@ def img_upload(image1):
     releasedate = ''
     aboutmovie = ''
     if True:
-        print("Img upload me aaya **************************")
+        # print("Img upload me aaya **************************")
         path = 'static/upload/'
         if os.path.exists(path):
 
@@ -222,12 +191,12 @@ def img_upload(image1):
 
             image1.save(path+image1.filename)
 
-
             mainfun()
             path1 = path+image1.filename
             img1 = convertToBinaryData(path1)
 
-            con = pymysql.connect(host='localhost',user='root',password='',database='bookyourshow')
+            con = pymysql.connect(
+                host='localhost', user='root', password='', database='bookyourshow')
             cur = con.cursor()
             cur.execute('insert into movieinfo values(%s, %s, %s, %s, %s, %s, %s, %s)',
                         (img1, movieid, moviename, movieanimation, language, movieduration, releasedate, aboutmovie))
@@ -291,7 +260,7 @@ def registration():
     else:
         return render_template("registration.html")
 
-########################################################################################################################
+################################################################################################################
 
 
 ################################################# Admin Registration ###########################################
@@ -353,10 +322,9 @@ def adminregistration():
 ################################################ USER LOGIN ################################################
 
 def write_file(data, filename):
-	# Convert binary data to proper format and write it on Hard Disk
-	with open(filename, 'wb') as file:
-		file.write(data)
-
+    # Convert binary data to proper format and write it on Hard Disk
+    with open(filename, 'wb') as file:
+        file.write(data)
 
 
 @app.route("/login", methods=['GET', 'POST'])
@@ -401,26 +369,25 @@ def login():
         cur = con.cursor()
         cur.execute('select * from movieinfo')
         result = cur.fetchall()
-        i=random.randint(50000,1000000)
-        j=i
-        path='static/uploading/'
+        i = random.randint(50000, 1000000)
+        j = i
+        path = 'static/uploading/'
 
         if os.path.exists(path):
             shutil.rmtree(path)
-
 
         for row in result:
             if os.path.exists(path):
                 path1 = f'{path}/{i}.jpg'
                 image = row[0]
-                write_file(image,path1)
-                i+=1
+                write_file(image, path1)
+                i += 1
             else:
                 os.makedirs(path)
-                path1=f'{path}/{i}.jpg'
+                path1 = f'{path}/{i}.jpg'
                 image = row[0]
                 write_file(image, path1)
-                i+=1
+                i += 1
 
         return render_template('home.html', result=result, enumerate=enumerate, num=j)
 
@@ -437,6 +404,9 @@ def login():
 
 
 ################################################ ADMIN LOGIN ################################################
+############################################################################################################
+
+
 @app.route("/Adminlogin", methods=['GET', 'POST'])
 def Adminlogin():
     username = ""
@@ -494,6 +464,7 @@ def Adminlogin():
     con.close()
 
 ############################################# THEATER INFO ####################################################
+############################################################################################################
 
 
 @app.route("/owner_upload", methods=['GET', 'POST'])
@@ -555,9 +526,12 @@ def owner_upload():
 
 
 ############################################## ADD MOVIES #####################################################
+############################################################################################################
+
+
 @app.route("/add_movies", methods=['GET', 'POST'])
 def add_movies():
-       
+
     if(request.method == 'POST'):
 
         movieid = request.form.get("movieid")
@@ -568,7 +542,6 @@ def add_movies():
         releasedate = request.form.get("date")
         aboutmovie = request.form.get("about")
 
-
         image1 = request.files['image1']
         img1 = None
 
@@ -576,14 +549,12 @@ def add_movies():
         path = 'static/upload/'
         if os.path.exists(path):
 
-            image1.save(path+image1.filename) 
+            image1.save(path+image1.filename)
 
             mainfun()
             path1 = path+image1.filename
             img1 = convertToBinaryData(path1)
             # img1 = base64.b64encode(image1)
-
-
 
         else:
             os.makedirs(path)
@@ -594,10 +565,6 @@ def add_movies():
             path1 = path+image1.filename
             img1 = convertToBinaryData(path1)
             # img1 = base64.b64encode(image1)
-
-            
-
-
 
         if movieid == "" or moviename == "" or movieanimation == "" or language == "" or movieduration == "" or releasedate == "" or aboutmovie == "":
             flash('Required all fields and correct field')

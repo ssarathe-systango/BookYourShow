@@ -12,8 +12,7 @@
         crossorigin="anonymous"></script>
     <!-- <link rel="stylesheet" href="/CSS/startingPage.css"> -->
     <link rel="stylesheet" href="{{ url_for('static', filename='/CSS/startingPage.css')}}">
-
-
+    <link rel="stylesheet" href="{{ url_for('static', filename='/CSS/adminPage.css') }}">
     <title>Start Page</title>
 </head>
 
@@ -22,16 +21,33 @@
         <h1>Book Your Show</h1>
     </div>
 
-    <div class="text-center">
-        <!-- <label for="floatingTextarea2" id="signIn">Sign In As User:</label> -->
-        <a href="/Adminlogin" class="btn btn-primary  adminbtn">Login as Admin</a>
-    </div>
-    <br>
-    <div class="text-center">
-        <!-- <label for="floatingTextarea2" id="signIn">Sign In As Admin:</label> -->
 
-        <a href="/login" class="btn btn-primary  userbtn">Login as User</a>
-    </div>
+    <ul class="nav justify-content-center">
+        <li class="nav-item">
+            <a href="/registration"><button type="button" class="btn btn-primary text-center pad "
+                    style="width: 300px; height: 200px; font-size: 30px;">Register as User</button></a>
+        </li>
+
+
+        <li class="nav-item">
+            <a href="/adminregistration"><button type="button" class="btn btn-primary text-center pad "
+                    style="width: 300px; height: 200px; font-size: 30px;">Register as Admin</button></a>
+        </li>
+
+
+        <li class="nav-item">
+            <a href="/login"><button type="button" class="btn btn-primary text-center pad "
+                    style="width: 300px; height: 200px; font-size: 30px;">Login as User</button></a>
+        </li>
+
+
+        <li class="nav-item">
+            <a href="/Adminlogin"><button type="button" class="btn btn-primary text-center pad "
+                    style="width: 300px; height: 200px;  font-size: 30px;">Login as Admin</button></a>
+        </li>
+
+    </ul>
+
 
 </body>
 
