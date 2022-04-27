@@ -17,6 +17,12 @@ document.getElementById('addTheater').onclick= ()=>addTheaterShowModal('Add Thea
     console.log('Changes saved');
 });
 
+document.getElementById('deleteMovie').onclick= ()=>deleteTheaterModal('Delete Theater',
+'Hello','Cancel','Delete Changes',()=>
+{
+    console.log('Changes deleted');
+});
+
 
 // document.getElementById("imageInputModal").addEventListener("change",preview);
 function preview(){
