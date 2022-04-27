@@ -37,11 +37,11 @@ function preview(){
   }
 
   reader.readAsDataURL(imageInputModal.files[0]);
-// 
+
 }
 function saveChanges(){
 
-    const imagePreview = document.getElementById("imagePreview").value;
+    const imagePreview = document.getElementById("imagePreview");
     const movieName = document.getElementById("movieName").value;
     const animation = document.getElementById("animation");
     const movieLanguage = document.getElementById("movieLanguage");

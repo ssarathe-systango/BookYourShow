@@ -14,7 +14,7 @@
 <body>
 
     <div>
-        <img class="main-logo" src="{{ url_for('static', filename='/Images/img1.jpg') }}"/>
+        <img class="main-logo" src="{{ url_for('static', filename='/Images/img1.jpg') }}" />
     </div>
 
     <!-- 
@@ -133,14 +133,107 @@
         </div>
 
         <div class="col-sm d-flex justify-content-center">
-            <button class="btn-paynow" id="paynow">
+            <button class="btn-paynow" id="payBtn">
                 Paynow
             </button>
         </div>
     </div>
 
     <script type="module" src="{{ url_for('static', filename='/JS/SeatBooking.js') }}"></script>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
 
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyAPaUXSG4jDBh37oBebeSLOS_H6x1U02RU",
+            authDomain: "book-your-show-b79e2.firebaseapp.com",
+            databaseURL: "https://book-your-show-b79e2-default-rtdb.firebaseio.com",
+            projectId: "book-your-show-b79e2",
+            storageBucket: "book-your-show-b79e2.appspot.com",
+            messagingSenderId: "278309549811",
+            appId: "1:278309549811:web:f6ce73d73b77d3d2712986",
+            measurementId: "G-B1M7Z352H2"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+
+
+
+
+        import { getDatabase, set, ref, child, get, onValue }
+            from "https://www.gstatic.com/firebasejs/9.6.11/firebase-database.js";
+
+        const db = getDatabase();
+
+        const seat1 = document.getElementById('seat1');
+        const seat2 = document.getElementById('seat2');
+        const seat3 = document.getElementById('seat3');
+        const seat4 = document.getElementById('seat4');
+        const seat5 = document.getElementById('seat5');
+        const seat6 = document.getElementById('seat6');
+        const seat7 = document.getElementById('seat7');
+        const seat8 = document.getElementById('seat8');
+        const seat9 = document.getElementById('seat9');
+        const seat10 = document.getElementById('seat10');
+        const seat11 = document.getElementById('seat11');
+        const seat12 = document.getElementById('seat12');
+        const seat13 = document.getElementById('seat13');
+        const seat14 = document.getElementById('seat14');
+        const seat15 = document.getElementById('seat15');
+        const seat16 = document.getElementById('seat16');
+        const seat17 = document.getElementById('seat17');
+        const seat18 = document.getElementById('seat18');
+        const seat19 = document.getElementById('seat19');
+        const seat20 = document.getElementById('seat20');
+        const seat21 = document.getElementById('seat21');
+        const seat22 = document.getElementById('seat22');
+        const seat23 = document.getElementById('seat23');
+        const seat24 = document.getElementById('seat24');
+        const seat25 = document.getElementById('seat25');
+        const seat26 = document.getElementById('seat26');
+        const seat27 = document.getElementById('seat27');
+        const seat28 = document.getElementById('seat28');
+        const seat29 = document.getElementById('seat29');
+        const seat30 = document.getElementById('seat30');
+        const seat31 = document.getElementById('seat31');
+        const seat32 = document.getElementById('seat32');
+        const seat33 = document.getElementById('seat33');
+        const seat34 = document.getElementById('seat34');
+        const seat35 = document.getElementById('seat35');
+        const seat36 = document.getElementById('seat36');
+        const seat37 = document.getElementById('seat37');
+        const seat38 = document.getElementById('seat38');
+        const seat39 = document.getElementById('seat39');
+        const payBtn = document.getElementById('payBtn');
+
+
+        function selectedSeats() {
+            set(ref(db, 'SelectedSeats/'), {
+                'seat1': seat1.innerText,
+                'seat2': seat2.innerText,
+                'seat3': seat3.innerText,
+                'seat4': seat4.innerText
+            })
+                .then(() => {
+                    alert("The user added successfully");
+                })
+                .catch(() => {
+                    alert("something went wrong" + error);
+                })
+        }
+
+        payBtn.addEventListener('click', selectedSeats);
+
+
+
+    </script>
 </body>
 
 </html>
