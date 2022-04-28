@@ -9,6 +9,7 @@ from pickle import TRUE
 from platform import release
 from flask import Flask, render_template, request, session
 from flask import flash
+from flask.helpers import flash
 import pymysql
 import os
 import shutil
@@ -30,8 +31,20 @@ def homepage():
 
 @app.route("/SeatBooking", methods=["GET"])
 def SeatBooking():
-    return render_template("SeatBooking.html")
+    return render_template("SeatBooking.html", enumerate = enumerate)
 
+
+
+@app.route("/paynow", methods=["POST"])
+def paynow():
+    result = request.form
+    
+    for key, value in result.items():
+        print(key, value)
+    # print(A1, " ", A2, " ", A3, " ",A4)
+
+
+    return render_template("SeatBooking.html")
 
 ########################################### Generic Page ###################################################
 ############################################################################################################
@@ -640,8 +653,8 @@ def deleteMovie():
     if(request.method == 'POST'):
         movieid1 = request.form.get("moviename")
 
-        print("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
-        print(movieid1)
+        # print("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
+        # print(movieid1)
 
         if movieid1 == "":
             flash('Movie Id Is Mandatory!!!')

@@ -7,7 +7,7 @@
 // register.addEventListener('click', BookingInfo);
 let show = localStorage.getItem("ShowTime");
 let theater = localStorage.getItem("TheaterName");
-let rec_movie_1 = localStorage.getItem("MovieName");
+let moviename = localStorage.getItem("MovieName");
 let totalprice = localStorage.getItem("totalPrice");
 let seatselected = localStorage.getItem("seatSelected");
 let username = localStorage.getItem("user_name");
@@ -59,4 +59,4 @@ window.ChangeColor = function (id) {
 
 // console.log(show);
 // console.log(theater);
-// document.getElementById("display").innerText += " for " + show + " " + theater + "\n" + "Movie: " + rec_movie_1;
+// document.getElementById("display").innerText += " for " + show + " " + theater + "\n" + "Movie: " + moviename;
