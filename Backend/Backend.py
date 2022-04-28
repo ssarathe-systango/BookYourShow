@@ -111,6 +111,18 @@ def BookNowNew():
     return render_template("BookNowNew.html", rows=rows)
 
 
+@app.route("/BookTheater", methods=["GET"])
+def BookTheater():
+    con = pymysql.connect(
+        host='localhost', user='root', password='', database='bookyourshow', port=3307)
+    cur = con.cursor()
+    cur.execute('select * from theaterinfo')
+    rows = cur.fetchall()
+
+    # print(rows)
+    return render_template("BookTheater.html", rows=rows)
+
+
 @app.route("/SeatSelecting", methods=["GET"])
 def SeatSelecting():
     return render_template("SeatSelecting.html")
