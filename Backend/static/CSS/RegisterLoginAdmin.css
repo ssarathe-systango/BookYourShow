@@ -40,7 +40,7 @@
 .bg-image {
     /* background-repeat: no-repeat; */
     /* background-size: cover; */
-    background-image: url("../../../Backend/static/Images/thor1.jpg");
+    background-image: url("../../static/Images/back.jpg");
     position: fixed;
     top: 0;
     width: 100%;
