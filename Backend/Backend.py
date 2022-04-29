@@ -230,7 +230,7 @@ def registration():
 
         if userid == "" or username == "" or email == "" or password == "":
             flash('Required all fields and correct field')
-            return render_template("registration.html")
+            return render_template("registration.html", token="token")
 
         # elif len(password) < 8:
         #     flash('password must be atleast 8 characters')
