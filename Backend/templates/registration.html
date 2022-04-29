@@ -65,7 +65,7 @@
                                             id="RegisterBtn">Register</button> -->
 
                                         <button type="text" id="Register_Btn"
-                                            class="btn-block btn-lg gradient-custom-4 text-body registerbtn">SignUp</button>
+                                            class="btn-block btn-lg gradient-custom-4 text-body registerbtn" onclick="r()">SignUp</button>
 
 
                                     </div>
@@ -88,6 +88,14 @@
 
     <!-- <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script type="module" src="../../Frontend/JS/database.js"></script> -->
+
+    <script>
+        function r(){
+        let user1 = document.getElementById('uname').value;
+        console.log(user1);
+        localStorage.setItem('username', user1);
+    }
+    </script>
 
     <!---------------------------------------------------------------------------------------------------------------------------->
 </body>
