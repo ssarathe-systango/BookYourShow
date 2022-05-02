@@ -36,42 +36,36 @@ body {
     height: 35px;
     width: 80px;
     margin: 3px;
-    /* border-top-left-radius: 50px;
+    border-top-left-radius: 50px;
     border-top-right-radius: 50px;
     border-bottom-left-radius: 50px;
-    border-bottom-right-radius: 50px; */
+    border-bottom-right-radius: 50px;
     user-select: none;
 }
 
 .seat.selected {
-    background-color: mediumvioletred;
+    background-color: rgb(45, 86, 175);
 }
 
-.seat.occupied {
+/* .seat.occupied {
     background-color: rgb(242, 5, 5);
-}
+} */
 
-.seat:nth-of-type(2) {
+/* .seat:nth-of-type(2) {
     margin-right: 100px;
 }
 
 .seat:nth-last-of-type(2) {
     margin-left: 100px;
-}
+} */
 
-.seat:not(.occupied):hover {
+/* .seat:not(.occupied):hover {
     cursor: pointer;
-    background-color: mediumvioletred;
+    background-color: rgb(45, 86, 175);
     transform: scale(1.2);
-}
+} */
 
-
-.showcase .seat:not(.occupied):hover {
-    cursor: default;
-    transform: scale(1.0);
-}
-
-.showcase {
+.row {
     background: rgba(0, 0, 0, 0.1);
     padding: 5px 10px;
     border-radius: 5px;
@@ -79,22 +73,18 @@ body {
     list-style-type: none;
     display: flex;
     justify-content: space-between;
+    margin-left: 200px;
 }
 
-.showcase li {
+.row li {
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 10px;
 }
 
-.showcase li small {
+.row li small {
     margin-left: 2px;
-}
-
-.row {
-    display: flex;
-    margin-left: 200px;
 }
 
 /* Theater Screen */
@@ -108,19 +98,29 @@ body {
     font-size: xx-large;
     padding-top: 20px;
     height: 120px;
-    width: 130%;
+    width: 100%;
     margin: 20px;
-    margin-left: -50px;
+    margin-left: 100px;
     transform: rotateX(-30deg);
     box-shadow: 0 3px 10px rgba(255, 255, 255, 5.0);
 }
 
+.showcase {
+    background: rgba(0, 0, 0, 0.1);
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #777;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+}
+
 /*Font Color Of N/A , Selected, Occupied*/
-.status {
+/* .status {
     color: white;
-}
+} */
 
-.btn-home {
+.btn {
     background-color: #21bbac;
     border: 1px solid #000000;
     padding: .6em 2em;
@@ -128,16 +128,22 @@ body {
     font-size: 1em;
     font-weight: 600;
     cursor: pointer;
-    margin-left: -190px;
+    margin-left: 290px;
 }
 
-.btn-paynow {
-    background-color: #21bbac;
-    border: 1px solid #000000;
-    padding: .6em 2em;
+.inputGroup {
+    /* padding: .6em 2em; */
     border-radius: 10px;
-    font-size: 1em;
+    font-size: 1.2em;
     font-weight: 600;
     cursor: pointer;
-    margin-left: -30px;
+    margin-left: 390px;
+}
+
+.inputGroup :hover {
+    cursor: pointer;
+    background-color: rgb(45, 86, 175);
+    transform: scale(1.2);
+    border-radius: 10px;
+
 }

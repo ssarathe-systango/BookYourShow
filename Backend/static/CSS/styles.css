@@ -15,6 +15,11 @@ body {
 
 }
 
+/* .row::-webkit-scrollbar {
+    /* display: none; */
+/* }  */
+
+
 .row_poster {
 
     width: 100%;
@@ -49,7 +54,7 @@ body {
 
 /* removing scroll bar */
 .row_posters::-webkit-scrollbar {
-    display: none;
+    /* display: none; */
 }
 
 
