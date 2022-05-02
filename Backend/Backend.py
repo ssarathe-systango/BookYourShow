@@ -5,6 +5,7 @@ from asyncore import write
 # from crypt import methods
 from distutils.fancy_getopt import wrap_text
 from email.mime import image
+from operator import length_hint
 from pickle import TRUE
 from platform import release
 from flask import Flask, render_template, request, session
@@ -27,6 +28,7 @@ app.secret_key = "super-secret-key"
 def homepage():
     return render_template('index.html')
     # session.pop('user')
+    
 
 
 @app.route("/SeatBooking", methods=["GET"])
@@ -34,6 +36,7 @@ def SeatBooking():
     con = pymysql.connect(
         host='localhost', user='root', password='', database='bookyourshow', port=3307)
     cur = con.cursor()
+   
     cur.execute('select theatername from theaterinfo')
     rows = cur.fetchone()
     return render_template("SeatBooking.html" , enumerate = enumerate,rows=rows)
@@ -72,7 +75,10 @@ def genericpage(movieID):
 
     # moviename = row[2]
     # print(row)
-    return render_template("genericpage.html", row=row, filename=fn, enumerate=enumerate)
+    return render_template("genericpage.html", row=row, filename=fn,  enumerate=enumerate, movieID=movieID)
+
+
+
 
 
 # @app.route("/BookNow", methods=["GET"])
@@ -99,16 +105,19 @@ def BookNowNew():
     return render_template("BookNowNew.html", rows=rows)
 
 
-@app.route("/BookTheater", methods=["GET"])
-def BookTheater():
+@app.route("/BookTheater/<int:movieID>", methods=["GET", "POST"])
+def BookTheater(movieID):
+    print(movieID,"@@@")
+    
     con = pymysql.connect(
         host='localhost', user='root', password='', database='bookyourshow', port=3307)
     cur = con.cursor()
-    cur.execute('select * from theaterinfo')
+    
+    cur.execute('select theaterinfo.* from movieinfo INNER JOIN theaterinfo ON theaterinfo.movieid =  movieinfo.movieid where movieinfo.movieid=%s',movieID)
     rows = cur.fetchall()
 
     # print(rows)
-    return render_template("BookTheater.html", rows=rows)
+    return render_template("BookTheater.html", rows=rows,enumerate=enumerate)
 
 
 @app.route("/SeatSelecting", methods=["GET"])
@@ -243,7 +252,7 @@ def img_upload(image1):
 
 @app.route("/registration", methods=['GET', 'POST'])
 def registration():
-    if request.method == 'POST':
+    if request.method == 'POST': 
         userid = request.form.get('id')
         username = request.form.get('name')
         email = request.form.get('email')
@@ -355,6 +364,8 @@ def write_file(data, filename):
     # Convert binary data to proper format and write it on Hard Disk
     with open(filename, 'wb') as file:
         file.write(data)
+
+
 
 
 @app.route("/login", methods=['GET', 'POST'])

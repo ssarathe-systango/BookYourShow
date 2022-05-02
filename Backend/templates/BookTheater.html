@@ -11,7 +11,7 @@
 
     <link rel="stylesheet" href="{{ url_for('static', filename='/CSS/adminPage.css') }}">
 
-    
+
 </head>
 
 <body>
@@ -53,24 +53,25 @@
             <div class="col-md-2">
                 <ul class="list-inline mx-auto justify-content-center">
                     <li>
-                        <a href="/SeatBooking"><label type="button"   class="text" id=${theaterBtn}
+                        <a href="/SeatBooking"><label type="button" class="text" id=${theaterBtn}
                                 style="width: 200px; height: 200px; font-size: 35px; margin-top: 20px; background-color: black; text-align: center;">
 
                                 {{k[0]}}
-                           <button type="button"   class="btn btn-success tile" style="width: 140px; height: 50px; margin-top: 60px; font-size: 25px;">
-                            {{k[4]}}
-                           </button>     
+                                <button type="button" class="btn btn-success tile"
+                                    style="width: 140px; height: 50px; margin-top: 60px; font-size: 25px;">
+                                {{k[4]}}
+                                </button>
 
                     </li>
 
-                
 
-                </label></a>
+
+                    </label></a>
 
                 </ul>
-            </div>  
+            </div>
             {% endfor %}
-        
+
         </div>
     </div>
     <!-- <script>
@@ -89,13 +90,13 @@
         ChangeColor();
     </script> -->
     <script>
-        let theaterBtn=1
-        function theaterName(){
-        let theaterName = document.getElementById('theaterBtn').innerHTML;
-        console.log(theaterName) 
+        let theaterBtn = 1
+        function theaterName() {
+            let theaterName = document.getElementById('theaterBtn').innerHTML;
+            console.log(theaterName)
         }
     </script>
-     
+
     <!------------------------------------------------------------------------------------------------------------>
 
 
