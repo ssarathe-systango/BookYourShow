@@ -57,6 +57,8 @@ def paynow():
     cur = con.cursor()
     cur.execute('insert into seatbooking values(%s)', (str1))
 
+    con.commit()
+    con.close()
     return render_template("SeatBooking.html")
 
 ########################################### Generic Page ###################################################
