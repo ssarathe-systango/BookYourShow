@@ -28,7 +28,7 @@
 
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="form3Example1cg">User Name</label>
-                                        <input type="text" name="uname" class="form-control form-control-lg" />
+                                        <input type="text" name="uname" id="uname" class="form-control form-control-lg" />
 
                                     </div>
 
@@ -49,7 +49,7 @@
 
                                     <div class="d-flex justify-content-center">
                                         <button type="submit" id="click" href="/Backend/login"
-                                            class="btn-block btn-lg gradient-custom-4 text-body registerbtn">Login </button>
+                                            class="btn-block btn-lg gradient-custom-4 text-body registerbtn" onclick="r()">Login </button>
                                     </div>
 
                                     <p class="text-center text-muted mt-5 mb-0 form-label">Not a member ? <a
@@ -66,7 +66,13 @@
             </div>
         </div>
     </section>
-   
+    <script>
+        function r(){
+        let user1 = document.getElementById('uname').value;
+        console.log(user1);
+        localStorage.setItem('username', user1);
+    }
+    </script>
 </body>
 
 </html>

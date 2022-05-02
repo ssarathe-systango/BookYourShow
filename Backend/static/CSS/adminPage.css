@@ -9,6 +9,10 @@ body {
     /* background: -webkit-linear-gradient(to right, #fcb045, #fd1d1d, #833ab4);*/
     background: linear-gradient(to right, #fcb045, #fd1d1d, #833ab4);
     background-color: lightskyblue;
+
+    /* background: #833ab4;
+    background: wheat */
+    /* background: linear-gradient(to right, #fcb045, #fd1d1d, #833ab4); */
 }
 
 .main-text {
@@ -116,4 +120,28 @@ body {
 .Dashboard {
     text-align: center;
     margin-left: 350px;
+}
+
+.container {
+    font-size: 20px;
+    user-select: none;
+    padding-top: 40px;
+    font-style: italic;
+    font-family: cursive;
+    font-weight: bold;
+
+}
+
+
+
+
+
+.body :hover {
+    color: lavenderblush;
+}
+
+
+.btnsubmit {
+    margin-left: 2%;
+    margin-left: 40%;
 }

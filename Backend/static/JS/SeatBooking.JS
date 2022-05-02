@@ -1,3 +1,5 @@
+
+   
 // function BookingInfo() {
 
 // }
@@ -43,7 +45,7 @@
  const db = getDatabase();
  let show = localStorage.getItem("ShowTime");
 let theater = localStorage.getItem("TheaterName");
-let moviename = localStorage.getItem("MovieName");
+let rec_movie_1 = localStorage.getItem("MovieName");
 let totalprice = localStorage.getItem("totalPrice");
 let seatselected = localStorage.getItem("seatSelected");
 let username = localStorage.getItem("user_name");
@@ -94,15 +96,16 @@ window.ChangeColor = function (id) {
 }
 
 
-// console.log(show);
-// console.log(theater);
-// document.getElementById("display").innerText += " for " + show + " " + theater + "\n" + "Movie: " + moviename;
+//  const payBtn = document.getElementById('payBtn');
 
-//  let token = localStorage.getItem('token')
 //  function selectedSeats() {
 //    let seatVal = localStorage.getItem('SeatArray')
-   
-//      set(ref(db, 'SelectedSeats/'+ seatVal ), {
+//    let username = localStorage.getItem("username");
+//    console.log(seatVal);
+//    console.log(username);
+
+
+//      set(ref(db, 'SelectedSeats/'+ username ), {
       
 //         seat: seatVal
         
@@ -119,5 +122,3 @@ window.ChangeColor = function (id) {
 
 
 //         payBtn.addEventListener('click',selectedSeats );
-
-

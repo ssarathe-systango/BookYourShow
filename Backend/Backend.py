@@ -31,7 +31,14 @@ def homepage():
 
 @app.route("/seatbooking", methods=["GET"])
 def SeatBooking():
-    return render_template("SeatBooking.html", enumerate=enumerate)
+
+    con = pymysql.connect(
+        host='localhost', user='root', password='', database='bookyourshow')
+    cur = con.cursor()
+    cur.execute('select theatername from theaterinfo')
+    rows = cur.fetchone()
+    return render_template("SeatBooking.html" , enumerate = enumerate,rows=rows)
+
 
 
 @app.route("/paynow", methods=["POST", "GET"])
@@ -49,9 +56,6 @@ def paynow():
         host='localhost', user='root', password='', database='bookyourshow')
     cur = con.cursor()
     cur.execute('insert into seatbooking values(%s)', (str1))
-
-    con.commit()
-    con.close()
 
     return render_template("SeatBooking.html")
 
@@ -106,6 +110,9 @@ def BookTheater():
 
 @app.route("/SeatSelecting", methods=["GET"])
 def SeatSelecting():
+    
+    # print(rows)
+
     return render_template("SeatSelecting.html")
 
 ###############################################################################################################

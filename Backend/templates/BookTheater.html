@@ -11,34 +11,7 @@
 
     <link rel="stylesheet" href="{{ url_for('static', filename='/CSS/adminPage.css') }}">
 
-    <style>
-        .container {
-            font-size: 20px;
-            user-select: none;
-            padding-top: 40px;
-            font-style: italic;
-            font-family: cursive;
-            font-weight: bold;
 
-        }
-
-
-
-
-        .body {
-            background-color: rgb(94, 94, 94);
-        }
-
-        .body :hover {
-            color: lavenderblush;
-        }
-
-
-        .btnsubmit {
-            margin-left: 2%;
-            margin-left: 40%;
-        }
-    </style>
 </head>
 
 <body>
@@ -77,23 +50,27 @@
     <div class="container">
         <div class="row">
             {% for k in rows%}
-            <div class="col">
+            <div class="col-md-2">
                 <ul class="list-inline mx-auto justify-content-center">
                     <li>
-                        <a href="/seatbooking"><button type="button"   class="btn btn-danger tile" id="tile"
-                                style="width: 200px; height: 200px; font-size: 35px; text-align: center;">
+
+                        <a href="/seatbooking"><label type="button" class="text" id=${theaterBtn}
+                                style="width: 200px; height: 200px; font-size: 35px; margin-top: 20px; background-color: black; text-align: center;">
 
                                 {{k[0]}}
+                                <button type="button" class="btn btn-success tile"
+                                    style="width: 140px; height: 50px; margin-top: 60px; font-size: 25px;">
+                                    {{k[4]}}
+                                </button>
 
                     </li>
 
-
-
-                    </button></a>
+                    </label></a>
 
                 </ul>
-            </div>  
+            </div>
             {% endfor %}
+
         </div>
     </div>
     <!-- <script>
@@ -111,7 +88,14 @@
         };
         ChangeColor();
     </script> -->
-     
+    <script>
+        let theaterBtn = 1
+        function theaterName() {
+            let theaterName = document.getElementById('theaterBtn').innerHTML;
+            console.log(theaterName)
+        }
+    </script>
+
     <!------------------------------------------------------------------------------------------------------------>
 
 
