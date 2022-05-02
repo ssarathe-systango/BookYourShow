@@ -39,17 +39,17 @@
                 </ul> -->
             </div>
 
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
+
+            <div class="text" id="userName" placeholder="12323">bhgn </div>
+
+
 
             <a href="/"><button type="button" class="btn btn-light  signin">Log Out</button></a>
         </div>
     </nav>
 
     <!--header-->
-    
+
     <div class="banner">
         <div class="banner_contents">
             <h1 class="banner_title">IPL 2022 Is Live</h1>
@@ -72,14 +72,14 @@
             {%for j,i in enumerate(result)%}
 
             <a href="/test/{{result[j][1]}}"><img alt="" class="row_poster row_posterLarge m-2"
-                src="static/uploading/{{j+num}}.jpg"></a>
+                    src="static/uploading/{{j+num}}.jpg"></a>
 
             {%endfor%}
         </div>
     </div>
-            <!-- <button class="btn btn-light  Book_Now_Button">Book Now</button> -->
+    <!-- <button class="btn btn-light  Book_Now_Button">Book Now</button> -->
 
-            <!-- rec_movie_2
+    <!-- rec_movie_2
             <img onclick="window.location.href='/rec_movie_2' " alt="" class="row_poster row_posterLarge"
                 src="">
 
@@ -103,15 +103,15 @@
             <img onclick="window.location.href='/rec_movie_7' " alt="" class="row_poster row_posterLarge"
                 src=""> -->
 
-            <!-- <img src="/Images/img1.jpg" alt="" class="row_poster row_posterLarge">
+    <!-- <img src="/Images/img1.jpg" alt="" class="row_poster row_posterLarge">
             <img src="/Images/img2.jpg" alt="" class="row_poster row_posterLarge">
             <img src="/Images/img3.jpg" alt="" class="row_poster row_posterLarge">
             <img src="/Images/img4.jpg" alt="" class="row_poster row_posterLarge">
             <img src="/Images/img5.jpg" alt="" class="row_poster row_posterLarge">
             <img src="/Images/img6.jpg" alt="" class="row_poster row_posterLarge">
             <img src="/Images/img7.jpg" alt="" class="row_poster row_posterLarge"> -->
-   
-    
+
+
 
     <!--Trending Now-->
     <div class="row">
@@ -158,5 +158,20 @@
     </div>
 
 </body>
+<script>
+    // let name = document.getElementById('userName');
+    function getName() {
+        return localStorage.getItem("username");
+    }
+
+    var name = getName();
+
+    document.getElementById("userName").innerHTML = name;
+
+
+//    let username = localStorage.getItem("username");
+
+
+</script>
 
 </html>

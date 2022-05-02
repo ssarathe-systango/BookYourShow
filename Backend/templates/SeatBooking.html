@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" /> 
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Movie Seat Booking</title>
@@ -10,117 +10,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='/CSS/SeatBooking.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
 
-    <style>
-        .inputGroup {
-            background-color: #fff;
-            display: block;
-            margin: 10px 0;
-            position: relative;
-        }
-
-        .inputGroup label {
-            padding: 12px 30px;
-            width: 100%;
-            display: block;
-            text-align: left;
-            color: #3c454c;
-            cursor: pointer;
-            position: relative;
-            z-index: 2;
-            transition: color 200ms ease-in;
-            overflow: hidden;
-        }
-
-        .inputGroup label:before {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            content: "";
-            background-color: #5562eb;
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%) scale3d(1, 1, 1);
-            transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
-            opacity: 0;
-            z-index: -1;
-        }
-
-        .inputGroup label:after {
-            width: 32px;
-            height: 32px;
-            content: "";
-            border: 2px solid #d1d7dc;
-            background-color: #fff;
-            background-image: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.414 11L4 12.414l5.414 5.414L20.828 6.414 19.414 5l-10 10z' fill='%23fff' fill-rule='nonzero'/%3E%3C/svg%3E ");
-            background-repeat: no-repeat;
-            background-position: 2px 3px;
-            border-radius: 50%;
-            z-index: 2;
-            position: absolute;
-            right: -34px;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-            transition: all 200ms ease-in;
-        }
-
-        .inputGroup input:checked~label {
-            color: #fff;
-        }
-
-        .inputGroup input:checked~label:before {
-            transform: translate(-50%, -50%) scale3d(56, 56, 1);
-            opacity: 1;
-        }
-
-        .inputGroup input:checked~label:after {
-            background-color: #54e0c7;
-            border-color: #54e0c7;
-        }
-
-        .inputGroup input {
-            width: 32px;
-            height: 32px;
-            order: 1;
-            z-index: 2;
-            position: absolute;
-            right: 30px;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-            visibility: hidden;
-        }
-
-        .form {
-            padding: 0 16px;
-            max-width: 550px;
-            margin: 50px auto;
-            font-size: 18px;
-            font-weight: 600;
-            line-height: 36px;
-        }
-
-        body {
-            background-color: #d1d7dc;
-            font-family: "Fira Sans", sans-serif;
-        }
-
-        *,
-        *::before,
-        *::after {
-            box-sizing: inherit;
-        }
-
-        html {
-            box-sizing: border-box;
-        }
-
-        code {
-            background-color: #9aa3ac;
-            padding: 0 8px;
-        }
-    </style>
+    
 </head>
 
 <body>
@@ -167,9 +57,17 @@
 
     <form action="/paynow" method="POST">
 
-    <div class="container">
-        <div class="screen" id="display">BookYourShow</div>
+        <div class="container">
 
+            <div class="screen" id="display">BookYourShow </br>
+
+            {% for k in rows%}
+
+               {{k}}
+            
+            {% endfor %}
+        </div>
+       
 
             <div class="row">
                 {%for i in range(0, 8)%}
@@ -179,7 +77,7 @@
 
 
                 <div class="inputGroup">
-                    <input id="option1{{i+1}}" name="seat1{{i+1}}" type="checkbox" value = "A{{i+1}}"/>
+                    <input id="option1{{i+1}}" name="seat1{{i+1}}" type="checkbox" value="A{{i+1}}" />
                     <label for="option1{{i+1}}">A{{i+1}}</label>
                 </div> &emsp;
                 {%endfor%}
@@ -192,7 +90,7 @@
                 <!-- <input type="checkbox" id="seat6" name="seat6" class="seat" onclick="ChangeColor('seat6')" value="B{{i+1}}">-->
 
                 <div class="inputGroup">
-                    <input id="option2{{i+1}}" name="seat2{{i+1}}" type="checkbox" value = "B{{i+1}}"/>
+                    <input id="option2{{i+1}}" name="seat2{{i+1}}" type="checkbox" value="B{{i+1}}" />
                     <label for="option2{{i+1}}">B{{i+1}}</label>
                 </div> &emsp;
 
@@ -206,7 +104,7 @@
 
 
                 <div class="inputGroup">
-                    <input id="option3{{i+1}}" name="seat3{{i+1}}" type="checkbox" value = "C{{i+1}}"/>
+                    <input id="option3{{i+1}}" name="seat3{{i+1}}" type="checkbox" value="C{{i+1}}" />
                     <label for="option3{{i+1}}">C{{i+1}}</label>
                 </div> &emsp;
 
@@ -222,7 +120,7 @@
                     onclick="ChangeColor('seat18')">D{{i+1}}</button> </a> -->
 
                 <div class="inputGroup">
-                    <input id="option4{{i+1}}" name="seat4{{i+1}}" type="checkbox" value = "D{{i+1}}"/>
+                    <input id="option4{{i+1}}" name="seat4{{i+1}}" type="checkbox" value="D{{i+1}}" />
                     <label for="option4{{i+1}}">D{{i+1}}</label>
                 </div> &emsp;
 
@@ -235,7 +133,7 @@
                 <!-- <button id="seat29" name="seat29" class="seat" onclick="ChangeColor('seat29')">E{{i+1}}</button> -->
 
                 <div class="inputGroup">
-                    <input id="option5{{i+1}}" name="seat5{{i+1}}" type="checkbox" value = "E{{i+1}}"/>
+                    <input id="option5{{i+1}}" name="seat5{{i+1}}" type="checkbox" value="E{{i+1}}" />
                     <label for="option5{{i+1}}">E{{i+1}}</label>
                 </div> &emsp;
 
@@ -247,44 +145,36 @@
 
                 <!-- <button id="seat35" name="seat35" class="seat" onclick="ChangeColor('seat35')">F{{i+1}}</button> -->
                 <div class="inputGroup">
-                    <input id="option6{{i+1}}" name="seat6{{i+1}}" type="checkbox" value = "F{{i+1}}"/>
+                    <input id="option6{{i+1}}" name="seat6{{i+1}}" type="checkbox" value="F{{i+1}}" />
                     <label for="option6{{i+1}}">F{{i+1}}</label>
                 </div> &emsp;
 
                 {%endfor%}
 
-               
-    </div>
-    </div>
 
-    <br><br><br>
+            </div>
+        </div>
 
-    <div class="col-sm d-flex justify-content-center">
-        <button type="submit" class="btn-paynow" id="paynow">
-            Paynow
-        </button>
-    </div>
-</form>
+        <br><br><br>
 
-    <!-- <p class="text" style="font-size: 1em;margin:0px 0px 15px 0px">
-        You have selected <span id="count">0</span> s
-        eats for a price of $<span id="total">0</span>
-    </p> -->
-
-    <div class="row">
-        <div class="col-sm d-flex justify-content-center">
+        <div style="display: flex; justify-content: center; ">
             <a href="/">
-                <button class="btn-home">
+                <button class="btn-home" id="homeBtn">
                     Home
                 </button>
             </a>
+            <button class=" btn-paynow  " id="payBtn">
+                Paynow
+            </button>
+            
         </div>
-    </div>
+    </form>
 
+  
     <script type="module" src="{{ url_for('static', filename='/JS/SeatBooking.js') }}">
-        localStorage.setItem("token", "{{token}}");
+
     </script>
-   
+
 </body>
 
 </html>
