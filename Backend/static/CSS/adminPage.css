@@ -155,3 +155,6 @@ body {
     margin-left: 2%;
     margin-left: 40%;
 }
+.modal-cancel-btn {
+    z-index: 1000;
+}

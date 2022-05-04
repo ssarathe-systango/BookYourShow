@@ -1,6 +1,6 @@
 
 document.getElementById('addMovie').onclick = () => showModal('Add Movie', '',
-  'Cancel', 'Save Changes', () => {
+  'Close', 'Save Changes', () => {
   console.log('Changes saved');
 });
 
@@ -11,7 +11,7 @@ document.getElementById('addMovie').onclick = () => showModal('Add Movie', '',
 // });
 
 document.getElementById('addTheater').onclick = () => addTheaterShowModal('Add Theater',
-  'Hello', 'Cancel', 'Save Changes', () => {
+  'Hello', 'Close', 'Save Changes', () => {
   console.log('Changes saved');
 });
 

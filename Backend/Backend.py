@@ -113,7 +113,7 @@ def BookTheater(movieID):
         host='localhost', user='root', password='', database='bookyourshow', port=3307)
     cur = con.cursor()
     
-    cur.execute('select theaterinfo.* from movieinfo INNER JOIN theaterinfo ON theaterinfo.movieid =  movieinfo.movieid where movieinfo.movieid=%s',movieID)
+    cur.execute('select theaterinfo.* from movieinfo INNER JOIN theaterinfo ON theaterinfo.movieid  =  movieinfo.movieid where movieinfo.movieid=%s',movieID)
     rows = cur.fetchall()
 
     # print(rows)
