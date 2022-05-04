@@ -52,10 +52,6 @@ body {
     padding: 50px;
 }
 
-/* removing scroll bar */
-.row_posters::-webkit-scrollbar {
-    /* display: none; */
-}
 
 
 
@@ -72,16 +68,19 @@ body {
     border: 10px solid transparent;
 }
 
-.banner_contents {
-    margin-left: 30px;
-    padding-top: 140px;
-    height: 190px
+.carousel-caption {
+    margin-right: 50%;
+    /* padding-top: 50px; */
+    height: 150px;
+    color: #fff;
+
 }
 
 .banner_title {
-    font-size: 3rem;
-    font-weight: 800;
+    font-size: 2.7rem;
+    font-weight: 700;
     padding-bottom: 0.3rem;
+   
 }
 
 /* .banner_description {
@@ -150,7 +149,7 @@ body {
     color: white;
     /* background: black; */
     opacity: 65%;
-    margin-left: 50px;
+    margin-left: 10px;
     user-select: none;
 }
 
@@ -192,7 +191,7 @@ body {
 }
 
 .carousel-item {
-    height: 500px;
+    height: 435px;
     width: 100%;
 }
 
@@ -200,6 +199,16 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    height: 500px;
+    height: 435px;
     width: 100%;
+}
+.heading{
+    font-family: cursive;
+    font-weight: 900;
+    font-size: 45px;
+    color: white;
+    /* background: black; */
+    opacity: 65%;
+    margin-right: 40%;
+    user-select: none;
 }
