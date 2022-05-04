@@ -255,3 +255,19 @@ code {
     padding: 0 8px;
 }
 
+
+.inputGroup2 {
+    padding: .6em 2em;
+    border-radius: 10px;
+    font-size: 1.2em;
+    font-weight: 600;
+    width: 32px;
+    height: 32px;
+    background-color: blue;
+    display: block;
+    margin: 10px 0;
+    position: relative;
+    width: 32px;
+    height: 32px;
+
+}

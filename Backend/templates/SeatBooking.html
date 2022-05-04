@@ -10,10 +10,24 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='/CSS/SeatBooking.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
 
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 </head>
 
 <body>
+    <script>
+        // $.ajax({
+        //     method: "POST",
+        //     url: "/paynow",
+        //     data: {
+        //         "userId": userId
+        //     }
+        // })
+        //     .done(function (response) {
+
+        //     });
+    </script>
 
     <div>
         <img class="main-logo" src="{{ url_for('static', filename='/Images/img1.jpg') }}" />
@@ -44,30 +58,31 @@
         </li> -->
     </ul>
 
-    <form action="/paynow" method="POST">
+    <form action="seatbooking/paynow" method="POST">
 
         <div class="container">
-            
+
             <div class="screen" id="display">BookYourShow </br>
-<!-- 
-                {% for k in rows%}
 
-                {{k}}
-
-                {% endfor %} -->
             </div>
 
             <div class="row">
                 {%for i in range(0, 8)%}
-                <!-- <h1>{{i}}</h1> -->
-                <!-- <button id="seat1" name="seat1" class="seat" data-price="50"
-                onclick="ChangeColor('seat1')">A{{i+1}}</button> -->
+
+                {% if 'A'+str(i+1) in totalBookedSeats%}
+                <div class="inputGroup2">
+                    <input id="option1{{i+1}}" name="seat1{{i+1}}" type="checkbox" value="A{{i+1}}" />
+                    <label for="option1{{i+1}}">A{{i+1}}</label>
+                </div> &emsp;
+                {%else%}
 
 
                 <div class="inputGroup">
                     <input id="option1{{i+1}}" name="seat1{{i+1}}" type="checkbox" value="A{{i+1}}" />
                     <label for="option1{{i+1}}">A{{i+1}}</label>
                 </div> &emsp;
+
+                {%endif%}
                 {%endfor%}
 
             </div>
@@ -75,49 +90,68 @@
             <div class="row">
                 {%for i in range(0, 8)%}
 
-                <!-- <input type="checkbox" id="seat6" name="seat6" class="seat" onclick="ChangeColor('seat6')" value="B{{i+1}}">-->
+                {% if 'B'+str(i+1) in totalBookedSeats%}
+                <div class="inputGroup2">
+                    <input id="option1{{i+1}}" name="seat1{{i+1}}" type="checkbox" value="A{{i+1}}" />
+                    <label for="option1{{i+1}}">B{{i+1}}</label>
+                </div> &emsp;
+                {%else%}
 
                 <div class="inputGroup">
                     <input id="option2{{i+1}}" name="seat2{{i+1}}" type="checkbox" value="B{{i+1}}" />
                     <label for="option2{{i+1}}">B{{i+1}}</label>
                 </div> &emsp;
-
+                {%endif%}
                 {%endfor%}
 
             </div>
             <div class="row">
                 {%for i in range(0, 8)%}
 
-                <!-- <button id="seat12" name="seat12" class="seat" onclick="ChangeColor('seat12')">C{{i+1}}</button> -->
-
+                {% if 'C'+str(i+1) in totalBookedSeats%}
+                <div class="inputGroup2">
+                    <input id="option1{{i+1}}" name="seat1{{i+1}}" type="checkbox" value="A{{i+1}}" />
+                    <label for="option1{{i+1}}">C{{i+1}}</label>
+                </div> &emsp;
+                {%else%}
 
                 <div class="inputGroup">
                     <input id="option3{{i+1}}" name="seat3{{i+1}}" type="checkbox" value="C{{i+1}}" />
                     <label for="option3{{i+1}}">C{{i+1}}</label>
                 </div> &emsp;
 
-
-                <!-- <div id="seat" name="seat" class="seat occupied">C7</div> -->
+                {%endif%}
                 {%endfor%}
 
             </div>
             <div class="row">
                 {%for i in range(0, 8)%}
 
-                <!-- <a href="{{i+1}}"> <button id="seat18" name="seat18" class="seat"
-                    onclick="ChangeColor('seat18')">D{{i+1}}</button> </a> -->
+                {% if 'D'+str(i+1) in totalBookedSeats%}
+                <div class="inputGroup2">
+                    <input id="option1{{i+1}}" name="seat1{{i+1}}" type="checkbox" value="A{{i+1}}" />
+                    <label for="option1{{i+1}}">D{{i+1}}</label>
+                </div> &emsp;
+                {%else%}
 
                 <div class="inputGroup">
                     <input id="option4{{i+1}}" name="seat4{{i+1}}" type="checkbox" value="D{{i+1}}" />
                     <label for="option4{{i+1}}">D{{i+1}}</label>
                 </div> &emsp;
 
+                {%endif%}
                 {%endfor%}
 
             </div>
             <div class="row">
                 {%for i in range(0, 8)%}
 
+                {% if 'E'+str(i+1) in totalBookedSeats%}
+                <div class="inputGroup2">
+                    <input id="option1{{i+1}}" name="seat1{{i+1}}" type="checkbox" value="A{{i+1}}" />
+                    <label for="option1{{i+1}}">E{{i+1}}</label>
+                </div> &emsp;
+                {%else%}
                 <!-- <button id="seat29" name="seat29" class="seat" onclick="ChangeColor('seat29')">E{{i+1}}</button> -->
 
                 <div class="inputGroup">
@@ -125,18 +159,25 @@
                     <label for="option5{{i+1}}">E{{i+1}}</label>
                 </div> &emsp;
 
+                {%endif%}
                 {%endfor%}
 
             </div>
             <div class="row">
                 {%for i in range(0, 8)%}
 
+                {% if 'A'+str(i+1) in totalBookedSeats%}
+                <div class="inputGroup2">
+                    <input id="option1{{i+1}}" name="seat1{{i+1}}" type="checkbox" value="A{{i+1}}" />
+                    <label for="option1{{i+1}}">F{{i+1}}</label>
+                </div> &emsp;
+                {%else%}
                 <!-- <button id="seat35" name="seat35" class="seat" onclick="ChangeColor('seat35')">F{{i+1}}</button> -->
                 <div class="inputGroup">
                     <input id="option6{{i+1}}" name="seat6{{i+1}}" type="checkbox" value="F{{i+1}}" />
                     <label for="option6{{i+1}}">F{{i+1}}</label>
                 </div> &emsp;
-
+                {%endif%}
                 {%endfor%}
 
 
@@ -149,6 +190,8 @@
             <button type="submit" class="btn" id="paynow">
                 Paynow
             </button>
+            <a href="/"><button type="button" class="btn btn-light  signin">Log Out</button></a>
+
 
             <!-- <a href="../templates/home.html"><button type="button" class="btn" id="paynow">
                     Home

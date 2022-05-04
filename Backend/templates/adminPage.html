@@ -2,120 +2,120 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  </link>
 
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    </link>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <base href="/">
+  <link rel="stylesheet" href="{{ url_for('static', filename='/CSS/adminPage.css') }}">
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <base href="/">
-    <link rel="stylesheet" href="{{ url_for('static', filename='/CSS/adminPage.css') }}">
-
-    <title>Admin Page</title>
+  <title>Admin Page</title>
 
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a>
-                <img src="../static/Images/logo.png" alt="" width="100" height="40"
-                    class="d-inline-block align-text-top">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <marquee behavior="alternate" direction="left" scrollamount="18">
-                <h1 style="color: rgb(255, 255, 255); font-family: serif; margin-right: 700px;" class="Dashboard">Admin
-                </h1>
-            </marquee>
-        </div>
-    </nav>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-        crossorigin="anonymous"></script>
-    <div class='heading'>
-        <!-- <marquee behavior="alternate" direction="left" scrollamount="15">
-        </marquee> -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a>
+        <img src="../static/Images/logo1.png" alt="" width="100" height="40" class="d-inline-block align-text-top">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <marquee behavior="alternate" direction="left" scrollamount="18">
+        <h1 style="color: rgb(255, 255, 255); font-family: serif; margin-right: 700px;" class="Dashboard">Admin
+        </h1>
+      </marquee>
+      <a href="/"><button type="button" class="btn btn-light  signin">Log Out</button></a>
 
     </div>
+  </nav>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+  <div class='heading'>
+    <!-- <marquee behavior="alternate" direction="left" scrollamount="15">
+        </marquee> -->
 
-    <br>
+  </div>
 
-
-    <ul class="nav justify-content-center">
-        <li class="nav-item">
-            <a href="/"><button type="button" class="btn btn-danger text-center pad"
-                    style="width: 300px; height: 130px; font-size: 30px; font-family: serif;">Home</button></a>
-        </li>
-
-
-        <li class="nav-item">
-            <button type="button" id="addTheater" class="btn btn-danger text-center pad"
-                style="width: 300px; height: 130px;  font-size: 30px; font-family: serif;">Add Theater</button>
-        </li>
-
-
-        <li class="nav-item">
-            <button type="button" id="addMovie" class="btn btn-danger text-center pad"
-                style="width: 300px; height: 130px;  font-size: 30px; font-family: serif;">Add Movies</button>
-        </li>
+  <br>
 
 
-        <li class="nav-item">
-            <a href="/BookNowNew"><button type="button" class="btn btn-danger text-center pad"
-                    style="width: 300px; height: 130px; font-size: 30px; font-family: serif;">Show</button></a>
-        </li>
-
-        <li class="nav-item">
-            <button id="deleteMovie" type="button" class="btn btn-danger text-center pad"
-                style="width: 300px; height: 130px;  font-size: 30px; font-family: serif;">Delete Movies</button>
-        </li>
-
-        <li class="nav-item">
-            <button id="deleteTheater" type="button" class="btn btn-danger text-center pad"
-                style="width: 300px; height: 130px;  font-size: 30px; font-family: serif;">Delete Theater</button>
-        </li>
+  <ul class="nav justify-content-center">
+    <li class="nav-item">
+      <a href="/"><button type="button" class="btn btn-danger text-center pad"
+          style="width: 300px; height: 130px; font-size: 30px; font-family: serif;">Home</button></a>
+    </li>
 
 
+    <li class="nav-item">
+      <button type="button" id="addTheater" class="btn btn-danger text-center pad"
+        style="width: 300px; height: 130px;  font-size: 30px; font-family: serif;">Add Theater</button>
+    </li>
 
-    </ul>
 
-    <script>
-        var addMovieModalWrap = null;
-        var addTheaterModalWrap = null;
-        const showModal = (title, description,
-            cancelbtn = 'Close',
-            saveChangesbtn = 'Save Changes',
-            callback
-        ) => {
-            if (addMovieModalWrap !== null) {
-                addMovieModalWrap.remove();
+    <li class="nav-item">
+      <button type="button" id="addMovie" class="btn btn-danger text-center pad"
+        style="width: 300px; height: 130px;  font-size: 30px; font-family: serif;">Add Movies</button>
+    </li>
 
-            }
 
-            addMovieModalWrap = document.createElement('div');
-            addMovieModalWrap.innerHTML = `
+    <li class="nav-item">
+      <a href="/BookNowNew"><button type="button" class="btn btn-danger text-center pad"
+          style="width: 300px; height: 130px; font-size: 30px; font-family: serif;">Show</button></a>
+    </li>
+
+    <li class="nav-item">
+      <button id="deleteMovie" type="button" class="btn btn-danger text-center pad"
+        style="width: 300px; height: 130px;  font-size: 30px; font-family: serif;">Delete Movies</button>
+    </li>
+
+    <li class="nav-item">
+      <button id="deleteTheater" type="button" class="btn btn-danger text-center pad"
+        style="width: 300px; height: 130px;  font-size: 30px; font-family: serif;">Delete Theater</button>
+    </li>
+
+
+
+  </ul>
+
+  <script>
+    var addMovieModalWrap = null;
+    var addTheaterModalWrap = null;
+    const showModal = (title, description,
+      cancelbtn = 'Close',
+      saveChangesbtn = 'Save Changes',
+      callback
+    ) => {
+      if (addMovieModalWrap !== null) {
+        addMovieModalWrap.remove();
+
+      }
+
+      addMovieModalWrap = document.createElement('div');
+      addMovieModalWrap.innerHTML = `
   
     <div class="modal fade" id="movieModal" tabindex="-1" aria-labelledby="movieModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -143,7 +143,16 @@
         <input class="form_field mb-3" type="text" name="duration" id="movieDuration" placeholder="Movie Duration" autofocus="true"/>
         <input class="form_field mb-3" type="text" name="date" id="releasedate" placeholder="Release Date" autofocus="true"/>
         <input class="form_field mb-3" type="text" name="about" id="aboutMovie" placeholder="About Movie" autofocus="true"/>
+        <p style="font-family:verdana">
 
+
+        Select Theater Names:<select name="theaterId" id="theaterId" width=100 size="4" style="font-family:verdana" multiple>
+        {% for j in theater %}
+	       <option value="{{j[1]}}" > {{j[0]}} </option>
+         {% endfor %}
+         </select>
+         </p>
+  
 
         <!--<input class="form_field mb-3" type="text" name="cast" id="movieCast" placeholder="Cast" autofocus="true"/>
         <input class="form_field mb-3" type="text" name="crew" id="movieCrew" placeholder="Crew" autofocus="true"/>
@@ -159,26 +168,26 @@
     </div>
   </div>`;
 
-            // modalWrap.querySelector('.modal-saveChanges-btn').onclick = callback;
-            document.body.append(addMovieModalWrap);
+      // modalWrap.querySelector('.modal-saveChanges-btn').onclick = callback;
+      document.body.append(addMovieModalWrap);
 
-            var modal = new bootstrap.Modal(addMovieModalWrap.querySelector('.modal'));
-            modal.show();
-        }
+      var modal = new bootstrap.Modal(addMovieModalWrap.querySelector('.modal'));
+      modal.show();
+    }
 
 
-        const addTheaterShowModal = (title, description,
-            cancelbtn = 'Close',
-            saveChangesbtn = 'Save Changes',
-            callback
-        ) => {
-            // if (addTheaterModalWrap !== null) {
-            //     addTheaterModalWrapp.remove();
+    const addTheaterShowModal = (title, description,
+      cancelbtn = 'Close',
+      saveChangesbtn = 'Save Changes',
+      callback
+    ) => {
+      // if (addTheaterModalWrap !== null) {
+      //     addTheaterModalWrapp.remove();
 
-            // }
+      // }
 
-            addTheaterModalWrap = document.createElement('div');
-            addTheaterModalWrap.innerHTML = `
+      addTheaterModalWrap = document.createElement('div');
+      addTheaterModalWrap.innerHTML = `
   
     <div class="modal fade" id="movieModal" tabindex="-1" aria-labelledby="movieModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -197,7 +206,8 @@
         <input class="form_field mb-3" type="text" name="location" id="location" placeholder="Location" autofocus="true"/> </br>
         <input class="form_field mb-3" type="text" name="city" id="cityName" placeholder="City Name" autofocus="true"/> </br>
         <input class="form_field mb-3" type="text" name="showTime" id="showTime" placeholder="Show Time" autofocus="true"/> </br>
-
+        <!--<input class="form_field mb-3" type="text" name="movieid" id="movieid" placeholder="Movie Id" autofocus="true"/> </br>-->
+        
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary modal-cancel-btn" data-bs-dismiss="modal">${cancelbtn}</button>
@@ -208,28 +218,28 @@
     </div>
   </div>`;
 
-            // modalWrap.querySelector('.modal-saveChanges-btn').onclick = callback;
-            document.body.append(addTheaterModalWrap);
+      // modalWrap.querySelector('.modal-saveChanges-btn').onclick = callback;
+      document.body.append(addTheaterModalWrap);
 
-            var modal = new bootstrap.Modal(addTheaterModalWrap.querySelector('.modal'));
-            modal.show();
-        }
+      var modal = new bootstrap.Modal(addTheaterModalWrap.querySelector('.modal'));
+      modal.show();
+    }
 
 
-        //------------------------------------------------------------------DELETE MODAL--------------------------------------------------------------
+    //------------------------------------------------------------------DELETE MODAL--------------------------------------------------------------
 
-        const deleteMovieModal = (title, description,
-            cancelbtn = 'Close',
-            deleteChangesbtn = 'Delete',
-            callback
-        ) => {
-            // if (addTheaterModalWrap !== null) {
-            //     addTheaterModalWrapp.remove();
+    const deleteMovieModal = (title, description,
+      cancelbtn = 'Close',
+      deleteChangesbtn = 'Delete',
+      callback
+    ) => {
+      // if (addTheaterModalWrap !== null) {
+      //     addTheaterModalWrapp.remove();
 
-            // }
+      // }
 
-            addTheaterModalWrap = document.createElement('div');
-            addTheaterModalWrap.innerHTML = `
+      addTheaterModalWrap = document.createElement('div');
+      addTheaterModalWrap.innerHTML = `
   
     <div class="modal fade" id="movieModal" tabindex="-1" aria-labelledby="movieModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -257,27 +267,27 @@
     </div>
   </div>`;
 
-            // modalWrap.querySelector('.modal-saveChanges-btn').onclick = callback;
-            document.body.append(addTheaterModalWrap);
+      // modalWrap.querySelector('.modal-saveChanges-btn').onclick = callback;
+      document.body.append(addTheaterModalWrap);
 
-            var modal = new bootstrap.Modal(addTheaterModalWrap.querySelector('.modal'));
-            modal.show();
-        }
+      var modal = new bootstrap.Modal(addTheaterModalWrap.querySelector('.modal'));
+      modal.show();
+    }
 
-        //********************************************************************************************************************//
+    //********************************************************************************************************************//
 
-        const deleteTheaterModal = (title, description,
-            cancelbtn = 'Close',
-            deleteChangesbtn = 'Delete',
-            callback
-        ) => {
-            // if (addTheaterModalWrap !== null) {
-            //     addTheaterModalWrapp.remove();
+    const deleteTheaterModal = (title, description,
+      cancelbtn = 'Close',
+      deleteChangesbtn = 'Delete',
+      callback
+    ) => {
+      // if (addTheaterModalWrap !== null) {
+      //     addTheaterModalWrapp.remove();
 
-            // }
+      // }
 
-            addTheaterModalWrap = document.createElement('div');
-            addTheaterModalWrap.innerHTML = `
+      addTheaterModalWrap = document.createElement('div');
+      addTheaterModalWrap.innerHTML = `
   
     <div class="modal fade" id="movieModal" tabindex="-1" aria-labelledby="movieModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -305,22 +315,22 @@
     </div>
   </div>`;
 
-            // modalWrap.querySelector('.modal-saveChanges-btn').onclick = callback;
-            document.body.append(addTheaterModalWrap);
+      // modalWrap.querySelector('.modal-saveChanges-btn').onclick = callback;
+      document.body.append(addTheaterModalWrap);
 
-            var modal = new bootstrap.Modal(addTheaterModalWrap.querySelector('.modal'));
-            modal.show();
-        }
-
-
-
-    </script>
-
-    <script src="{{ url_for('static', filename='/JS/adminPageScript.js') }}"></script>
+      var modal = new bootstrap.Modal(addTheaterModalWrap.querySelector('.modal'));
+      modal.show();
+    }
 
 
 
-    </script>
+  </script>
+
+  <script src="{{ url_for('static', filename='/JS/adminPageScript.js') }}"></script>
+
+
+
+  </script>
 </body>
 
 </html>
