@@ -38,7 +38,6 @@
 
 
 
-
  import { getDatabase, set, ref, child, get, onValue }
      from "https://www.gstatic.com/firebasejs/9.6.11/firebase-database.js";
 
@@ -119,6 +118,5 @@ window.ChangeColor = function (id) {
 //          })
          
 //  }
-
 
 //         payBtn.addEventListener('click',selectedSeats );

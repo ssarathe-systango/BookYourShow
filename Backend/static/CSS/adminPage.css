@@ -1,14 +1,10 @@
 body {
 
     font-family: Arial, Helvetica, sans-serif;
-    background-color: white;
     /* background-image: url("../static/Images/ipl1.webp"); */
     background-size: cover;
     background-attachment: fixed;
-    /* font-family: arial; */
-    background: #833ab4;
-    background: wheat
-    /* background: linear-gradient(to right, #fcb045, #fd1d1d, #833ab4); */
+    background-color: black;
 }
 
 .main-text {
@@ -32,10 +28,7 @@ body {
 
 .modal-content {
 
-
-
     max-height: 900px;
-
 
 }
 
@@ -93,7 +86,11 @@ body {
 .pad {
     margin: 30px;
     margin-top: 150px;
+    transform: scale(1.0);
+    background-color: black;
+
 }
+
 
 
 .heading {
@@ -108,24 +105,6 @@ body {
     animation-timing-function: linear;
 }
 
-
-@keyframes sample {
-    0% {
-        color: rgb(0, 0, 0);
-    }
-
-    25% {
-        color: rgb(19, 1, 59);
-    }
-
-    50% {
-        color: rgb(0, 41, 75);
-    }
-
-    100% {
-        color: crimson;
-    }
-}
 
 .Dashboard {
     text-align: center;
@@ -142,6 +121,16 @@ body {
 
 }
 
+.maintext {
+    font-family: cursive;
+    font-weight: 900;
+    font-size: 45px;
+    color: white;
+    /* background: black; */
+    opacity: 65%;
+    margin-right: 40%;
+    user-select: none;
+}
 
 
 
@@ -157,4 +146,7 @@ body {
 }
 .modal-cancel-btn {
     z-index: 1000;
+}
+#logoutBtn{
+    margin-right: 20px;
 }

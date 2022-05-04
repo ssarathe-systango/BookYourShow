@@ -19,14 +19,14 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a>
-                <img src="../static/Images/logo.png" alt="" width="150" height="68"
+                <img src="{{ url_for('static', filename='/Images/logo1.png') }}" alt="" class="nav_logo">
                     class="d-inline-block align-text-top">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <h1 style="color: white; margin-right: 700px; font-family: cursive;" class="Dashboard">Book Theater</h1>
+            <div class="maintext">Book Theater</div>
 
         </div>
     </nav>
@@ -40,31 +40,29 @@
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
     <div class='heading'>
-        <marquee behavior="alternate" direction="left" scrollamount="15">
+        <!-- <marquee behavior="alternate" direction="left" scrollamount="15">
             <h1>Book Your Show</h1>
-        </marquee>
+        </marquee> -->
     </div>
     <br>
     <!------------------------------------------------------------------------------------------------------------>
 
-    <div class="container">
+    <!-- <div class="container"> -->
         <div class="row">
-            {% for k in rows%}
+            {% for k in theaters %}
             <div class="col-md-2">
                 <ul class="list-inline mx-auto justify-content-center">
                     <li>
-                        <a href="/SeatBooking"><label type="button" class="text" id=${theaterBtn}
-                                style="width: 200px; height: 200px; font-size: 35px; margin-top: 20px; background-color: black; text-align: center;">
 
+                        <a href="/test/{{movieID}}/booktheater/{{k[1]}}/seatbooking"><label type="button" class="text" id=${theaterBtn}
+                                style="width: 200px; height: 200px; font-size: 35px; margin-top: 20px; background-color: rgb(118, 230, 131); text-align: center;">
                                 {{k[0]}}
                                 <button type="button" class="btn btn-success tile"
                                     style="width: 140px; height: 50px; margin-top: 60px; font-size: 25px;">
-                                {{k[4]}}
+                                    {{k[4]}}
                                 </button>
 
                     </li>
-
-
 
                     </label></a>
 
@@ -73,7 +71,7 @@
             {% endfor %}
 
         </div>
-    </div>
+    <!-- </div> -->
     <!-- <script>
         const colors = ["green", "blue", "red", "yellow", "orange", "pink", "purple"];
         const button = document.getElementsByTagName("button")[0];

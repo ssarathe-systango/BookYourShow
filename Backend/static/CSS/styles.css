@@ -4,7 +4,7 @@
 body {
 
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #111;
+    background-color: black;
 }
 
 .row {
@@ -14,6 +14,11 @@ body {
     user-select: none;
 
 }
+
+/* .row::-webkit-scrollbar {
+    /* display: none; */
+/* }  */
+
 
 .row_poster {
 
@@ -49,7 +54,7 @@ body {
 
 /* removing scroll bar */
 .row_posters::-webkit-scrollbar {
-    display: none;
+    /* display: none; */
 }
 
 
@@ -177,9 +182,24 @@ body {
 .Book_Now_Button {
     width: 100px;
 }
-#userName{
+
+#userName {
     margin-top: 10px;
 }
-.btn-ligt{
+
+.btn-ligt {
     margin-top: 10px;
+}
+
+.carousel-item {
+    height: 500px;
+    width: 100%;
+}
+
+.itemImg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 500px;
+    width: 100%;
 }
