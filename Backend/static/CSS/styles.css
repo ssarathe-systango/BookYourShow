@@ -1,10 +1,13 @@
 /* box-sizing: border-box; */
 
 
-body {
-
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: black;
+@media screen and (min-width: 480px) {
+    body {
+        background-color: black;
+        font-family: Arial, Helvetica, sans-serif;
+        background-size: cover;
+        background-attachment: fixed;
+    }
 }
 
 .row {
@@ -160,7 +163,7 @@ body {
     color: white;
     /* background: black; */
     opacity: 65%;
-    margin-left: 10px;
+    margin-right: 50%;
     user-select: none;
 }
 
@@ -216,3 +219,16 @@ body {
     margin-right: 40%;
     user-select: none;
 }
+.d-flex{
+    
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    
+    margin-top: 40px;
+    background-color: white;
+    text-align: center;
+ }
+ .footer{
+     background-color: #867e7e;
+ }
