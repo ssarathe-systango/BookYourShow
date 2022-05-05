@@ -21,7 +21,9 @@
     crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <base href="/">
+  <link rel="stylesheet" href="{{ url_for('static', filename='/CSS/startingPage.css')}}">
   <link rel="stylesheet" href="{{ url_for('static', filename='/CSS/adminPage.css') }}">
+
 
   <title>Admin Page</title>
 
@@ -41,7 +43,8 @@
         <h1 style="color: rgb(255, 255, 255); font-family: serif; margin-right: 700px;" class="Dashboard">Admin
         </h1>
       </marquee>
-      <a href="/"><button type="button" class="btn btn-light  signin">Log Out</button></a>
+      <a href="/"><button type="button" class="btn btn-danger ">Log Out</button></a>
+
 
     </div>
   </nav>

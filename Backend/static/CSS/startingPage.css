@@ -1,24 +1,25 @@
-body {
-    background-color: black;
-}
+@media screen and (min-width: 480px) {
+    body {
+        background-color: black;
+    }
 
-#heading {
-    margin-left: 650px;
-    margin-top: 20px;
-    color: aliceblue;
-}
+    #heading {
+        /* margin-left: 650px; */
+        /* margin-top: 20px; */
+        font-family: cursive;
+        color: aliceblue;
 
-#signIn {
-    color: aliceblue;
-    font-size: larger;
-}
+    }
 
-.adminbtn {
+    #signIn {
+        color: aliceblue;
+        font-size: larger;
+    }
+
+    /* .adminbtn {
     width: 500px;
     transform: scale(1.20);
     color: white;
-    
-
 }
 
 .adminbtn:hover {
@@ -47,4 +48,4 @@ body {
     background-color: green;
     transform: scale(1.20);
 
-}
+} */

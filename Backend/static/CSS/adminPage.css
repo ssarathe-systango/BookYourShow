@@ -1,10 +1,11 @@
-body {
 
-    font-family: Arial, Helvetica, sans-serif;
-    /* background-image: url("../static/Images/ipl1.webp"); */
-    background-size: cover;
-    background-attachment: fixed;
-    background-color: black;
+@media screen and (min-width: 480px) {
+    body {
+        background-color: black;
+        font-family: Arial, Helvetica, sans-serif;
+        background-size: cover;
+        background-attachment: fixed;
+    }
 }
 
 .main-text {
@@ -88,7 +89,6 @@ body {
     margin-top: 150px;
     transform: scale(1.0);
     background-color: black;
-
 }
 
 
@@ -120,9 +120,6 @@ body {
     font-weight: bold;
 
 }
-
-
-
 
 
 .body :hover {

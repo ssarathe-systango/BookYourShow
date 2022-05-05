@@ -10,39 +10,39 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-    <!-- <link rel="stylesheet" href="/CSS/startingPage.css"> -->
+    
     <link rel="stylesheet" href="{{ url_for('static', filename='/CSS/startingPage.css')}}">
     <link rel="stylesheet" href="{{ url_for('static', filename='/CSS/adminPage.css') }}">
     <title>Start Page</title>
 </head>
 
 <body>
-    <div id="heading">
+    <div id="heading" class="text-center mt-5 mb-5">
         <h1>Book Your Show</h1>
     </div>
 
 
-    <ul class="nav justify-content-center">
-        <li class="nav-item">
-            <a href="/registration"><button type="button" class="btn btn-primary text-center pad "
+    <ul class="nav justify-content-center mt-5">
+        <li class="nav-item mt-5">
+            <a href="/registration"><button type="button" class="btn btn-primary text-center pad m-3"
                     style="width: 300px; height: 200px; font-size: 30px;">Register as User</button></a>
         </li>
 
 
-        <li class="nav-item">
-            <a href="/adminregistration"><button type="button" class="btn btn-primary text-center pad "
+        <li class="nav-item mt-5">
+            <a href="/adminregistration"><button type="button" class="btn btn-primary text-center pad m-3 "
                     style="width: 300px; height: 200px; font-size: 30px;">Register as Admin</button></a>
         </li>
 
 
-        <li class="nav-item">
-            <a href="/login"><button type="button" class="btn btn-primary text-center pad "
+        <li class="nav-item mt-5">
+            <a href="/login"><button type="button" class="btn btn-primary text-center pad m-3"
                     style="width: 300px; height: 200px; font-size: 30px;">Login as User</button></a>
         </li>
 
 
-        <li class="nav-item">
-            <a href="/Adminlogin"><button type="button" class="btn btn-primary text-center pad "
+        <li class="nav-item mt-5">
+            <a href="/Adminlogin"><button type="button" class="btn btn-primary text-center pad m-3"
                     style="width: 300px; height: 200px;  font-size: 30px;">Login as Admin</button></a>
         </li>
 
