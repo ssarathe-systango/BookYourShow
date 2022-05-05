@@ -63,7 +63,13 @@
         <div class="container">
 
             <div class="screen" id="display">BookYourShow </br>
+                
+                {% for k in rows%}
 
+                {{k[0]}}
+             
+             {% endfor %}
+            
             </div>
 
             <div class="row">
@@ -203,7 +209,13 @@
 
     <script type="module" src="{{ url_for('static', filename='/JS/SeatBooking.js') }}">
 
-    </script>
+    </script>       <li>
+            <div id="seat" class="seat occupied"></div>
+            <small class="status" style="font-size: 2em;">Occupied</small>
+        </li>
+    </ul>
+
+  
 
 </body>
 

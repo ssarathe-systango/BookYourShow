@@ -33,7 +33,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
       <a>
-        <img src="../static/Images/logo1.png" alt="" width="100" height="40" class="d-inline-block align-text-top">
+        <img src="../static/Images/logo1.png" alt="" width="200" height="80" class="d-inline-block align-text-top">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -108,7 +108,7 @@
     var addMovieModalWrap = null;
     var addTheaterModalWrap = null;
     const showModal = (title, description,
-      cancelbtn = 'Close',
+      cancelbtn = 'Cancel',
       saveChangesbtn = 'Save Changes',
       callback
     ) => {
@@ -180,7 +180,7 @@
 
 
     const addTheaterShowModal = (title, description,
-      cancelbtn = 'Close',
+      cancelbtn = 'Cancel',
       saveChangesbtn = 'Save Changes',
       callback
     ) => {
@@ -232,7 +232,7 @@
     //------------------------------------------------------------------DELETE MODAL--------------------------------------------------------------
 
     const deleteMovieModal = (title, description,
-      cancelbtn = 'Close',
+      cancelbtn = 'Cancel',
       deleteChangesbtn = 'Delete',
       callback
     ) => {
@@ -262,7 +262,7 @@
 
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary modal-cancel-btn" data-bs-dismiss="modal">${cancelbtn}</button>
+          <button type="button" id="cancelBtn" data-mdb-dismiss="modal" class="btn btn-secondary modal-cancel-btn" >${cancelbtn}</button>
           <button type="submit" id="saveTheaterData" onclick="saveAddTheater()" class="btn btn-primary modal-saveChanges-btn">${deleteChangesbtn}</button>
         </div>
         </form>
@@ -275,12 +275,15 @@
 
       var modal = new bootstrap.Modal(addTheaterModalWrap.querySelector('.modal'));
       modal.show();
+      s
+      
     }
+    
 
     //********************************************************************************************************************//
 
     const deleteTheaterModal = (title, description,
-      cancelbtn = 'Close',
+      cancelbtn = 'Cancel',
       deleteChangesbtn = 'Delete',
       callback
     ) => {

@@ -17,6 +17,7 @@ document.getElementById('addTheater').onclick = () => addTheaterShowModal('Add T
 
 document.getElementById('deleteMovie').onclick = () => deleteMovieModal('Delete Movie',
   'Hello', 'Cancel', 'Delete Changes', () => {
+    
   console.log('Changes deleted');
 });
 
@@ -24,6 +25,8 @@ document.getElementById('deleteTheater').onclick = () => deleteTheaterModal('Del
   'Hello', 'Cancel', 'Delete Changes', () => {
   console.log('Changes deleted');
 });
+const abcd = document.getElementById("movieModal")
+
 
 
 
@@ -77,4 +80,10 @@ function saveAddTheater() {
 
 
 }
+
+function cancelBtn() {
+  const acbc= document.getElementById('movieModal')
+  acbc.hide();
+  }
+
 

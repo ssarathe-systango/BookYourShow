@@ -5,6 +5,7 @@ from asyncore import write
 # from crypt import methods
 from distutils.fancy_getopt import wrap_text
 from email.mime import image
+from operator import length_hint
 from pickle import TRUE
 from platform import release
 from flask import Flask, render_template, request, session
@@ -29,6 +30,7 @@ app.secret_key = "super-secret-key"
 def homepage():
     return render_template('index.html')
     # session.pop('user')
+    
 
 
 @app.route("/test/<string:movieID>/booktheater/<string:theaterid>/seatbooking", methods=["GET"])
@@ -39,7 +41,7 @@ def SeatBooking(movieID, theaterid):
     con = pymysql.connect(
         host='localhost', user='root', password='', database='bookyourshow')
     cur = con.cursor()
-
+   
     cur.execute(
         'select * from seatbooking where theaterid = %s AND movieid = %s', (theaterid, movieID))
     bookedSeats = cur.fetchall()
@@ -51,7 +53,7 @@ def SeatBooking(movieID, theaterid):
             totalBookedSeats.append(j)
 
     print(totalBookedSeats)
-    return render_template("SeatBooking.html", enumerate=enumerate, movieID=movieID, theaterid=theaterid, totalBookedSeats=totalBookedSeats, str=str)
+    return render_template("SeatBooking.html", enumerate=enumerate,movieID=movieID,theaterid=theaterid, totalBookedSeats=totalBookedSeats, str=str)
 
 
 # {%endif%}
@@ -268,7 +270,7 @@ def convertToBinaryData(filename):
 
 @app.route("/registration", methods=['GET', 'POST'])
 def registration():
-    if request.method == 'POST':
+    if request.method == 'POST': 
         userid = request.form.get('id')
         username = request.form.get('name')
         email = request.form.get('email')
@@ -380,6 +382,8 @@ def write_file(data, filename):
     # Convert binary data to proper format and write it on Hard Disk
     with open(filename, 'wb') as file:
         file.write(data)
+
+
 
 
 @app.route("/login", methods=['GET', 'POST'])
