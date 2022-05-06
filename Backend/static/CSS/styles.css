@@ -104,43 +104,42 @@
 
 .banner_button {
     cursor: pointer;
-    color: #fff;
+    color: rgb(0, 0, 0);
     outline: none;
     border: none;
     font-weight: 700;
+    font-size: large;
     border-radius: 0.2vw;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    margin-right: 1rem;
-    margin-top: 0.5rem;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    background-color: rgb(27, 23, 23);
+    padding-left: 6rem;
+    padding-right: 6rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     user-select: none;
-
+    margin-left: 550px;
+    margin-top: 80px;
+    background-color: rgb(46, 46, 46);
 }
 
 .banner_button:hover {
-    color: #000;
-    background-color: #e6e6e6;
     transition: all 0.2s;
+    background-color: #a0a0a0;
 }
-
+/* 
 .banner_description {
     color: white;
-    /* font-size: larger; */
+    font-size: larger;
     font-weight: 950;
-}
+} */
 
 /* .banner--fadeBottom {
     margin-top: 145px;
     height: 7.4rem;
-    /* background-image: linear-gradient(180deg, transparent, rgba(37, 37, 37, 0.61), #111); */
-/* user-select: none; 
+    background-image: linear-gradient(180deg, transparent, rgba(37, 37, 37, 0.61), #111);
+    user-select: none;
 
-}*/
+}
 
-/* .nav {
+.nav {
     user-select: none;
     padding-bottom: 15px;
     padding-top: 15px;
@@ -168,6 +167,7 @@
     margin-right: 50%;
     user-select: none;
 }
+
 .text {
     margin-top: 50px;
     font-family: cursive;
@@ -224,16 +224,18 @@
     margin-right: 40%;
     user-select: none;
 }
-.d-flex{
-    
+
+.d-flex {
+
     left: 0;
     bottom: 0;
     width: 100%;
-    
+
     margin-top: 40px;
     background-color: whitesmoke;
     text-align: center;
- }
- .footer{
-     background-color: #867e7e;
- }
+}
+
+.footer {
+    background-color: #867e7e;
+}
