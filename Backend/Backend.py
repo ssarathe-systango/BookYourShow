@@ -426,25 +426,59 @@ def login():
         result = cur.fetchall()
         i = random.randint(50000, 1000000)
         j = i
+        
+       
+      
         path = 'static/uploading/'
+        
+        path2 = 'static/upload/'
 
         if os.path.exists(path):
             shutil.rmtree(path)
+        
+        if os.path.exists(path2):
+            shutil.rmtree(path2)
 
         for row in result:
             if os.path.exists(path):
                 path1 = f'{path}/{i}.jpg'
+                
                 image = row[0]
                 write_file(image, path1)
                 i += 1
+            
             else:
                 os.makedirs(path)
                 path1 = f'{path}/{i}.jpg'
+                
+
                 image = row[0]
                 write_file(image, path1)
+               
                 i += 1
+        for row in result:
+            if os.path.exists(path2):
+                path3 = f'{path2}/{i}.jpg'
+                
+                image = row[0]
+                write_file(image, path3)
+                i -= 1
+            
+            else:
+                os.makedirs(path2)
+                path3 = f'{path2}/{i}.jpg'
+                
 
-        return render_template('home.html', result=result, enumerate=enumerate, num=j)
+                image = row[0]
+                write_file(image, path3)
+               
+                i -= 1
+
+        
+
+       
+
+        return render_template('home.html', result=result, enumerate=enumerate,num=j)
 
     elif flag == 2:
         # print("flag one chala")

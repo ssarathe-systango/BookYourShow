@@ -107,6 +107,7 @@
   </ul>
 
   <script>
+    // =================================================================AddMovies==================================================================
     var addMovieModalWrap = null;
     var addTheaterModalWrap = null;
     const showModal = (title, description,
@@ -148,6 +149,7 @@
         <input class="form_field mb-3" type="text" name="duration" id="movieDuration" placeholder="Movie Duration" autofocus="true"/>
         <input class="form_field mb-3" type="text" name="date" id="releasedate" placeholder="Release Date" autofocus="true"/>
         <input class="form_field mb-3" type="text" name="about" id="aboutMovie" placeholder="About Movie" autofocus="true"/>
+        
         <p style="font-family:verdana">
 
         <!-- Drop Down For Select Theaters -->
@@ -189,6 +191,7 @@
       modal.show();
     }
 
+    // ======================================================================Add Theater====================================================
 
     const addTheaterShowModal = (title, description,
       cancelbtn = 'Cancel',
@@ -291,7 +294,7 @@
     }
 
 
-    //********************************************************************************************************************//
+    //*********************************************************Delete Theater***********************************************************//
 
     const deleteTheaterModal = (title, description,
       cancelbtn = 'Cancel',
@@ -338,6 +341,7 @@
       var modal = new bootstrap.Modal(addTheaterModalWrap.querySelector('.modal'));
       modal.show();
     }
+
 
 
 
