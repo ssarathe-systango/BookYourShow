@@ -149,8 +149,8 @@
     <h2 class="text">TRENDING NOW</h2>
     <div class="row_posters m-3">
 
-      {%for j,i in enumerate(result)%}
-      <a href="/test/{{result[j][1]}}"><img alt="" class="row_poster row_posterLarge m-3"
+      {%for j,i in enumerate(result1)%}
+      <a href="/test/{{result1[j][1]}}"><img alt="" class="row_poster row_posterLarge m-3"
           src="static/upload/{{j+num+1}}.jpg"></a>
       {%endfor%}
       <!-- <img src="{{ url_for('static', filename='/Images/img7.jpg') }}" alt="" class="row_poster row_posterLarge m-3">

@@ -1,0 +1,14 @@
+.mainBox{
+    height: 700px;
+    width: 500px;
+    margin-top: 60px;
+    margin-left: 30%;
+    padding-top: 12%;
+}
+.midBox{
+    height: 300px;
+    width: 500px;
+    margin-top: 40px;
+    border: 1ch;
+   
+}
