@@ -30,7 +30,6 @@ app.secret_key = "super-secret-key"
 def homepage():
     return render_template('index.html')
     # session.pop('user')
-    
 
 
 @app.route("/test/<string:movieID>/booktheater/<string:theaterid>/seatbooking", methods=["GET"])
@@ -41,7 +40,7 @@ def SeatBooking(movieID, theaterid):
     con = pymysql.connect(
         host='localhost', user='root', password='', database='bookyourshow')
     cur = con.cursor()
-   
+
     cur.execute(
         'select * from seatbooking where theaterid = %s AND movieid = %s', (theaterid, movieID))
     bookedSeats = cur.fetchall()
@@ -53,13 +52,12 @@ def SeatBooking(movieID, theaterid):
             totalBookedSeats.append(j)
 
     print(totalBookedSeats)
-    return render_template("SeatBooking.html", enumerate=enumerate,movieID=movieID,theaterid=theaterid, totalBookedSeats=totalBookedSeats, str=str)
+    return render_template("SeatBooking.html", enumerate=enumerate, movieID=movieID, theaterid=theaterid, totalBookedSeats=totalBookedSeats, str=str)
 
 
-# {%endif%}
 @app.route("/test/<string:movieID>/booktheater/<string:theaterid>/seatbooking/paynow", methods=["POST", "GET"])
 def paynow(movieID, theaterid):
-    print("DATA ================", movieID, theaterid)
+    # print("DATA ================", movieID, theaterid)
 
     result = request.form.to_dict()
     # print(result, type(result))
@@ -123,7 +121,7 @@ def BookNowNew():
 
 @app.route("/test/<string:movieID>/booktheater", methods=["GET", "POST"])
 def BookTheater(movieID):
-    print(movieID)
+    # print(movieID)
     con = pymysql.connect(
         host='localhost', user='root', password='', database='bookyourshow')
     cur = con.cursor()
@@ -198,7 +196,7 @@ def mainfun():
 
         # If the file format is JPG or JPEG
         if os.path.splitext(file)[1].lower() in formats:
-            print('compressing', file)
+            # print('compressing', file)
             compressMe(file, verbose)
 
     print("Done")
@@ -270,7 +268,7 @@ def convertToBinaryData(filename):
 
 @app.route("/registration", methods=['GET', 'POST'])
 def registration():
-    if request.method == 'POST': 
+    if request.method == 'POST':
         userid = request.form.get('id')
         username = request.form.get('name')
         email = request.form.get('email')
@@ -382,8 +380,6 @@ def write_file(data, filename):
     # Convert binary data to proper format and write it on Hard Disk
     with open(filename, 'wb') as file:
         file.write(data)
-
-
 
 
 @app.route("/login", methods=['GET', 'POST'])
@@ -588,8 +584,8 @@ def deleteTheater():
     if(request.method == 'POST'):
         theaterid = request.form.get("theatername")
 
-        print("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
-        print(theaterid)
+        # print("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
+        # print(theaterid)
 
         if theaterid == "":
             flash('Movie Id Is Mandatory!!!')

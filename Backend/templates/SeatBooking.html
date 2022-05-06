@@ -30,7 +30,7 @@
     </script>
 
     <div>
-        <img class="main-logo" src="{{ url_for('static', filename='/Images/img1.jpg') }}" />
+        <img class="main-logo" src="{{ url_for('static', filename='/Images/f8.jpg') }}" />
     </div>
 
     <!-- 
@@ -63,13 +63,13 @@
         <div class="container">
 
             <div class="screen" id="display">BookYourShow </br>
-                
+
                 {% for k in rows%}
 
                 {{k[0]}}
-             
-             {% endfor %}
-            
+
+                {% endfor %}
+
             </div>
 
             <div class="row">
@@ -172,7 +172,7 @@
             <div class="row">
                 {%for i in range(0, 8)%}
 
-                {% if 'A'+str(i+1) in totalBookedSeats%}
+                {% if 'F'+str(i+1) in totalBookedSeats%}
                 <div class="inputGroup2">
                     <input id="option1{{i+1}}" name="seat1{{i+1}}" type="checkbox" value="A{{i+1}}" />
                     <label for="option1{{i+1}}">F{{i+1}}</label>
@@ -209,13 +209,7 @@
 
     <script type="module" src="{{ url_for('static', filename='/JS/SeatBooking.js') }}">
 
-    </script>       <li>
-            <div id="seat" class="seat occupied"></div>
-            <small class="status" style="font-size: 2em;">Occupied</small>
-        </li>
-    </ul>
-
-  
+    </script>
 
 </body>
 

@@ -1,7 +1,8 @@
 
 @media screen and (min-width: 480px) {
     body {
-        background-color: black;
+        /* background-color: black; */
+        background-image: url("../Images/front5.jpg");
         font-family: Arial, Helvetica, sans-serif;
         background-size: cover;
         background-attachment: fixed;
@@ -85,10 +86,13 @@
 }
 
 .pad {
+    border-radius: 15px 50px;
     margin: 30px;
     margin-top: 150px;
     transform: scale(1.0);
-    background-color: black;
+    transition: scale(800ms);
+    background-color: teal;
+    border-color: white;
 }
 
 
@@ -149,4 +153,7 @@
 }
 #logoutBtn{
     margin-right: 20px;
+    padding-right: 50px;
+    height: 50px;
+    width: 90px;
 }

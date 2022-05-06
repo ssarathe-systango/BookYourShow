@@ -23,6 +23,9 @@
   <base href="/">
   <link rel="stylesheet" href="{{ url_for('static', filename='/CSS/startingPage.css')}}">
   <link rel="stylesheet" href="{{ url_for('static', filename='/CSS/adminPage.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='/CSS/styles.css')}}">
+
+
 
 
   <title>Admin Page</title>
@@ -30,23 +33,22 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-dark bg-dark">
+    <!-- Navbar content -->
     <div class="container-fluid">
-      <a>
-        <img src="../static/Images/logo1.png" alt="" width="200" height="80" class="d-inline-block align-text-top">
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <marquee behavior="alternate" direction="left" scrollamount="18">
-        <h1 style="color: rgb(255, 255, 255); font-family: serif; margin-right: 700px;" class="Dashboard">Admin
-        </h1>
-      </marquee>
+
+      <img src="{{ url_for('static', filename='/Images/logo1.png') }}" alt="" class="nav_logo">
+  
+        <center><div class="maintext">Admin</div></center>
+
+      <div class="text" id="userName"></div>
       <a href="/"><button type="button" class="btn btn-danger ">Log Out</button></a>
 
-
     </div>
+  </nav>
+
+
+  </div>
   </nav>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -148,13 +150,22 @@
         <input class="form_field mb-3" type="text" name="about" id="aboutMovie" placeholder="About Movie" autofocus="true"/>
         <p style="font-family:verdana">
 
-
+        <!-- Drop Down For Select Theaters -->
         Select Theater Names:<select name="theaterId" id="theaterId" width=100 size="4" style="font-family:verdana" multiple>
         {% for j in theater %}
 	       <option value="{{j[1]}}" > {{j[0]}} </option>
          {% endfor %}
          </select>
          </p>
+
+        <!-- Drop Down For Select Movie Status 
+        
+        Select Movie Status: <select name="theaterId" id="theaterId" width=100 size="4" style="font-family:verdana" multiple>
+        {% for j in theater %}
+	       <option value="" </option>
+         {% endfor %}
+         </select>
+         </p>-->
   
 
         <!--<input class="form_field mb-3" type="text" name="cast" id="movieCast" placeholder="Cast" autofocus="true"/>
@@ -276,9 +287,9 @@
       var modal = new bootstrap.Modal(addTheaterModalWrap.querySelector('.modal'));
       modal.show();
       s
-      
+
     }
-    
+
 
     //********************************************************************************************************************//
 
