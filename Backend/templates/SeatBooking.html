@@ -15,23 +15,11 @@
 
 </head>
 
-<body>
-    <script>
-        // $.ajax({
-        //     method: "POST",
-        //     url: "/paynow",
-        //     data: {
-        //         "userId": userId
-        //     }
-        // })
-        //     .done(function (response) {
-
-        //     });
-    </script>
-
+<body class="">
     <div>
-        <img class="main-logo" src="{{ url_for('static', filename='/Images/f8.jpg') }}" />
-    </div>
+        <!-- <img class="main-logo" src="{{ url_for('static', filename='/Images/f8.jpg') }}" /> -->
+
+    </div><br><br>
 
     <!-- 
     <div class="movie-container">
@@ -42,21 +30,23 @@
             <option value="8">Avengers Infinity War ($8)</option>
         </select>
     </div> -->
-
-    <ul class="showcase">
-        <li>
-            <div id="seat" class="seat"></div>
-            <small class="status" style="font-size: 2em;">N/A</small>
-        </li>
-        <li>
-            <div id="seat" class="seat selected"></div>
-            <small class="status" style="font-size: 2em;">Selected</small>
-        </li>
-        <!-- <li>
+    <div class="showcase">
+        <ul class="showcase">
+            <li>
+                <div id="seat" class="seat"></div>
+                <small class="status" style="font-size: 2em;">N/A</small>
+            </li>
+            &emsp;&emsp;&emsp;
+            <li>
+                <div id="seat" class="seat selected"></div>
+                <small class="status" style="font-size: 2em;">Selected</small>
+            </li>
+            <!-- <li>
             <div id="seat" class="seat occupied"></div>
             <small class="status" style="font-size: 2em;">Occupied</small>
         </li> -->
-    </ul>
+        </ul>
+    </div>
 
     <form action="seatbooking/paynow" method="POST">
 
@@ -77,8 +67,8 @@
 
                 {% if 'A'+str(i+1) in totalBookedSeats%}
                 <div class="inputGroup2">
-                    <input id="option1{{i+1}}" name="seat1{{i+1}}" type="checkbox" value="A{{i+1}}" />
-                    <label for="option1{{i+1}}">A{{i+1}}</label>
+
+                    <label>A{{i+1}}</label>
                 </div> &emsp;
                 {%else%}
 
@@ -98,8 +88,8 @@
 
                 {% if 'B'+str(i+1) in totalBookedSeats%}
                 <div class="inputGroup2">
-                    <input id="option1{{i+1}}" name="seat1{{i+1}}" type="checkbox" value="A{{i+1}}" />
-                    <label for="option1{{i+1}}">B{{i+1}}</label>
+
+                    <label>A{{i+1}}</label>
                 </div> &emsp;
                 {%else%}
 
@@ -116,8 +106,8 @@
 
                 {% if 'C'+str(i+1) in totalBookedSeats%}
                 <div class="inputGroup2">
-                    <input id="option1{{i+1}}" name="seat1{{i+1}}" type="checkbox" value="A{{i+1}}" />
-                    <label for="option1{{i+1}}">C{{i+1}}</label>
+
+                    <label>A{{i+1}}</label>
                 </div> &emsp;
                 {%else%}
 
@@ -135,8 +125,8 @@
 
                 {% if 'D'+str(i+1) in totalBookedSeats%}
                 <div class="inputGroup2">
-                    <input id="option1{{i+1}}" name="seat1{{i+1}}" type="checkbox" value="A{{i+1}}" />
-                    <label for="option1{{i+1}}">D{{i+1}}</label>
+
+                    <label>A{{i+1}}</label>
                 </div> &emsp;
                 {%else%}
 
@@ -154,8 +144,8 @@
 
                 {% if 'E'+str(i+1) in totalBookedSeats%}
                 <div class="inputGroup2">
-                    <input id="option1{{i+1}}" name="seat1{{i+1}}" type="checkbox" value="A{{i+1}}" />
-                    <label for="option1{{i+1}}">E{{i+1}}</label>
+
+                    <label>A{{i+1}}</label>
                 </div> &emsp;
                 {%else%}
                 <!-- <button id="seat29" name="seat29" class="seat" onclick="ChangeColor('seat29')">E{{i+1}}</button> -->
@@ -174,8 +164,8 @@
 
                 {% if 'F'+str(i+1) in totalBookedSeats%}
                 <div class="inputGroup2">
-                    <input id="option1{{i+1}}" name="seat1{{i+1}}" type="checkbox" value="A{{i+1}}" />
-                    <label for="option1{{i+1}}">F{{i+1}}</label>
+
+                    <label>A{{i+1}}</label>
                 </div> &emsp;
                 {%else%}
                 <!-- <button id="seat35" name="seat35" class="seat" onclick="ChangeColor('seat35')">F{{i+1}}</button> -->
@@ -193,23 +183,35 @@
         <br>
 
         <div class="col-sm d-flex justify-content-center">
-            <button type="submit" class="btn" id="paynow">
-                Paynow
-            </button>
+            <button type="submit" class="btn" id="paynow"> Paynow </button>
+
             <a href="/"><button type="button" class="btn btn-light  signin">Log Out</button></a>
 
+            <!-- <a href="/pay"><button type="button" class="btn btn-light  signin">sent</button></a> -->
 
-            <!-- <a href="../templates/home.html"><button type="button" class="btn" id="paynow">
-                    Home
-                </button></a>  -->
 
         </div>
-
+        <br><br><br><br><br>
     </form>
 
-    <script type="module" src="{{ url_for('static', filename='/JS/SeatBooking.js') }}">
-
-    </script>
+    <!-- <script type="module" src="{{ url_for('static', filename='/JS/SeatBooking.js') }}"> -->
+    <!-- <script type="module">
+        function sendEmail() {
+            Email.send({
+                Host: "smtp.gmail.com",
+                Username: "biditvalueforyourvaluables@gmail.com",
+                Password: "systango@@",
+                To: 'sanilsarathe76@gmail.com',
+                From: "biditvalueforyourvaluables@gmail.com",
+                Subject: "Ganesh",
+                Body: "sanil",
+            }).then(
+                console.log("success")
+            );
+        }
+        // sendEmail();
+    </script> -->
+    
 
 </body>
 

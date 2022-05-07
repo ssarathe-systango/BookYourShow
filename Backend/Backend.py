@@ -1,17 +1,22 @@
 #################################################   BOOK YOUR SHOW   #######################################################
 ############################################################################################################################
 import ast
-from asyncore import write
+# from crypt import methods
+# from asyncore import write
+# from crypt import methods
 # from crypt import methods
 from distutils.fancy_getopt import wrap_text
 from email.mime import image
 from operator import length_hint
 from pickle import TRUE
 from platform import release
+from turtle import showturtle
 from flask import Flask, render_template, request, session
 from flask import Flask, redirect, url_for
 from flask import flash
 from flask.helpers import flash
+from flask import Flask, flash
+from flask_mail import Mail, Message
 import pymysql
 import os
 import shutil
@@ -20,21 +25,64 @@ import random
 import time
 import base64
 import sys
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+import smtplib
 # from localStoragePy import localStoragePy
+
 
 app = Flask(__name__)
 app.secret_key = "super-secret-key"
 
 
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USERNAME'] = 'biditvalueforyourvaluables@gmail.com'
+app.config['MAIL_PASSWORD'] = 'systango@@'
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
+
+mail = Mail(app)
+
+
+def sentEmail(seats, time, moviename):
+    fromaddr = "biditvalueforyourvaluables@gmail.com"
+    password = "systango@@"
+    toaddr = "jatinsadhwani.1234@gmail.com"
+
+    msg = MIMEMultipart()
+    msg['From'] = fromaddr
+    msg['To'] = toaddr
+    msg['Subject'] = "BookYourShow"
+
+    body = f"Your Movie is {moviename} and seats are {seats} and Time : {time}"
+    print(moviename)
+    msg.attach(MIMEText(body, 'plain'))
+
+    # creates SMTP session
+    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server.starttls()
+    server.login(fromaddr,password)
+
+    # Converts the Multipart msg into a string
+    text = msg.as_string()
+
+    server.send_message(msg)
+
+    server.quit()
+
+
 @app.route("/", methods=['GET', 'POST'])
-def homepage():
+def index():
     return render_template('index.html')
     # session.pop('user')
 
 
-@app.route("/test/<string:movieID>/booktheater/<string:theaterid>/seatbooking", methods=["GET"])
-def SeatBooking(movieID, theaterid):
 
+
+@app.route("/movie/<string:movieID>/booktheater/<string:theaterid>/<string:time>/seatbooking", methods=["GET"])
+def SeatBooking(movieID, theaterid, time):
+    print(time)
     theaterid = int(theaterid)
     movieID = int(movieID)
     con = pymysql.connect(
@@ -42,7 +90,7 @@ def SeatBooking(movieID, theaterid):
     cur = con.cursor()
 
     cur.execute(
-        'select * from seatbooking where theaterid = %s AND movieid = %s', (theaterid, movieID))
+        'select * from seatbooking where theaterid = %s AND movieid = %s AND showtime=%s', (theaterid, movieID, time))
     bookedSeats = cur.fetchall()
 
     totalBookedSeats = []
@@ -51,12 +99,12 @@ def SeatBooking(movieID, theaterid):
         for j in res:
             totalBookedSeats.append(j)
 
-    print(totalBookedSeats)
+    # print(totalBookedSeats)
     return render_template("SeatBooking.html", enumerate=enumerate, movieID=movieID, theaterid=theaterid, totalBookedSeats=totalBookedSeats, str=str)
 
 
-@app.route("/test/<string:movieID>/booktheater/<string:theaterid>/seatbooking/paynow", methods=["POST", "GET"])
-def paynow(movieID, theaterid):
+@app.route("/movie/<string:movieID>/booktheater/<string:theaterid>/<string:time>/seatbooking/paynow", methods=["POST", "GET"])
+def paynow(movieID, theaterid, time):
     # print("DATA ================", movieID, theaterid)
 
     result = request.form.to_dict()
@@ -66,26 +114,32 @@ def paynow(movieID, theaterid):
     for val in result.values():
         seats.append(val)
 
-    print(seats)
+    print(time, type(time))
+
     seats = str(seats)
 
     con = pymysql.connect(
         host='localhost', user='root', password='', database='bookyourshow')
     cur = con.cursor()
-    cur.execute('insert into seatbooking values(%s,%s,%s)',
-                (seats, int(theaterid), int(movieID)))
+    cur.execute('insert into seatbooking values(%s,%s,%s,%s)',
+                (seats, int(theaterid), int(movieID) , time ))
+
+    cur1 = con.cursor()
+    cur1.execute("select moviename from movieinfo where movieid = %s", movieID)
+    moviename = cur1.fetchone()
 
     con.commit()
     con.close()
-    return redirect(f'/test/{movieID}')
+    sentEmail(seats, time, moviename)
+    return redirect(f'/movie/{movieID}')
+    # return redirect(f'/pay')
+    
 
-    return render_template("home.html", enumerate=enumerate)
 
 ########################################### Generic Page ###################################################
 ############################################################################################################
 
-
-@app.route("/test/<string:movieID>", methods=["GET", "POST"])
+@app.route("/movie/<string:movieID>", methods=["GET", "POST"])
 def genericpage(movieID):
     # print("************************************************")
     # print(movieID)
@@ -107,8 +161,10 @@ def genericpage(movieID):
     return render_template("genericpage.html", row=row, filename=fn, enumerate=enumerate, movieID=movieID)
 
 
-@app.route("/BookNowNew", methods=["GET"])
-def BookNowNew():
+
+
+@app.route("/showtheaters", methods=["GET"])
+def Showtheaters():
     con = pymysql.connect(
         host='localhost', user='root', password='', database='bookyourshow')
     cur = con.cursor()
@@ -116,10 +172,26 @@ def BookNowNew():
     rows = cur.fetchall()
 
     # print(rows)
-    return render_template("BookNowNew.html", rows=rows)
+    return render_template("showTheaters.html", rows=rows)
 
 
-@app.route("/test/<string:movieID>/booktheater", methods=["GET", "POST"])
+
+
+@app.route("/showmovies", methods=["GET"])
+def Showmovies():
+    con = pymysql.connect(
+        host='localhost', user='root', password='', database='bookyourshow')
+    cur = con.cursor()
+    cur.execute('select * from movieinfo')
+    rows = cur.fetchall()
+
+    # print(rows)
+    return render_template("showMovies.html", rows=rows)
+
+
+
+
+@app.route("/movie/<string:movieID>/booktheater", methods=["GET", "POST"])
 def BookTheater(movieID):
     # print(movieID)
     con = pymysql.connect(
@@ -128,15 +200,37 @@ def BookTheater(movieID):
     cur.execute("select * from movieinfo where movieid = %s", movieID)
     rows = cur.fetchone()
 
+    showtimes = []
+    times = ast.literal_eval(rows[5])
+    for i in times:
+        showtimes.append(i)
+    
+
     theaters = []
-    res = ast.literal_eval(rows[8])
+
+    # Convert string of array into array
+    res = ast.literal_eval(rows[9])
 
     cur1 = con.cursor()
     for i in res:
-        cur1.execute("select * from theaterinfo where theaterid = %s", int(i))
+        # print("**************************************************")
+        print(i)
+        t_id = int(i)
+        cur1.execute("select * from theaterinfo where theaterid = %s", t_id)
         theater = cur1.fetchone()
+
         theaters.append(theater)
-    return render_template("BookTheater.html", rows=rows, movieID=movieID, theaters=theaters)
+
+        # theaters.append({
+        #     "theatername":theater[0],
+        #     "theaterid":theater[1],
+        #     "theaterlocation":ast.literal_eval(theater[2]),
+        #     "showtime":ast.literal_eval(theater[3])
+        # })
+
+    return render_template("BookTheater.html", rows=rows, movieID=movieID, theaters=theaters, showtimes=showtimes)
+
+
 
 
 @app.route("/SeatSelecting", methods=["GET"])
@@ -209,60 +303,6 @@ def convertToBinaryData(filename):
     return binaryData
 
 
-# @app.route("/img_upload", methods=['GET', 'POST'])
-# def img_upload(image1):
-#     movieid = ''
-#     moviename = ''
-#     movieanimation = ''
-#     language = ''
-#     movieduration = ''
-#     releasedate = ''
-#     aboutmovie = ''
-#     if True:
-#         # print("Img upload me aaya **************************")
-#         path = 'static/upload/'
-#         if os.path.exists(path):
-
-#             # image1=request.files['image1']
-
-#             image1.save(path+image1.filename)
-
-#             mainfun()
-#             path1 = path+image1.filename
-#             # img1 = convertToBinaryData(path1)
-
-#             con = pymysql.connect(
-#                 host='localhost', user='root', password='', database='bookyourshow')
-#             cur = con.cursor()
-#             cur.execute('insert into movieinfo values(%s, %s, %s, %s, %s, %s, %s, %s)',
-#                         (img1, movieid, moviename, movieanimation, language, movieduration, releasedate, aboutmovie))
-#             con.commit()
-#             con.close()
-#             flash('Success..... Record has been submitted')
-#             # return render_template('adminPage.html')
-
-#         else:
-#             os.makedirs(path)
-#             # image1=request.files['image1']
-
-#             image1.save(path+image1.filename)
-
-#             mainfun()
-#             path1 = path+image1.filename
-#             img1 = convertToBinaryData(path1)
-
-#             con = pymysql.connect(
-#                 host='localhost', user='root', password='', database='bookyourshow')
-#             cur = con.cursor()
-#             cur.execute('insert into movieinfo values(%s, %s, %s, %s, %s, %s, %s, %s)',
-#                         (img1, movieid, moviename, movieanimation, language, movieduration, releasedate, aboutmovie))
-
-#             con.commit()
-#             con.close()
-#             flash('Success..... Record has been submitted')
-#             # return render_template('adminPage.html')
-
-
 ####################################################################################################################
 ################################################# USER REGISTRATION ################################################
 
@@ -280,10 +320,6 @@ def registration():
         if userid == "" or username == "" or email == "" or password == "":
             flash('Required all fields and correct field')
             return render_template("registration.html", token="token")
-
-        # elif len(password) < 8:
-        #     flash('password must be atleast 8 characters')
-        #     return render_template("registration.html")
 
         else:
             con = pymysql.connect(
@@ -384,6 +420,11 @@ def write_file(data, filename):
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
+    return render_template("login.html")
+
+
+@app.route("/loggedin", methods=['GET', 'POST'])
+def loginhome():
     username = ""
     password = ""
 
@@ -417,68 +458,8 @@ def login():
                 flag = 2
 
     if flag == 1:
-        # print("flag one chala")
-
-        con = pymysql.connect(host='localhost', user='root',
-                              password='', database='bookyourshow')
-        cur = con.cursor()
-        cur.execute('select * from movieinfo')
-        result = cur.fetchall()
-        i = random.randint(50000, 1000000)
-        j = i
-        
-       
-      
-        path = 'static/uploading/'
-        
-        path2 = 'static/upload/'
-
-        if os.path.exists(path):
-            shutil.rmtree(path)
-        
-        if os.path.exists(path2):
-            shutil.rmtree(path2)
-
-        for row in result:
-            if os.path.exists(path):
-                path1 = f'{path}/{i}.jpg'
-                
-                image = row[0]
-                write_file(image, path1)
-                i += 1
-            
-            else:
-                os.makedirs(path)
-                path1 = f'{path}/{i}.jpg'
-                
-
-                image = row[0]
-                write_file(image, path1)
-               
-                i += 1
-        for row in result:
-            if os.path.exists(path2):
-                path3 = f'{path2}/{i}.jpg'
-                
-                image = row[0]
-                write_file(image, path3)
-                i -= 1
-            
-            else:
-                os.makedirs(path2)
-                path3 = f'{path2}/{i}.jpg'
-                
-
-                image = row[0]
-                write_file(image, path3)
-               
-                i -= 1
-
-        
-
-       
-
-        return render_template('home.html', result=result, enumerate=enumerate,num=j)
+        print("HOMEE")
+        return redirect("/home")
 
     elif flag == 2:
         # print("flag one chala")
@@ -492,11 +473,104 @@ def login():
     # con.close()
 
 
+
+@app.route('/home', methods=['GET','POST'])
+def userHome():
+    if(request.method=='POST' or request.method=='GET'):
+        con = pymysql.connect(host='localhost', user='root',
+                              password='', database='bookyourshow')
+        cur = con.cursor()
+        cur.execute('select * from movieinfo')
+        result = cur.fetchall()
+        i = random.randint(50000, 1000000)
+        j = i
+
+        path = 'static/uploading/'
+
+        path2 = 'static/upload/'
+
+        if os.path.exists(path):
+            shutil.rmtree(path)
+
+        if os.path.exists(path2):
+            shutil.rmtree(path2)
+
+        for row in result:
+            if os.path.exists(path):
+                path1 = f'{path}/{i}.jpg'
+
+                image = row[0]
+                write_file(image, path1)
+                i += 1
+
+            else:
+                os.makedirs(path)
+                path1 = f'{path}/{i}.jpg'
+
+                image = row[0]
+                write_file(image, path1)
+
+                i += 1
+        for row in result:
+            if os.path.exists(path2):
+                path3 = f'{path2}/{i}.jpg'
+
+                image = row[0]
+                write_file(image, path3)
+                i -= 1
+
+            else:
+                os.makedirs(path2)
+                path3 = f'{path2}/{i}.jpg'
+
+                image = row[0]
+                write_file(image, path3)
+
+                i -= 1
+
+        return render_template('home.html', result=result, enumerate=enumerate, num=j)
+    # return render_template('home.html',enumerate=enumerate, num=j)
+
 ################################################ ADMIN LOGIN ################################################
 #############################################################################################################
 
-@app.route("/Adminlogin", methods=['GET', 'POST'])
+
+@app.route('/adminhome', methods=['GET', 'POST'])
+def adminhome():
+
+    con = pymysql.connect(host='localhost', user='root',
+                          password='', database='bookyourshow')
+    curT = con.cursor()
+    curT.execute('select * from theaterinfo')
+    theater = curT.fetchall()
+
+    curM = con.cursor()
+    curM.execute('select * from movieinfo')
+    movies = curM.fetchall()
+
+    movieid= 1
+    theaterid = 1
+    if len(theater) > 0:
+        theaterid = theater[-1][1]+1
+
+    if len(movies) > 0:
+        movieid= movies[-1][1]+1
+
+        
+
+    return render_template('adminPage.html', enumerate=enumerate, 
+                                            theater=theater, 
+                                            movieid=movieid, 
+                                            theaterid=theaterid)
+
+
+@app.route("/adminlogin", methods=['GET', 'POST'])
 def Adminlogin():
+    return render_template("adminlogin.html")
+
+
+@app.route("/adminloggedin", methods=['GET', 'POST'])
+def Adminloggedin():
     username = ""
     password = ""
 
@@ -512,7 +586,7 @@ def Adminlogin():
 
     if username == "" or password == "":
         flash('All fields are Required')
-        return render_template("adminlogin.html")
+        return redirect("/adminlogin")
 
     else:
         # print("else vala chala")
@@ -538,11 +612,8 @@ def Adminlogin():
         cur.execute('select * from registered_users')
         result = cur.fetchall()
 
-        curT = con.cursor()
-        curT.execute('select * from theaterinfo')
-        theater = curT.fetchall()
-        print(theater)
-        return render_template('adminPage.html', result=result, enumerate=enumerate, theater=theater)
+        return redirect('/adminhome')
+        # return render_template("adminlogin.html")
 
     elif flag == 2:
         print("flag one chala")
@@ -559,18 +630,16 @@ def Adminlogin():
 ############################################# ADD THEATER #####################################################
 ###############################################################################################################
 
-@app.route("/owner_upload", methods=['GET', 'POST'])
+@app.route("/addtheater", methods=['GET', 'POST'])
 def owner_upload():
 
     if(request.method == 'POST'):
         # movieid = request.form.get("movieid")
         theatername = request.form.get("theater")
         theaterid = request.form.get("theaterId")
-        theaterlocation = request.form.get("location")
-        theatercityname = request.form.get("city")
-        theatershowtime = request.form.get("showTime")
 
-        if theatername == "" or theaterid == "" or theaterlocation == "" or theatercityname == "" or theatershowtime == "":
+
+        if theatername == "" or theaterid == "" :
             flash('Required all fields and correct field')
             return render_template("registration.html")
 
@@ -593,18 +662,28 @@ def owner_upload():
 
         if flag == 1:
             flash('theater id already exist')
-            return render_template("adminPage.html")
+            # return render_template("adminPage.html")
+            return redirect('/adminhome')
             con.close()
         else:
-            cur.execute('insert into theaterinfo values(%s,%s,%s,%s,%s)',
-                        (theatername, theaterid, theaterlocation, theatercityname, theatershowtime))
+            cur.execute('insert into theaterinfo values(%s,%s)',
+                        (theatername, theaterid))
 
             con.commit()
 
             con.close()
 
             flash('Success..... Record has been submitted')
-            return render_template("adminPage.html", rows=rows)
+
+
+
+            return redirect('/adminhome')
+            # return render_template("adminPage.html", rows=rows)
+        
+        
+        
+        
+        
         # session.pop('email')
 
     else:
@@ -638,12 +717,12 @@ def deleteTheater():
             # img_upload( request.files['image1'])
 
             print('Success..... Record has been deleted')
-            return render_template("adminPage.html")
+            return redirect("/adminhome")
         session.pop('email')
 
     else:
         # print("data not inserted!!!")
-        return render_template("adminPage.html")
+        return redirect('/adminhome')
 
 
 ############################################## ADD MOVIES #####################################################
@@ -651,13 +730,12 @@ def deleteTheater():
 
 @app.route("/add_movies", methods=['GET', 'POST'])
 def add_movies():
-
     if(request.method == 'POST'):
-
         movieid = request.form.get("movieid")
         moviename = request.form.get("movie")
-        movieanimation = request.form.get("animation")
-        language = request.form.get("language")
+        movieanimation = request.form.getlist("animation")
+        language = request.form.getlist("language")
+        showtime = request.form.getlist("showtime")
         movieduration = request.form.get("duration")
         releasedate = request.form.get("date")
         aboutmovie = request.form.get("about")
@@ -669,6 +747,10 @@ def add_movies():
             theaterid.remove("")
 
         theaterid = str(theaterid)
+        language = str(language)
+        movieanimation = str(movieanimation)
+        showtime = str(showtime)
+
         # print("Img upload me aaya **************************")
         path = 'static/upload/'
         if os.path.exists(path):
@@ -688,19 +770,12 @@ def add_movies():
             mainfun()
             path1 = path+image1.filename
             img1 = convertToBinaryData(path1)
-            # img1 = base64.b64encode(image1)
 
         if movieid == "" or moviename == "" or movieanimation == "" or language == "" or movieduration == "" or releasedate == "" or aboutmovie == "":
             flash('Required all fields and correct field')
-            return render_template("adminPage.html")
-
-        # elif len(password) < 8:
-        #     flash('password must be atleast 8 characters')
-        #     return render_template("registration.html")
+            return redirect('/adminhome')
 
         else:
-            # Img upload function call
-            # img_upload()
             con = pymysql.connect(
                 host='localhost', user='root', password='', database='bookyourshow')
             cur = con.cursor()
@@ -717,27 +792,24 @@ def add_movies():
         if flag == 1:
             flash('movie id already exist')
             return render_template("adminPage.html")
-            con.close()
+
         else:
-            cur.execute('insert into movieinfo values(%s,%s,%s,%s,%s,%s,%s,%s,%s)',
+            cur.execute('insert into movieinfo values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)',
                         (img1, movieid, moviename, movieanimation, language,
-                         movieduration, releasedate, aboutmovie,
+                         showtime, movieduration, releasedate, aboutmovie,
                          theaterid))
 
             con.commit()
 
             con.close()
-
             flash('Success..... Record has been submitted')
-            return render_template("adminPage.html")
-        # session.pop('email')
+            return redirect('/adminhome')
 
     else:
-        # print("data not inserted!!!")
-        return render_template("adminPage.html")
+        return redirect('/adminlogin')
 
 
-################################################## deleteMovie ################################################
+################################################## Delete Movie ################################################
 ###############################################################################################################
 
 @app.route("/deleteMovie", methods=['GET', 'POST'])
@@ -765,12 +837,12 @@ def deleteMovie():
             # img_upload( request.files['image1'])
 
             print('Success..... Record has been deleted')
-            return render_template("adminPage.html")
+            return redirect('/adminhome')
         session.pop('email')
 
     else:
         # print("data not inserted!!!")
-        return render_template("adminPage.html")
+        return redirect('/adminhome')
 
 
 ##############################------------------ END -------------------###########################################

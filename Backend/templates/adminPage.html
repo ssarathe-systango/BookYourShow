@@ -26,8 +26,6 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='/CSS/styles.css')}}">
 
 
-
-
   <title>Admin Page</title>
 
 </head>
@@ -38,8 +36,10 @@
     <div class="container-fluid">
 
       <img src="{{ url_for('static', filename='/Images/logo1.png') }}" alt="" class="nav_logo">
-  
-        <center><div class="maintext">Admin</div></center>
+
+      <center>
+        <div class="maintext">Admin</div>
+      </center>
 
       <div class="text" id="userName"></div>
       <a href="/"><button type="button" class="btn btn-danger ">Log Out</button></a>
@@ -88,8 +88,13 @@
 
 
     <li class="nav-item">
-      <a href="/BookNowNew"><button type="button" class="btn btn-danger text-center pad"
-          style="width: 300px; height: 130px; font-size: 30px; font-family: serif;">Show</button></a>
+      <a href="/showtheaters"><button type="button" class="btn btn-danger text-center pad"
+          style="width: 300px; height: 130px; font-size: 30px; font-family: serif;">Show Theaters</button></a>
+    </li>
+
+    <li class="nav-item">
+      <a href="/showmovies"><button type="button" class="btn btn-danger text-center pad"
+          style="width: 300px; height: 130px; font-size: 30px; font-family: serif;">Show Movies</button></a>
     </li>
 
     <li class="nav-item">
@@ -133,7 +138,7 @@
           </div>
         <form action = "/add_movies" method = "POST" enctype="multipart/form-data">
         <div class="modal-body" id="imageModal">
-        <input type="file" id="imageInputModal" name="image1" onchange="preview() required">
+        <input type="file" id="imageInputModal" name="image1" onchange="preview()" required>
 
         <div class="container">
 
@@ -142,15 +147,58 @@
         </div>
 
         <div>
-        <input class="form_field mb-3" type="text" name="movieid" id="movieID" placeholder="Id of the Movie" autofocus="true"/>
-        <input class="form_field mb-3" type="text" name="movie" id="movieName" placeholder="Name of the Movie" autofocus="true"/>
-        <input class="form_field mb-3" type="text" name="animation" id="animation" placeholder="Animation" autofocus="true"/>
-        <input class="form_field mb-3" type="text" name="language" id="movieLanguage" placeholder="Language" autofocus="true"/>
-        <input class="form_field mb-3" type="text" name="duration" id="movieDuration" placeholder="Movie Duration" autofocus="true"/>
-        <input class="form_field mb-3" type="text" name="date" id="releasedate" placeholder="Release Date" autofocus="true"/>
-        <input class="form_field mb-3" type="text" name="about" id="aboutMovie" placeholder="About Movie" autofocus="true"/>
+        Movie Id: <input class="form_field mb-3" type="text" name="movieid" id="movieID" value={{movieid}} autofocus="true" disabled/>
+        &emsp;&emsp;
+        Name: <input class="form_field mb-3" type="text" name="movie" id="movieName" placeholder="Name of the Movie" autofocus="true"/>
         
+
+
+
+        &emsp;&emsp;
+        Animation:
+        <select name="animation" id="animation" multiple size="2">
+          <option value="2D">2D</option>
+          <option value="3D">3D</option>
+        </select>
+        <br><br><br>
+
+
+
+
+        Language:
+        <select name="language" id="language" multiple>
+          <option value="English">English</option>
+          <option value="Hindi">Hindi</option>
+          <option value="Tamil">Tamil</option>
+          <option value="Bengali">Bengali</option>
+        </select>
+        &emsp;&emsp;&emsp;
+
+
+
+
+        Showtime:
+        <select name="showtime" id="showtime" multiple>
+          <option value="09:00 AM">9:00 AM</option>
+          <option value="12:00 PM">12:00 PM</option>
+          <option value="03:00 PM">3:00 PM</option>
+          <option value="06:00 PM">6:00 PM</option>
+        </select>
+
+
+
+
+        &emsp;&emsp;
+        Movie Duration:<input class="form_field mb-3" type="text" name="duration" id="movieDuration" placeholder="Movie Duration" autofocus="true"/><br>
+        <br><br>
+        Date:<input class="form_field mb-3" type="date" name="date" id="releasedate" placeholder="Release Date" autofocus="true"/>
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+        Movie Description: <input class="form_field mb-3" type="text" name="about" id="aboutMovie" placeholder="About Movie" autofocus="true"/>
+        <br><br><br>
         <p style="font-family:verdana">
+
+
+
 
         <!-- Drop Down For Select Theaters -->
         Select Theater Names:<select name="theaterId" id="theaterId" width=100 size="4" style="font-family:verdana" multiple>
@@ -159,21 +207,9 @@
          {% endfor %}
          </select>
          </p>
-
-        <!-- Drop Down For Select Movie Status 
-        
-        Select Movie Status: <select name="theaterId" id="theaterId" width=100 size="4" style="font-family:verdana" multiple>
-        {% for j in theater %}
-	       <option value="" </option>
-         {% endfor %}
-         </select>
-         </p>-->
   
 
-        <!--<input class="form_field mb-3" type="text" name="cast" id="movieCast" placeholder="Cast" autofocus="true"/>
-        <input class="form_field mb-3" type="text" name="crew" id="movieCrew" placeholder="Crew" autofocus="true"/>
-        <input class="form_field mb-3" type="text" name="certification" id="movieCertification" placeholder="Certification" autofocus="true"/>-->
-       
+
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary modal-cancel-btn" data-bs-dismiss="modal">${cancelbtn}</button>
@@ -214,15 +250,40 @@
           <button type="button" id="closebtn" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           
           </div>
-        <form action = "/owner_upload" method = "POST">
+        <form action = "/addtheater" method = "POST">
         
         
         <div id="addTheaterContainer">
+        <input class="form_field mb-3" type="text" name="theaterId" id="theaterId" value={{theaterid}} disabled autofocus="true"/> </br>
         <input class="form_field mb-3" type="text" name="theater" id="theaterName" placeholder="Name of the Theater" autofocus="true"/> </br>
-        <input class="form_field mb-3" type="text" name="theaterId" id="theaterId" placeholder="Id of Theater" autofocus="true"/> </br>
-        <input class="form_field mb-3" type="text" name="location" id="location" placeholder="Location" autofocus="true"/> </br>
-        <input class="form_field mb-3" type="text" name="city" id="cityName" placeholder="City Name" autofocus="true"/> </br>
-        <input class="form_field mb-3" type="text" name="showTime" id="showTime" placeholder="Show Time" autofocus="true"/> </br>
+       
+
+
+        Location:
+        <select name="location" id="location" multiple>
+          <option value="Indore">Indore</option>
+          <option value="Bhopal">Bhopal</option>
+          <option value="Pune">Pune</option>
+          <option value="Bangalore">Bangalore</option>
+          <option value="Mumbai">Mumbai</option>
+        </select>
+
+
+
+
+        Showtime:
+        <select name="showtime" id="showtime" multiple>
+          <option value="09:00 AM">9:00 AM</option>
+          <option value="12:00 PM">12:00 PM</option>
+          <option value="03:00 PM">3:00 PM</option>
+          <option value="06:00 PM">6:00 PM</option>
+        </select>
+
+
+
+        <!--<input class="form_field mb-3" type="text" name="city" id="cityName" placeholder="City Name" autofocus="true"/> </br>-->
+    
+
         <!--<input class="form_field mb-3" type="text" name="movieid" id="movieid" placeholder="Movie Id" autofocus="true"/> </br>-->
         
         </div>

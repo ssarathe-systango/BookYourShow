@@ -3,9 +3,7 @@
 
 @media screen and (min-width: 480px) {
     body {
-        /* background-color: black; */
-        background-image: url("../Images/front5.jpg");
-
+        background-color: black;
         font-family: Arial, Helvetica, sans-serif;
         background-size: cover;
         background-attachment: fixed;
@@ -14,7 +12,7 @@
 
 .row {
 
-    color: white;
+    color: white;   
     margin-left: 20px;
     user-select: none;
 
@@ -117,13 +115,19 @@
     user-select: none;
     margin-left: 550px;
     margin-top: 80px;
-    background-color: rgb(46, 46, 46);
+    /* background-color: rgb(46, 46, 46); */
+    background-color: #a0a0a0;
+
 }
 
 .banner_button:hover {
     transition: all 0.2s;
-    background-color: #a0a0a0;
+    /* background-color: #a0a0a0; */
+    background-color: rgb(46, 46, 46);
+    transform: scale(1.05);
+    transition: transform 500ms;
 }
+
 /* 
 .banner_description {
     color: white;
@@ -153,9 +157,9 @@
 }
 
 
-.nav_black {
+/* .nav_black {
     background-color: #111;
-}
+} */
 
 .maintext {
     font-family: cursive;

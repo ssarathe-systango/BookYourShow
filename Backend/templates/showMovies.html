@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookYourShow</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='/CSS/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/CSS/adminPage.css') }}">
+
+    <!-- <style>
+     
+
+        .container {
+            font-size: 20px;
+            user-select: none;
+            padding-top: 40px;
+            font-style: italic;
+            font-family: cursive;
+            font-weight: bold;
+        }
+
+        
+       
+
+        .body {
+            background-color: rgb(94, 94, 94);
+        }
+
+        .body :hover {
+            color: lavenderblush;
+        }
+
+        
+        .btnsubmit {
+            margin-left: 2%;
+            margin-left: 40%;
+        }
+    </style> -->
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <nav class="navbar navbar-dark bg-dark">
+        <!-- Navbar content -->
+        <div class="container-fluid">
+    
+          <img src="{{ url_for('static', filename='/Images/logo1.png') }}" alt="" class="nav_logo">
+    
+          <center>
+            <div class="text">Booked Movies</div>
+          </center>
+    
+          <div class="text" id="userName"></div>
+          <a href="/"><button type="button" class="btn btn-danger ">Log Out</button></a>
+    
+        </div>
+      </nav>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+    <div class='heading'>
+        <marquee behavior="alternate" direction="left" scrollamount="15">
+            <h1>Book Your Show</h1>
+        </marquee>
+    </div>
+    <br>
+    <!------------------------------------------------------------------------------------------------------------>
+
+    <div class="container">
+        <div class="row">
+            {% for k in rows%}
+          <div class="col">
+    <ul class="list-inline mx-auto justify-content-center" >
+        <li >
+        <button type="button" class="btn btn-secondary text-start"
+                    style="width: 400px; height: 550px; font-size: 20px;">
+                    <br>
+                    Movie Id:
+                    {{ "&nbsp;"|safe*1 }} {{k[1]}}
+                    <br><br>
+                    Movie Name:{{k[2]}}
+                    <br><br>
+                    Movie Animation:
+                    {{ "&nbsp;"|safe*1 }} {{k[3]}}
+                    <br><br>
+                    Movie Language:
+                    {{ "&nbsp;"|safe*1 }} {{k[4]}} 
+                    <br><br>
+                    Movie Duration:
+                    {{k[5]}}
+                    <br><br>
+                    Release Date:
+                    {{k[6]}}
+                    <br><br>
+                    About Movie:
+                    {{k[7]}}
+                    <br><br>
+                    Theater ID:
+                    {{k[8]}}
+                    <br><br>
+            
+                  
+        </li>
+        <li>
+            <!-- <a href="/seatbooking"><button type="submit" class="btn btn-primary  btnsubmit">BookNow
+            </button></a> -->
+        </li>
+            
+        
+        </button>
+    
+    </ul>
+    </div>
+    {% endfor %}
+    </div>
+</div>
+
+
+
+</body>
+
+</html>

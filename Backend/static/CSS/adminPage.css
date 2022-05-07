@@ -2,7 +2,7 @@
 @media screen and (min-width: 480px) {
     body {
         /* background-color: black; */
-        background-image: url("../Images/front5.jpg");
+        background-image: url("../Images/front14.jpg");
         font-family: Arial, Helvetica, sans-serif;
         background-size: cover;
         background-attachment: fixed;
@@ -38,7 +38,6 @@
 
     background-color: black;
     padding: 16px 16px;
-
 
 }
 

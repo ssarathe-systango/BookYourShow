@@ -12,8 +12,8 @@
 }
 
 body {
-    /* /* background-image: url("/Images/thor8.png");  */
-    background-color: black;
+    background-image: url("../Images/back2.jpg");
+    /* background-color: black; */
     color: #fff;
     display: flex;
     background-size: cover;
@@ -21,7 +21,7 @@ body {
     align-items: center;
     justify-content: center;
     /* height: 100vh; */
-    font-family: cursive;
+    /* font-family: cursive; */
     margin: 0;
 }
 
@@ -32,7 +32,7 @@ body {
 }
 
 .seat {
-    background-color: #5c5c5c;
+    background-color: #ffffff;
     height: 35px;
     width: 80px;
     margin: 3px;
@@ -44,26 +44,9 @@ body {
 }
 
 .seat.selected {
-    background-color: rgb(45, 86, 175);
+    background-color: rgb(12, 32, 206);
 }
 
-/* .seat.occupied {
-    background-color: rgb(242, 5, 5);
-} */
-
-/* .seat:nth-of-type(2) {
-    margin-right: 100px;
-}
-
-.seat:nth-last-of-type(2) {
-    margin-left: 100px;
-} */
-
-/* .seat:not(.occupied):hover {
-    cursor: pointer;
-    background-color: rgb(45, 86, 175);
-    transform: scale(1.2);
-} */
 
 .row {
     background: rgba(0, 0, 0, 0.1);
@@ -112,7 +95,6 @@ body {
     color: #777;
     list-style-type: none;
     display: flex;
-    justify-content: space-between;
 }
 
 /*Font Color Of N/A , Selected, Occupied*/
@@ -129,7 +111,8 @@ body {
     font-weight: 600;
     cursor: pointer;
     margin-left: 320px;
-   /* margin: 10px; */
+    transition: all 500ms ease-in;
+
 }
 
 .inputGroup {
@@ -221,8 +204,7 @@ body {
 .inputGroup input {
     width: 32px;
     height: 32px;
-    order: 1;
-    z-index: 2;
+
     position: absolute;
     right: 30px;
     top: 50%;
@@ -257,17 +239,15 @@ code {
 
 
 .inputGroup2 {
-    padding: .6em 2em;
+    padding: 1.3em 2em;
     border-radius: 10px;
     font-size: 1.2em;
-    font-weight: 600;
     width: 32px;
     height: 32px;
-    background-color: blue;
+    background-color: olive;
     display: block;
     margin: 10px 0;
-    position: relative;
-    width: 32px;
-    height: 32px;
-
+    color: white;
+    user-select: none;
 }
+
