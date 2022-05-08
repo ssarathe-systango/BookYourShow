@@ -528,7 +528,7 @@ def userHome():
 
                 i -= 1
 
-        return render_template('home.html', result=result, enumerate=enumerate, num=j, num1=len(result)+1)
+        return render_template('home.html', result=result, enumerate=enumerate, num=j)
     # return render_template('home.html',enumerate=enumerate, num=j)
 
 ################################################ ADMIN LOGIN ################################################
