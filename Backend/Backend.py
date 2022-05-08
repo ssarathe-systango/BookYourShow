@@ -28,6 +28,7 @@ import sys
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import smtplib
+import ast, operator
 # from localStoragePy import localStoragePy
 
 
@@ -86,7 +87,7 @@ def SeatBooking(movieID, theaterid, time):
     theaterid = int(theaterid)
     movieID = int(movieID)
     con = pymysql.connect(
-        host='localhost', user='root', password='', database='bookyourshow')
+        host='localhost', user='root', password='', database='bookyourshow', port=3307)
     cur = con.cursor()
 
     cur.execute(
@@ -119,7 +120,7 @@ def paynow(movieID, theaterid, time):
     seats = str(seats)
 
     con = pymysql.connect(
-        host='localhost', user='root', password='', database='bookyourshow')
+        host='localhost', user='root', password='', database='bookyourshow', port=3307)
     cur = con.cursor()
     cur.execute('insert into seatbooking values(%s,%s,%s,%s)',
                 (seats, int(theaterid), int(movieID) , time ))
@@ -145,7 +146,7 @@ def genericpage(movieID):
     # print(movieID)
 
     con = pymysql.connect(host='localhost', user='root',
-                          password='', database='bookyourshow')
+                          password='', database='bookyourshow', port=3307)
     cur = con.cursor()
     cur.execute("select * from movieinfo where movieid=%s", movieID)
     row = cur.fetchone()
@@ -166,7 +167,7 @@ def genericpage(movieID):
 @app.route("/showtheaters", methods=["GET"])
 def Showtheaters():
     con = pymysql.connect(
-        host='localhost', user='root', password='', database='bookyourshow')
+        host='localhost', user='root', password='', database='bookyourshow', port=3307)
     cur = con.cursor()
     cur.execute('select * from theaterinfo')
     rows = cur.fetchall()
@@ -180,7 +181,7 @@ def Showtheaters():
 @app.route("/showmovies", methods=["GET"])
 def Showmovies():
     con = pymysql.connect(
-        host='localhost', user='root', password='', database='bookyourshow')
+        host='localhost', user='root', password='', database='bookyourshow', port=3307)
     cur = con.cursor()
     cur.execute('select * from movieinfo')
     rows = cur.fetchall()
@@ -195,7 +196,7 @@ def Showmovies():
 def BookTheater(movieID):
     # print(movieID)
     con = pymysql.connect(
-        host='localhost', user='root', password='', database='bookyourshow')
+        host='localhost', user='root', password='', database='bookyourshow', port=3307)
     cur = con.cursor()
     cur.execute("select * from movieinfo where movieid = %s", movieID)
     rows = cur.fetchone()
@@ -323,7 +324,7 @@ def registration():
 
         else:
             con = pymysql.connect(
-                host='localhost', user='root', password='', database='bookyourshow')
+                host='localhost', user='root', password='', database='bookyourshow', port=3307)
             cur = con.cursor()
             cur.execute('select * from registered_users')
             rows = cur.fetchall()
@@ -378,7 +379,7 @@ def adminregistration():
 
         else:
             con = pymysql.connect(
-                host='localhost', user='root', password='', database='bookyourshow')
+                host='localhost', user='root', password='', database='bookyourshow', port=3307)
             cur = con.cursor()
             cur.execute('select * from admin')
             rows = cur.fetchall()
@@ -445,7 +446,7 @@ def loginhome():
     else:
         # print("else vala chala")
         con = pymysql.connect(host='localhost', user='root',
-                              password='', database='bookyourshow')
+                              password='', database='bookyourshow', port=3307)
         cur = con.cursor()
         cur.execute('select * from registered_users')
         rows = cur.fetchall()
@@ -478,7 +479,7 @@ def loginhome():
 def userHome():
     if(request.method=='POST' or request.method=='GET'):
         con = pymysql.connect(host='localhost', user='root',
-                              password='', database='bookyourshow')
+                              password='', database='bookyourshow', port=3307)
         cur = con.cursor()
         cur.execute('select * from movieinfo')
         result = cur.fetchall()
@@ -539,7 +540,7 @@ def userHome():
 def adminhome():
 
     con = pymysql.connect(host='localhost', user='root',
-                          password='', database='bookyourshow')
+                          password='', database='bookyourshow', port=3307)
     curT = con.cursor()
     curT.execute('select * from theaterinfo')
     theater = curT.fetchall()
@@ -591,7 +592,7 @@ def Adminloggedin():
     else:
         # print("else vala chala")
         con = pymysql.connect(host='localhost', user='root',
-                              password='', database='bookyourshow')
+                              password='', database='bookyourshow', port=3307)
         cur = con.cursor()
         cur.execute('select * from admin')
         rows = cur.fetchall()
@@ -607,7 +608,7 @@ def Adminloggedin():
         # print("flag one chala")
 
         con = pymysql.connect(host='localhost', user='root',
-                              password='', database='bookyourshow')
+                              password='', database='bookyourshow', port=3307)
         cur = con.cursor()
         cur.execute('select * from registered_users')
         result = cur.fetchall()
@@ -649,7 +650,7 @@ def owner_upload():
 
         else:
             con = pymysql.connect(
-                host='localhost', user='root', password='', database='bookyourshow')
+                host='localhost', user='root', password='', database='bookyourshow', port=3307)
             cur = con.cursor()
             cur.execute('select * from theaterinfo')
             rows = cur.fetchall()
@@ -705,7 +706,7 @@ def deleteTheater():
 
         else:
             con = pymysql.connect(
-                host='localhost', user='root', password='', database='bookyourshow')
+                host='localhost', user='root', password='', database='bookyourshow', port=3307)
             cur = con.cursor()
             cur.execute(
                 "DELETE from theaterinfo where theaterid = '%s'" % (theaterid))
@@ -777,7 +778,7 @@ def add_movies():
 
         else:
             con = pymysql.connect(
-                host='localhost', user='root', password='', database='bookyourshow')
+                host='localhost', user='root', password='', database='bookyourshow', port=3307)
             cur = con.cursor()
             cur.execute('select * from movieinfo')
             # cur.execute('select theatername from theaterinfo')
@@ -825,7 +826,7 @@ def deleteMovie():
 
         else:
             con = pymysql.connect(
-                host='localhost', user='root', password='', database='bookyourshow')
+                host='localhost', user='root', password='', database='bookyourshow', port=3307)
             cur = con.cursor()
             cur.execute("DELETE from movieinfo where movieid = '%s'" %
                         (movieid1))
