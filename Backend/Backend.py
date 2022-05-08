@@ -8,11 +8,12 @@ import ast
 from distutils.fancy_getopt import wrap_text
 from email.mime import image
 from operator import length_hint
+
 from pickle import TRUE
 from platform import release
 from turtle import showturtle
 from flask import Flask, render_template, request, session
-from flask import Flask, redirect, url_for
+from flask import Flask, redirect
 from flask import flash
 from flask.helpers import flash
 from flask import Flask, flash
@@ -46,17 +47,17 @@ app.config['MAIL_USE_SSL'] = True
 mail = Mail(app)
 
 
-def sentEmail(seats, time, moviename):
+def sentEmail(seats, time, moviename, theatername):
     fromaddr = "biditvalueforyourvaluables@gmail.com"
     password = "systango@@"
-    toaddr = "jatinsadhwani.1234@gmail.com"
+    toaddr = "sanilsarathe76@gmail.com"
 
     msg = MIMEMultipart()
     msg['From'] = fromaddr
     msg['To'] = toaddr
     msg['Subject'] = "BookYourShow"
 
-    body = f"Your Movie is {moviename} and seats are {seats} and Time : {time}"
+    body = f"Your Movie is {moviename} and seats are {seats} and Time : {time} and Theater : {theatername}"
     print(moviename)
     msg.attach(MIMEText(body, 'plain'))
 
@@ -123,15 +124,20 @@ def paynow(movieID, theaterid, time):
         host='localhost', user='root', password='', database='bookyourshow', port=3307)
     cur = con.cursor()
     cur.execute('insert into seatbooking values(%s,%s,%s,%s)',
-                (seats, int(theaterid), int(movieID) , time ))
+                (seats, int(theaterid), int(movieID) , time))
 
     cur1 = con.cursor()
     cur1.execute("select moviename from movieinfo where movieid = %s", movieID)
     moviename = cur1.fetchone()
 
+
+    cur2 = con.cursor()
+    cur2.execute("select theatername from theaterinfo where theaterid = %s", theaterid)
+    theatername = cur2.fetchone()
+
     con.commit()
     con.close()
-    sentEmail(seats, time, moviename)
+    sentEmail(seats, time, moviename, theatername)
     return redirect(f'/movie/{movieID}')
     # return redirect(f'/pay')
     
@@ -219,15 +225,8 @@ def BookTheater(movieID):
         t_id = int(i)
         cur1.execute("select * from theaterinfo where theaterid = %s", t_id)
         theater = cur1.fetchone()
-
-        theaters.append(theater)
-
-        # theaters.append({
-        #     "theatername":theater[0],
-        #     "theaterid":theater[1],
-        #     "theaterlocation":ast.literal_eval(theater[2]),
-        #     "showtime":ast.literal_eval(theater[3])
-        # })
+        if theater != None:
+            theaters.append(theater)
 
     return render_template("BookTheater.html", rows=rows, movieID=movieID, theaters=theaters, showtimes=showtimes)
 
@@ -512,6 +511,7 @@ def userHome():
                 write_file(image, path1)
 
                 i += 1
+                
         for row in result:
             if os.path.exists(path2):
                 path3 = f'{path2}/{i}.jpg'
@@ -529,7 +529,7 @@ def userHome():
 
                 i -= 1
 
-        return render_template('home.html', result=result, enumerate=enumerate, num=j)
+        return render_template('home.html', result=result, enumerate=enumerate, num=j, num1=len(result)+1)
     # return render_template('home.html',enumerate=enumerate, num=j)
 
 ################################################ ADMIN LOGIN ################################################
