@@ -12,7 +12,7 @@
 
 .row {
 
-    color: white;   
+    color: white;
     margin-left: 20px;
     user-select: none;
 
@@ -242,4 +242,8 @@
 
 .footer {
     background-color: #867e7e;
+}
+
+.theaterBox {
+    column-gap: 50px;
 }

@@ -156,3 +156,11 @@
     height: 50px;
     width: 90px;
 }
+.headingText{
+    font-family: cursive;
+    font-weight: 900;
+    font-size: 45px;
+    color: white;
+    opacity: 65%;
+    margin-left: 150px;
+}

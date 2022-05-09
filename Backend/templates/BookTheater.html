@@ -44,27 +44,27 @@
     <!------------------------------------------------------------------------------------------------------------>
 
     <!-- <div class="container"> -->
-    <div class="row">
+    <div class="row theaterBox">
         {% for k in theaters %}
-        <div class="col-md-2">
+        <div class="col-md-2 ">
             <ul class="list-inline mx-auto justify-content-center">
                 <li>
-                    <label type="button" class="text"
-                            id=${theaterBtn}
-                            style="width: 200px; height: 200px; font-size: 35px; margin-top: 20px; background-color: rgb(0, 91, 196); text-align: center; border-radius: 15px 50px;">
-                            {{k[0]}}
-                </li>
+                    <label type="button" class="text" id=${theaterBtn}
+                        style="width: 300px; display: inline-block; font-size: 35px; margin-top: 20px; background-color: rgb(0, 91, 196); text-align: center; border-radius: 15px 50px;">
+                        {{k[0]}}
 
-                <li>
-                    {%for time in showtimes %}
-                    <a href="/movie/{{movieID}}/booktheater/{{k[1]}}/{{time}}/seatbooking">
-                    <button type="button" class="btn btn-danger tile"
-                        style="width: 140px; height: 50px; margin-top: 60px; font-size: 25px;">
-                        {{time}}
-                    </button> </a>
-                    {%endfor%}
-                </li>
 
+
+
+                        {%for time in showtimes %}
+                        <br><a href="/movie/{{movieID}}/booktheater/{{k[1]}}/{{time}}/seatbooking">
+                            <button type="button" class="btn btn-danger tile"
+                                style="width: 160px; height: 50px; margin-top: 30px; margin-bottom: 30px; font-size: 25px;">
+                                {{time}}
+                            </button> </a>
+                        {%endfor%}
+
+                </li>
                 </label>
 
             </ul>

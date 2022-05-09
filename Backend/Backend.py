@@ -50,7 +50,7 @@ mail = Mail(app)
 def sentEmail(seats, time, moviename, theatername):
     fromaddr = "biditvalueforyourvaluables@gmail.com"
     password = "systango@@"
-    toaddr = "sanilsarathe76@gmail.com"
+    toaddr = "sumanbiswas5557@gmail.com"
 
     msg = MIMEMultipart()
     msg['From'] = fromaddr
