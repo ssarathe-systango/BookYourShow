@@ -40,9 +40,12 @@
 .bg-image {
     /* background-repeat: no-repeat; */
     /* background-size: cover; */
-    background-image: url("../../static/Images/back.jpg");
+    background-image: url("../../static/Images/background.jpg");
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
 }
