@@ -23,11 +23,12 @@
     <div class="container-fluid">
 
       <img src="{{ url_for('static', filename='/Images/logo1.png') }}" alt="" class="nav_logo">
-      <div class="maintext">BookYourShow</div>
+      <div class="maintext">BookYourShow &emsp;&emsp;&emsp;
 
+        <a href="/"><button type="button" class="btn btn-danger" onclick="logout()">Log Out</button></a>
+      </div>
 
       <div class="text" id="userName"></div>
-      <a href="/"><button type="button" class="btn btn-danger ">Log Out</button></a>
 
     </div>
   </nav>
@@ -322,20 +323,18 @@
 <script>
   // let name = document.getElementById('userName');
   function getName() {
-    return localStorage.getItem("username");
+    return sessionStorage.getItem("username");
   }
 
   var name = getName();
 
   document.getElementById("userName").innerHTML = name;
 
-    // function storemoveid(movieid){
-    //     console.log(movieid);
-    // }
 
-    // storemoveid(1);
+  function logout() {
+    sessionStorage.clear();
+  }
 
-//    let username = localStorage.getItem("username");
 
 
 </script>

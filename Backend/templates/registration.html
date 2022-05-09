@@ -15,6 +15,20 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <section class="vh-100 bg-image">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul class=flashes>
+                {%for message in messages%}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>{{message}}</strong> 
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+                {%endfor%}
+            </ul>
+            {% endif %}
+            {% endwith %}
+
+
         <div class="mask d-flex align-items-center h-100 gradient-custom-3">
             <div class="container h-100">
                 <div class="row d-flex justify-content-center align-items-center h-100">
@@ -65,7 +79,7 @@
                                             id="RegisterBtn">Register</button> -->
 
                                         <button type="text" id="Register_Btn"
-                                            class="btn-block btn-lg gradient-custom-4 text-body registerbtn" >SignUp</button>
+                                            class="btn-block btn-lg gradient-custom-4 text-body registerbtn" onclick="r()">SignUp</button>
 
 
                                     </div>
@@ -96,7 +110,13 @@
         localStorage.setItem('username', user1);
     }
     </script> -->
-
+    <script>
+        function r(){
+        let uid = document.getElementById('ID').value;
+        // console.log(user1);
+        sessionStorage.setItem('userid', uid);
+    }
+    </script>
     <!---------------------------------------------------------------------------------------------------------------------------->
 </body>
 

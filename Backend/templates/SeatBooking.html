@@ -16,6 +16,7 @@
 </head>
 
 <body class="">
+
     <div>
         <!-- <img class="main-logo" src="{{ url_for('static', filename='/Images/f8.jpg') }}" /> -->
 
@@ -183,17 +184,29 @@
         <br>
 
         <div class="col-sm d-flex justify-content-center">
-            <button type="submit" class="btn" id="paynow"> Paynow </button>
+            <button type="submit" class="btn" id="paynow"> Pay Now </button>
+            <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+            <script>
+                let pay = document.getElementById("paynow");
+                pay.addEventListener('click', fun);
+                function fun() {
+                    swal({
+                        title: "Mail Sent!",
+                        text: "You clicked the button!",
+                        icon: "success",
+                        button: "Done!",
+                    });
+                }
+            </script>
+            </div><br>
 
-            <a href="/"><button type="button" class="btn btn-light  signin">Log Out</button></a>
-
-            <!-- <a href="/pay"><button type="button" class="btn btn-light  signin">sent</button></a> -->
-
-
-        </div>
-        <br><br><br><br><br>
+            <div class="d-flex">
+                <a href="/"><button type="button" class="btn btn-light  signin">Log Out</button></a>
+                <a href="/home"><button type="button" class="btn btn-light  signin">Home</button></a>
+            </div>
+        
+        </section>
     </form>
-    
 
 </body>
 

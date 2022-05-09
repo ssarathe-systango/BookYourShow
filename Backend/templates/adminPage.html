@@ -149,14 +149,14 @@
         <div>
         Movie Id: <input class="form_field mb-3" type="text" name="movieid" id="movieID" value={{movieid}} autofocus="true" disabled/>
         &emsp;&emsp;
-        Name: <input class="form_field mb-3" type="text" name="movie" id="movieName" placeholder="Name of the Movie" autofocus="true"/>
+        Name: <input class="form_field mb-3" type="text" name="movie" id="movieName" placeholder="Name of the Movie" autofocus="true"/ required>
         
 
 
 
         &emsp;&emsp;
         Animation:
-        <select name="animation" id="animation" multiple size="2">
+        <select name="animation" id="animation" multiple size="2" required>
           <option value="2D">2D</option>
           <option value="3D">3D</option>
         </select>
@@ -166,7 +166,7 @@
 
 
         Language:
-        <select name="language" id="language" multiple>
+        <select name="language" id="language" multiple required>
           <option value="English">English</option>
           <option value="Hindi">Hindi</option>
           <option value="Tamil">Tamil</option>
@@ -178,7 +178,7 @@
 
 
         Showtime:
-        <select name="showtime" id="showtime" multiple>
+        <select name="showtime" id="showtime" multiple required>
           <option value="09:00 AM">9:00 AM</option>
           <option value="12:00 PM">12:00 PM</option>
           <option value="03:00 PM">3:00 PM</option>
@@ -189,11 +189,11 @@
 
 
         &emsp;&emsp;
-        Movie Duration:<input class="form_field mb-3" type="text" name="duration" id="movieDuration" placeholder="Movie Duration" autofocus="true"/><br>
+        Movie Duration:<input class="form_field mb-3" type="text" name="duration" id="movieDuration" placeholder="Movie Duration" autofocus="true"/ required><br>
         <br><br>
-        Date:<input class="form_field mb-3" type="date" name="date" id="releasedate" placeholder="Release Date" autofocus="true"/>
+        Date:<input class="form_field mb-3" type="date" name="date" id="releasedate" placeholder="Release Date" autofocus="true"/ required>
         &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-        Movie Description: <input class="form_field mb-3" type="text" name="about" id="aboutMovie" placeholder="About Movie" autofocus="true"/>
+        Movie Description: <input class="form_field mb-3" type="text" name="about" id="aboutMovie" placeholder="About Movie" autofocus="true"/ required>
         <br><br><br>
         <p style="font-family:verdana">
 
@@ -201,7 +201,7 @@
 
 
         <!-- Drop Down For Select Theaters -->
-        Select Theater Names:<select name="theaterId" id="theaterId" width=100 size="4" style="font-family:verdana" multiple>
+        Select Theater Names:<select name="theaterId" id="theaterId" width=100 size="4" style="font-family:verdana" multiple required>
         {% for j in theater %}
 	       <option value="{{j[1]}}" > {{j[0]}} </option>
          {% endfor %}
@@ -255,24 +255,24 @@
         
         <div id="addTheaterContainer">
         <input class="form_field mb-3" type="text" name="theaterId" id="theaterId" value={{theaterid}} disabled autofocus="true"/> </br>
-        <input class="form_field mb-3" type="text" name="theater" id="theaterName" placeholder="Name of the Theater" autofocus="true"/> </br>
+        <input class="form_field mb-3" type="text" name="theater" id="theaterName" placeholder="Name of the Theater" autofocus="true"/ required> </br>
        
 
 
-        Location:
+        <!--Location:
         <select name="location" id="location" multiple>
           <option value="Indore">Indore</option>
           <option value="Bhopal">Bhopal</option>
           <option value="Pune">Pune</option>
           <option value="Bangalore">Bangalore</option>
           <option value="Mumbai">Mumbai</option>
-        </select>
+        </select>-->
 
 
 
 
         Showtime:
-        <select name="showtime" id="showtime" multiple>
+        <select name="showtime" id="showtime" multiple required>
           <option value="09:00 AM">9:00 AM</option>
           <option value="12:00 PM">12:00 PM</option>
           <option value="03:00 PM">3:00 PM</option>
@@ -332,7 +332,7 @@
         
         <div id="addTheaterContainer">
         
-        <input class="form_field mb-3" type="text" name="moviename" id="movieID" placeholder="Id of Movie" autofocus="true"/> </br>
+        <input class="form_field mb-3" type="text" name="moviename" id="movieID" placeholder="Id of Movie" autofocus="true"/ required> </br>
         
 
         </div>
@@ -383,7 +383,7 @@
         
         <div id="addTheaterContainer">
         
-        <input class="form_field mb-3" type="text" name="theatername" id="movieID" placeholder="Id of Theater" autofocus="true"/> </br>
+        <input class="form_field mb-3" type="text" name="theatername" id="movieID" placeholder="Id of Theater" autofocus="true"/ required> </br>
         
 
         </div>

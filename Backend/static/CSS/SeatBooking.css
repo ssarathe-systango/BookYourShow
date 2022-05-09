@@ -103,7 +103,7 @@ body {
 } */
 
 .btn {
-    background-color: #21bbac;
+    background-color: plum;
     border: 1px solid #000000;
     padding: .6em 2em;
     border-radius: 10px;
@@ -111,8 +111,14 @@ body {
     font-weight: 600;
     cursor: pointer;
     margin-left: 320px;
-    transition: all 500ms ease-in;
+    /* transition: all 500ms ease-in; */
+    /* transform: scale(1.2); */
+    /* display: flex; */
+    
+}
 
+.btn:hover{
+    background-color: teal;
 }
 
 .inputGroup {
